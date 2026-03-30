@@ -139,16 +139,15 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 3px;
+    align-items: stretch;
   }
 
   /* Small left stack, large right */
  .img-feature-right {
   display: grid;
-  height: full;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 3px;
-  align-items: stretch; /* important */
-}
+ }
 
   /* Right column stack (2 images stacked) */
   .img-stack {
@@ -390,17 +389,22 @@
 
 <!-- BLOCK 5: Two stacked left, large right -->
 <div class="img-feature-right fade-up">
+
+  <!-- LEFT STACK -->
   <div class="img-stack">
-    <div class="img-cell" style="flex:1;">
-      <img src="assets/ycareers/4YCareersColours.png" alt="Description">
+    <div class="img-cell">
+      <img src="assets/ycareers/4YCareersColours.png" alt="">
     </div>
-    <div class="img-cell" style="flex:1;">
-      <img src="assets/ycareers/5Typography.png" alt="Description">
+    <div class="img-cell">
+      <img src="assets/ycareers/5Typography.png" alt="">
     </div>
   </div>
-  <div class="img-cell h-lg">
-   <img src="assets/ycareers/1Logo.png" alt="Description">
+
+  <!-- RIGHT LARGE -->
+  <div class="img-cell">
+    <img src="assets/ycareers/1Logo.png" alt="">
   </div>
+
 </div>
 
 
