@@ -1,912 +1,929 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Josephine De Maria — Graphic Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --green: #1a3a2a;
-    --green-mid: #22493a;
-    --green-light: #2d5c4a;
-    --cream: #f5f0e8;
-    --white: #ffffff;
-    --accent: #FFE973;
-    --red: #EF373E;
-    --tint: #F9CCC2;
-    --text-muted: rgba(245,240,232,0.55);
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--green);
-    color: var(--cream);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 3rem;
-    background: rgba(26,58,42,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(245,240,232,0.08);
-  }
-
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--cream);
-    text-decoration: none;
-    letter-spacing: 0.01em;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--cream); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem 3rem 5rem 3rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-  }
-
-  .hero-title {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 5vw, 5rem);
-    font-weight: 900;
-    line-height: 1.0;
-    color: var(--cream);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--text-muted);
-    max-width: 380px;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--accent);
-    color: var(--green);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 0.9rem 2rem;
-    border-radius: 0;
-    transition: background 0.2s, transform 0.15s;
-    align-self: flex-start;
-  }
-
-  .hero-cta:hover { background: var(--cream); transform: translateY(-2px); }
-
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-video-wrap {
-    width: 100%;
-    height: 100%;
-    min-height: 600px;
-    position: relative;
-    background: var(--green-mid);
-  }
-
-  .hero-video-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--green-light);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    gap: 1rem;
-    border-left: 1px solid rgba(245,240,232,0.1);
-  }
-
-  .play-btn {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 2px solid var(--cream);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.6;
-  }
-
-  .play-btn svg { margin-left: 4px; }
-
-  /* REPLACE THIS with your actual video:
-     <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;">
-       <source src="your-showreel.mp4" type="video/mp4">
-     </video>
-  */
-
-  /* ── SECTION BASE ── */
-  section { padding: 6rem 3rem; }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700;
-    color: var(--cream);
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-  }
-
-  /* ── MARQUEE ── */
-  .marquee-wrap {
-    background: var(--accent);
-    overflow: hidden;
-    padding: 0.85rem 0;
-    white-space: nowrap;
-  }
-
-  .marquee-inner {
-    display: inline-block;
-    animation: marquee 18s linear infinite;
-  }
-
-  .marquee-inner span {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--green);
-    padding: 0 2.5rem;
-  }
-
-  .marquee-inner span::after {
-    content: '✦';
-    margin-left: 2.5rem;
-    font-style: normal;
-  }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ── FEATURED WORK ── */
-  .work-section { padding: 6rem 3rem; }
-
-  .work-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-  }
-
-  .view-all {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(245,240,232,0.25);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .view-all:hover { color: var(--cream); border-color: var(--cream); }
-
-  /* Featured big card */
-  .work-featured {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-bottom: 1.5rem;
-    background: var(--green-mid);
-    border: 1px solid rgba(245,240,232,0.08);
-    overflow: hidden;
-    transition: transform 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .work-featured:hover { transform: translateY(-4px); }
-
-  .work-featured-img {
-    min-height: 480px;
-    background: var(--green-light);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .work-img-inner {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-  }
-
-  .work-featured:hover .work-img-inner { transform: scale(1.03); }
-
-  .work-featured-img-placeholder {
-    width: 100%;
-    height: 100%;
-    min-height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #EF373E 0%, #FFE973 100%);
-    font-family: var(--serif);
-    font-size: 5rem;
-    font-weight: 900;
-    color: var(--green);
-    opacity: 0.15;
-    letter-spacing: -0.05em;
-  }
-
-  .work-featured-content {
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .work-tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(255,233,115,0.4);
-    padding: 0.3rem 0.75rem;
-    margin-bottom: 1.5rem;
-    align-self: flex-start;
-  }
-
-  .work-card-title {
-    font-family: var(--serif);
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--cream);
-    margin-bottom: 1rem;
-  }
-
-  .work-card-desc {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-  }
-
-  .work-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--cream);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(245,240,232,0.3);
-    padding-bottom: 2px;
-    align-self: flex-start;
-    transition: gap 0.2s, border-color 0.2s;
-  }
-
-  .work-link:hover { gap: 0.85rem; border-color: var(--cream); }
-
-  /* Work grid - smaller cards */
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .work-card {
-    background: var(--green-mid);
-    border: 1px solid rgba(245,240,232,0.08);
-    overflow: hidden;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s;
-    display: block;
-  }
-
-  .work-card:hover { transform: translateY(-4px); }
-
-  .work-card-img {
-    height: 220px;
-    background: var(--green-light);
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* Colour blocks as image placeholders */
-  .bg-red { background: linear-gradient(135deg, #EF373E, #c0272e); }
-  .bg-yellow { background: linear-gradient(135deg, #FFE973, #e8d060); }
-  .bg-tint { background: linear-gradient(135deg, #F9CCC2, #e8b5aa); }
-  .bg-dark { background: linear-gradient(135deg, #1a3a2a, #0d2018); }
-  .bg-green { background: linear-gradient(135deg, #256A50, #1a4a38); }
-  .bg-mint { background: linear-gradient(135deg, #AECCB6, #8ab89a); }
-
-  .work-card-img-label {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-size: 3rem;
-    font-weight: 900;
-    color: rgba(255,255,255,0.15);
-    letter-spacing: -0.05em;
-  }
-
-  .work-card-body { padding: 1.5rem; }
-
-  .work-card-body .work-tag { margin-bottom: 0.75rem; }
-
-  .work-card-body .work-card-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .work-card-body .work-card-desc {
-    font-size: 0.82rem;
-    margin-bottom: 0;
-  }
-
-  /* ── SKILLS / EXPERTISE ── */
-  .expertise-section {
-    background: var(--green-mid);
-    border-top: 1px solid rgba(245,240,232,0.08);
-    border-bottom: 1px solid rgba(245,240,232,0.08);
-  }
-
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-  }
-
-  .expertise-item {
-    padding: 3rem;
-    border-right: 1px solid rgba(245,240,232,0.08);
-    transition: background 0.2s;
-  }
-
-  .expertise-item:last-child { border-right: none; }
-  .expertise-item:hover { background: rgba(255,233,115,0.04); }
-
-  .expertise-number {
-    font-family: var(--serif);
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: rgba(255,233,115,0.15);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .expertise-name {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--cream);
-    margin-bottom: 0.75rem;
-  }
-
-  .expertise-desc {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* ── ABOUT STRIP ── */
-  .about-section {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .about-title {
-    font-family: var(--serif);
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    font-weight: 900;
-    line-height: 1.05;
-    color: var(--cream);
-  }
-
-  .about-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .about-body {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .stat-item {}
-  .stat-num {
-    font-family: var(--serif);
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--accent);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-  }
-
-  /* ── CONTACT ── */
-  .contact-section {
-    background: var(--accent);
-    text-align: center;
-    padding: 7rem 3rem;
-  }
-
-  .contact-title {
-    font-family: var(--serif);
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 900;
-    color: var(--green);
-    margin-bottom: 1rem;
-    line-height: 1.05;
-  }
-
-  .contact-sub {
-    font-size: 1rem;
-    color: rgba(26,58,42,0.7);
-    margin-bottom: 2.5rem;
-  }
-
-  .contact-email {
-    display: inline-block;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--green);
-    text-decoration: none;
-    border-bottom: 2px solid var(--green);
-    padding-bottom: 2px;
-    transition: opacity 0.2s;
-  }
-
-  .contact-email:hover { opacity: 0.6; }
-
-  .contact-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .contact-links a {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(26,58,42,0.6);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .contact-links a:hover { color: var(--green); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #111f18;
-    padding: 2rem 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid rgba(245,240,232,0.06);
-  }
-
-  .footer-copy {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-  }
-
-  .footer-right {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-  }
-
-  /* ── ANIMATIONS ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
-
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 6rem 1.5rem 3rem; }
-    .hero-right { min-height: 400px; }
-    .hero-video-wrap { min-height: 400px; }
-    .hero-video-placeholder { min-height: 400px; }
-
-    section { padding: 4rem 1.5rem; }
-    .work-section { padding: 4rem 1.5rem; }
-
-    .work-featured { grid-template-columns: 1fr; }
-    .work-featured-img-placeholder { min-height: 280px; }
-    .work-featured-img { min-height: 280px; }
-
-    .work-grid { grid-template-columns: 1fr; }
-
-    .expertise-grid { grid-template-columns: 1fr; }
-    .expertise-item { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); }
-
-    .about-section { grid-template-columns: 1fr; gap: 2rem; }
-
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-  }
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+    span.s1 {font: 13.0px 'Zapf Dingbats'}
+  </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">Josephine De Maria</a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="brand-identity.html">Brand Identity</a></li>
-    <li><a href="video-content.html">Video</a></li>
-    <li><a href="motion-graphics.html">Motion</a></li>
-    <li><a href="y-careers.html">Y Careers</a></li>
-    <li><a href="selfwealth.html">Selfwealth</a></li>
-    <li><a href="illustration.html">Illustration</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Melbourne-based Graphic Designer</p>
-    <h1 class="hero-title">Life's too short to have <em>no brand strategy.</em></h1>
-    <p class="hero-sub">I create strategic and user-friendly experiences across brand, digital, video, motion, and social media — from concept through to delivery.</p>
-    <a href="#work" class="hero-cta">View My Work →</a>
-  </div>
-  <div class="hero-right">
-    <div class="hero-video-wrap">
-      <!-- REPLACE with your showreel video:
-      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
-        <source src="your-showreel.mp4" type="video/mp4">
-      </video>
-      -->
-      <div class="hero-video-placeholder">
-        <div class="play-btn">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M5 3l10 6-10 6V3z" fill="white"/>
-          </svg>
-        </div>
-        <span>Showreel — Add your video here</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-inner">
-    <span>Brand Identity</span>
-    <span>Motion Graphics</span>
-    <span>Video Content</span>
-    <span>Design Systems</span>
-    <span>Social Strategy</span>
-    <span>UX & UI</span>
-    <span>Brand Identity</span>
-    <span>Motion Graphics</span>
-    <span>Video Content</span>
-    <span>Design Systems</span>
-    <span>Social Strategy</span>
-    <span>UX & UI</span>
-  </div>
-</div>
-
-<!-- FEATURED WORK -->
-<section class="work-section" id="work">
-  <div class="work-header">
-    <div>
-      <p class="section-label">Selected Work</p>
-      <h2 class="section-title">Projects & Case Studies</h2>
-    </div>
-    <a href="brand-identity.html" class="view-all">View All Work →</a>
-  </div>
-
-  <!-- Featured: Y Careers -->
-  <a href="y-careers.html" class="work-featured fade-up">
-    <div class="work-featured-img">
-      <!-- Replace with: <img src="your-y-careers-image.jpg" class="work-img-inner" alt="Y Careers"> -->
-      <div class="work-featured-img-placeholder bg-yellow" style="opacity:1; display:flex; align-items:flex-end; justify-content:flex-start; padding: 2.5rem;">
-        <div style="position:absolute; inset:0; background: linear-gradient(135deg, #FFE973 0%, #EF373E 100%); opacity: 0.9;"></div>
-        <div style="position:relative; z-index:1;">
-          <p style="font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; color:#1a3a2a; line-height:1; letter-spacing:-0.02em;">REAL<br>SKILLS.</p>
-          <p style="font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; color:#EF373E; line-height:1; letter-spacing:-0.02em;">REAL<br>SUPPORT.</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-featured-content">
-      <span class="work-tag">Brand Identity · Strategy · Motion</span>
-      <h3 class="work-card-title">Y Careers Brand Ideation and Rollout</h3>
-      <p class="work-card-desc">I built the Y Careers brand from scratch, creating everything from the visual identity and design system to social content and campaign materials. This project let me flex every skill — strategy, workshops, design, video, and animation — to create a brand that genuinely connects with young people.</p>
-      <span class="work-link">View Case Study →</span>
-    </div>
-  </a>
-
-  <!-- Grid: 3 across -->
-  <div class="work-grid" style="margin-top: 1.5rem;">
-
-    <a href="selfwealth.html" class="work-card fade-up">
-      <div class="work-card-img">
-        <!-- Replace with: <img src="your-selfwealth-image.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Selfwealth"> -->
-        <div style="width:100%;height:100%;background: linear-gradient(135deg, #1a3a2a 0%, #256A50 100%);"></div>
-        <div class="work-card-img-label">SW</div>
-      </div>
-      <div class="work-card-body">
-        <span class="work-tag">Brand · Campaign · OOH</span>
-        <h3 class="work-card-title">Selfwealth Brand Management</h3>
-        <p class="work-card-desc">Creating and optimising campaign assets across all channels including EDMs, social media, brochure website, presentations, YouTube tutorials, office signage and advertising campaigns — including a national OOH awareness campaign.</p>
-      </div>
-    </a>
-
-    <a href="video-content.html" class="work-card fade-up">
-      <div class="work-card-img">
-        <div style="width:100%;height:100%;background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);"></div>
-        <div class="work-card-img-label" style="color:rgba(255,233,115,0.3);">▶</div>
-      </div>
-      <div class="work-card-body">
-        <span class="work-tag">Video · Social · Production</span>
-        <h3 class="work-card-title">Video Content</h3>
-        <p class="work-card-desc">I create video content that simplifies complex ideas and drives engagement — from educational TikTok content at Selfwealth to social campaigns at Y Careers, combining strategic storytelling with hands-on production.</p>
-      </div>
-    </a>
-
-    <a href="motion-graphics.html" class="work-card fade-up">
-      <div class="work-card-img">
-        <div style="width:100%;height:100%;background: linear-gradient(135deg, #EF373E 0%, #ff6b6b 100%);"></div>
-        <div class="work-card-img-label" style="color:rgba(255,255,255,0.2);">✦</div>
-      </div>
-      <div class="work-card-body">
-        <span class="work-tag">Motion · Animation · Digital</span>
-        <h3 class="work-card-title">Motion Graphics</h3>
-        <p class="work-card-desc">I use animation to bring brands to life and make content more engaging. From motion graphics that elevate social campaigns to animated explainers that make complex concepts digestible.</p>
-      </div>
-    </a>
-
-    <a href="brand-identity.html" class="work-card fade-up">
-      <div class="work-card-img">
-        <div style="width:100%;height:100%;background: linear-gradient(135deg, #F9CCC2 0%, #e8b5aa 100%);"></div>
-        <div class="work-card-img-label" style="color:rgba(26,58,42,0.3);">RS</div>
-      </div>
-      <div class="work-card-body">
-        <span class="work-tag">Print · Collateral</span>
-        <h3 class="work-card-title">Reynard Street Neighbourhood House</h3>
-        <p class="work-card-desc">Posters and marketing collateral for a community neighbourhood house.</p>
-      </div>
-    </a>
-
-    <a href="brand-identity.html" class="work-card fade-up">
-      <div class="work-card-img">
-        <div style="width:100%;height:100%;background: linear-gradient(135deg, #AECCB6 0%, #8ab89a 100%);"></div>
-        <div class="work-card-img-label" style="color:rgba(26,58,42,0.3);">HH</div>
-      </div>
-      <div class="work-card-body">
-        <span class="work-tag">Logo · Brand Identity</span>
-        <h3 class="work-card-title">Hands on Heart Australia</h3>
-        <p class="work-card-desc">Logo design for a not-for-profit, creating a meaningful mark that communicates care and community connection.</p>
-      </div>
-    </a>
-
-    <a href="brand-identity.html" class="work-card fade-up">
-      <div class="work-card-img">
-        <div style="width:100%;height:100%;background: linear-gradient(135deg, #256A50 0%, #1a4a38 100%);"></div>
-        <div class="work-card-img-label" style="color:rgba(255,255,255,0.15);">MPG</div>
-      </div>
-      <div class="work-card-body">
-        <span class="work-tag">Logo · Brand Identity</span>
-        <h3 class="work-card-title">Melbourne Ponds & Gardens</h3>
-        <p class="work-card-desc">Logo design and brand identity for a premium pond cleaning and landscaping business.</p>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- EXPERTISE -->
-<section class="expertise-section" id="brand">
-  <div style="padding: 5rem 3rem;">
-    <p class="section-label">Expertise</p>
-    <h2 class="section-title" style="margin-bottom: 3rem;">What I bring to the table</h2>
-    <div class="expertise-grid">
-      <div class="expertise-item fade-up">
-        <div class="expertise-number">01</div>
-        <h3 class="expertise-name">Motion Graphics</h3>
-        <p class="expertise-desc">I create animations that bring brands to life and make content more engaging across digital platforms — from social campaigns to animated explainers.</p>
-      </div>
-      <div class="expertise-item fade-up">
-        <div class="expertise-number">02</div>
-        <h3 class="expertise-name">Brand Identity</h3>
-        <p class="expertise-desc">From captivating logos to strategic audience targeting, I know how to make brands unforgettable. End-to-end brand development with design systems that scale.</p>
-      </div>
-      <div class="expertise-item fade-up">
-        <div class="expertise-number">03</div>
-        <h3 class="expertise-name">Video Content</h3>
-        <p class="expertise-desc">I strategically write, direct, and sometimes appear in social media videos — combining strategic storytelling with hands-on production across platforms.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about-section" id="about">
-  <div class="fade-up">
-    <h2 class="about-title">A designer who <em>thinks</em> as much as she creates.</h2>
-    <div class="about-stats">
-      <div class="stat-item">
-        <div class="stat-num">4+</div>
-        <div class="stat-label">Years experience</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">50%</div>
-        <div class="stat-label">Instagram growth</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">43%</div>
-        <div class="stat-label">LinkedIn impressions lift</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">2×</div>
-        <div class="stat-label">Brand refreshes led</div>
-      </div>
-    </div>
-  </div>
-  <div class="fade-up">
-    <p class="section-label">About Me</p>
-    <p class="about-body">I'm a Melbourne-based Senior Graphic Designer with over four years of experience creating end-to-end creative content across brand, digital, video, motion, and social media.</p>
-    <p class="about-body">Experienced working as a one-person creative team in fast-paced environments, leading projects from concept through to delivery and building practical design systems in Figma. Collaborative, adaptable, fast, and passionate about creating meaningful, community-focused content.</p>
-    <a href="#contact" class="hero-cta" style="margin-top: 1rem;">Get in Touch →</a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <p class="section-label" style="color: rgba(26,58,42,0.6);">Let's work together</p>
-  <h2 class="contact-title">Need a designer?<br>I'd love to work with you.</h2>
-  <p class="contact-sub">Open to freelance, contract, and full-time opportunities.</p>
-  <a href="/cdn-cgi/l/email-protection#8ae0e5f9effae2e3e4efa4eeefa4e7ebf8e3ebcaede7ebe3e6a4e9e5e7" class="contact-email"><span class="__cf_email__" data-cfemail="a9c3c6daccd9c1c0c7cc87cdcc87c4c8dbc0c8e9cec4c8c0c587cac6c4">[email&#160;protected]</span></a>
-  <div class="contact-links">
-    <a href="tel:0400636229">0400 636 229</a>
-    <a href="#">Portfolio</a>
-    <a href="#">Figma</a>
-    <a href="#">LinkedIn</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
-  <span class="footer-right">Melbourne, Australia</span>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Fade-up on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Smooth active nav
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sect
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;Josephine De Maria — Graphic Designer&lt;/title&gt;</p>
+<p class="p1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1">&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green: #1a3a2a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green-mid: #22493a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green-light: #2d5c4a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--cream: #f5f0e8;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--white: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--accent: #FFE973;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--red: #EF373E;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--tint: #F9CCC2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text-muted: rgba(245,240,232,0.55);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--serif: 'Playfair Display', Georgia, serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--sans: 'DM Sans', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>html { scroll-behavior: smooth; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--sans);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow-x: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── NAV ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>nav {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>top: 0; left: 0; right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>z-index: 100;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 1.25rem 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(26,58,42,0.85);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>backdrop-filter: blur(12px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-bottom: 1px solid rgba(245,240,232,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-logo {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.01em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-links {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-links a {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.85rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 400;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.08em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-links a:hover { color: var(--cream); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── HERO ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding-top: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-left {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 5rem 3rem 5rem 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>z-index: 2;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-eyebrow {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.75rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.15em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(3rem, 5vw, 5rem);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-title em {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-sub {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 380px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-cta {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 0.75rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.85rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.05em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.9rem 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.2s, transform 0.15s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-self: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-cta:hover { background: var(--cream); transform: translateY(-2px); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-right {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-video-wrap {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green-mid);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-video-placeholder {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green-light);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.85rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.08em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-left: 1px solid rgba(245,240,232,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.play-btn {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 64px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 64px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 2px solid var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0.6;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.play-btn svg { margin-left: 4px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* REPLACE THIS with your actual video:</p>
+<p class="p1"><span class="Apple-converted-space">     </span>&lt;video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">       </span>&lt;source src="https://vimeo.com/1115056209/6508de05f1?share=copy&amp;fl=sv&amp;fe=ci" type="video/mp4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">     </span>&lt;/video&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>*/</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── SECTION BASE ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>section { padding: 6rem 3rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-label {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.72rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.18em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(2rem, 3.5vw, 3rem);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.15;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── MARQUEE ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.marquee-wrap {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.85rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.marquee-inner {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>animation: marquee 18s linear infinite;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.marquee-inner span {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.marquee-inner span::after {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>content: '<span class="s1">✦</span>';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-left: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-style: normal;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>@keyframes marquee {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>0% { transform: translateX(0); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>100% { transform: translateX(-50%); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── FEATURED WORK ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-section { padding: 6rem 3rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-header {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: flex-end;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.view-all {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.1em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-bottom: 1px solid rgba(245,240,232,0.25);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding-bottom: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: color 0.2s, border-color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.view-all:hover { color: var(--cream); border-color: var(--cream); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Featured big card */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-featured {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green-mid);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(245,240,232,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: inherit;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-featured:hover { transform: translateY(-4px); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-featured-img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 480px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green-light);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-img-inner {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.5s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-featured:hover .work-img-inner { transform: scale(1.03); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-featured-img-placeholder {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 480px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(135deg, #EF373E 0%, #FFE973 100%);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0.15;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: -0.05em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-featured-content {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: flex-end;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-tag {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.7rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.12em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(255,233,115,0.4);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.3rem 0.75rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-self: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-desc {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-link {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.1em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-bottom: 1px solid rgba(245,240,232,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding-bottom: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-self: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: gap 0.2s, border-color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-link:hover { gap: 0.85rem; border-color: var(--cream); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Work grid - smaller cards */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-grid {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: repeat(3, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green-mid);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(245,240,232,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: inherit;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card:hover { transform: translateY(-4px); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 220px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green-light);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Colour blocks as image placeholders */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.bg-red { background: linear-gradient(135deg, #EF373E, #c0272e); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.bg-yellow { background: linear-gradient(135deg, #FFE973, #e8d060); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.bg-tint { background: linear-gradient(135deg, #F9CCC2, #e8b5aa); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.bg-dark { background: linear-gradient(135deg, #1a3a2a, #0d2018); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.bg-green { background: linear-gradient(135deg, #256A50, #1a4a38); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.bg-mint { background: linear-gradient(135deg, #AECCB6, #8ab89a); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-img-label {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>inset: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(255,255,255,0.15);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: -0.05em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-body { padding: 1.5rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-body .work-tag { margin-bottom: 0.75rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-body .work-card-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.work-card-body .work-card-desc {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.82rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── SKILLS / EXPERTISE ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-section {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green-mid);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-top: 1px solid rgba(245,240,232,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-bottom: 1px solid rgba(245,240,232,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-grid {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: repeat(3, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-item {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-right: 1px solid rgba(245,240,232,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-item:last-child { border-right: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-item:hover { background: rgba(255,233,115,0.04); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-number {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 3.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(255,233,115,0.15);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-name {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 0.75rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.expertise-desc {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.85rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.7;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── ABOUT STRIP ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-section {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: 1fr 1.2fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 6rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(2.5rem, 4vw, 4rem);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.05;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-title em {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.95rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.8;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-stats {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-item {}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-num {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-label {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.78rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.08em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 0.25rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── CONTACT ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-section {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 7rem 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: var(--serif);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(2.5rem, 5vw, 5rem);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.05;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-sub {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(26,58,42,0.7);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-email {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-bottom: 2px solid var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding-bottom: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: opacity 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-email:hover { opacity: 0.6; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-links {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-links a {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.78rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.12em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(26,58,42,0.6);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-links a:hover { color: var(--green); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── FOOTER ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>footer {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #111f18;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 2rem 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-top: 1px solid rgba(245,240,232,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-copy {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.78rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-right {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.78rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── ANIMATIONS ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.fade-up {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: translateY(30px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: opacity 0.7s ease, transform 0.7s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.fade-up.visible {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: translateY(0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ── RESPONSIVE ── */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (max-width: 900px) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav { padding: 1rem 1.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links { gap: 1.5rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero { grid-template-columns: 1fr; min-height: auto; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-left { padding: 6rem 1.5rem 3rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-right { min-height: 400px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-video-wrap { min-height: 400px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-video-placeholder { min-height: 400px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>section { padding: 4rem 1.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.work-section { padding: 4rem 1.5rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.work-featured { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.work-featured-img-placeholder { min-height: 280px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.work-featured-img { min-height: 280px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.work-grid { grid-template-columns: 1fr; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.expertise-grid { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.expertise-item { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.about-section { grid-template-columns: 1fr; gap: 2rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>footer { flex-direction: column; gap: 0.5rem; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- NAV --&gt;</p>
+<p class="p1">&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a href="index.html" class="nav-logo"&gt;Josephine De Maria&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;ul class="nav-links"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="index.html" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="brand-identity.html"&gt;Brand Identity&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="video-content.html"&gt;Video&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="motion-graphics.html"&gt;Motion&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="y-careers.html"&gt;Y Careers&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="selfwealth.html"&gt;Selfwealth&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="illustration.html"&gt;Illustration&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/ul&gt;</p>
+<p class="p1">&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- HERO --&gt;</p>
+<p class="p1">&lt;section class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="hero-eyebrow"&gt;Melbourne-based Graphic Designer&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 class="hero-title"&gt;Life's too short to have &lt;em&gt;no brand strategy.&lt;/em&gt;&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="hero-sub"&gt;I create strategic and user-friendly experiences across brand, digital, video, motion, and social media — from concept through to delivery.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#work" class="hero-cta"&gt;View My Work →&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero-video-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- REPLACE with your showreel video:</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;source src="https://vimeo.com/1115056209/6508de05f1?share=copy&amp;fl=sv&amp;fe=ci" type="video/mp4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/video&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hero-video-placeholder"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="play-btn"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;svg width="18" height="18" viewBox="0 0 18 18" fill="none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M5 3l10 6-10 6V3z" fill="white"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Showreel — Add your video here&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- MARQUEE --&gt;</p>
+<p class="p1">&lt;div class="marquee-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="marquee-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Brand Identity&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Motion Graphics&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Video Content&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Design Systems&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Social Strategy&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;UX &amp; UI&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Brand Identity&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Motion Graphics&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Video Content&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Design Systems&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Social Strategy&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;UX &amp; UI&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- FEATURED WORK --&gt;</p>
+<p class="p1">&lt;section class="work-section" id="work"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="work-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-label"&gt;Selected Work&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;Projects &amp; Case Studies&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="brand-identity.html" class="view-all"&gt;View All Work →&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Featured: Y Careers --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a href="y-careers.html" class="work-featured fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="work-featured-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="Featured Y Careers.png” class="work-img-inner" alt="Y Careers"&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-featured-img-placeholder bg-yellow" style="opacity:1; display:flex; align-items:flex-end; justify-content:flex-start; padding: 2.5rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="position:absolute; inset:0; background: linear-gradient(135deg, #FFE973 0%, #EF373E 100%); opacity: 0.9;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="position:relative; z-index:1;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; color:#1a3a2a; line-height:1; letter-spacing:-0.02em;"&gt;REAL&lt;br&gt;SKILLS.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; color:#EF373E; line-height:1; letter-spacing:-0.02em;"&gt;REAL&lt;br&gt;SUPPORT.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="work-featured-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="work-tag"&gt;Brand Identity · Strategy · Motion&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h3 class="work-card-title"&gt;Y Careers Brand Ideation and Rollout&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="work-card-desc"&gt;I built the Y Careers brand from scratch, creating everything from the visual identity and design system to social content and campaign materials. This project let me flex every skill — strategy, workshops, design, video, and animation — to create a brand that genuinely connects with young people.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="work-link"&gt;View Case Study →&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Grid: 3 across --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="work-grid" style="margin-top: 1.5rem;"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="selfwealth.html" class="work-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="Featured Selfwealth.png style="width:100%;height:100%;object-fit:cover;" alt="Selfwealth"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="width:100%;height:100%;background: linear-gradient(135deg, #1a3a2a 0%, #256A50 100%);"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="work-card-img-label"&gt;SW&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="work-tag"&gt;Brand · Campaign · OOH&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="work-card-title"&gt;Selfwealth Brand Management&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="work-card-desc"&gt;Creating and optimising campaign assets across all channels including EDMs, social media, brochure website, presentations, YouTube tutorials, office signage and advertising campaigns — including a national OOH awareness campaign.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="video-content.html" class="work-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="width:100%;height:100%;background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="work-card-img-label" style="color:rgba(255,233,115,0.3);"&gt;▶&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="work-tag"&gt;Video · Social · Production&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="work-card-title"&gt;Video Content&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="work-card-desc"&gt;I create video content that simplifies complex ideas and drives engagement — from educational TikTok content at Selfwealth to social campaigns at Y Careers, combining strategic storytelling with hands-on production.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="motion-graphics.html" class="work-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="width:100%;height:100%;background: linear-gradient(135deg, #EF373E 0%, #ff6b6b 100%);"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="work-card-img-label" style="color:rgba(255,255,255,0.2);"&gt;<span class="s1">✦</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="work-tag"&gt;Motion · Animation · Digital&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="work-card-title"&gt;Motion Graphics&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="work-card-desc"&gt;I use animation to bring brands to life and make content more engaging. From motion graphics that elevate social campaigns to animated explainers that make complex concepts digestible.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="brand-identity.html" class="work-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="width:100%;height:100%;background: linear-gradient(135deg, #F9CCC2 0%, #e8b5aa 100%);"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="work-card-img-label" style="color:rgba(26,58,42,0.3);"&gt;RS&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="work-tag"&gt;Print · Collateral&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="work-card-title"&gt;Reynard Street Neighbourhood House&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="work-card-desc"&gt;Posters and marketing collateral for a community neighbourhood house.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="brand-identity.html" class="work-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="width:100%;height:100%;background: linear-gradient(135deg, #AECCB6 0%, #8ab89a 100%);"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="work-card-img-label" style="color:rgba(26,58,42,0.3);"&gt;HH&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="work-tag"&gt;Logo · Brand Identity&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="work-card-title"&gt;Hands on Heart Australia&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="work-card-desc"&gt;Logo design for a not-for-profit, creating a meaningful mark that communicates care and community connection.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="brand-identity.html" class="work-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="width:100%;height:100%;background: linear-gradient(135deg, #256A50 0%, #1a4a38 100%);"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="work-card-img-label" style="color:rgba(255,255,255,0.15);"&gt;MPG&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="work-card-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="work-tag"&gt;Logo · Brand Identity&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="work-card-title"&gt;Melbourne Ponds &amp; Gardens&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="work-card-desc"&gt;Logo design and brand identity for a premium pond cleaning and landscaping business.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- EXPERTISE --&gt;</p>
+<p class="p1">&lt;section class="expertise-section" id="brand"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="padding: 5rem 3rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-label"&gt;Expertise&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title" style="margin-bottom: 3rem;"&gt;What I bring to the table&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="expertise-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="expertise-item fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="expertise-number"&gt;01&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="expertise-name"&gt;Motion Graphics&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="expertise-desc"&gt;I create animations that bring brands to life and make content more engaging across digital platforms — from social campaigns to animated explainers.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="expertise-item fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="expertise-number"&gt;02&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="expertise-name"&gt;Brand Identity&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="expertise-desc"&gt;From captivating logos to strategic audience targeting, I know how to make brands unforgettable. End-to-end brand development with design systems that scale.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="expertise-item fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="expertise-number"&gt;03&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="expertise-name"&gt;Video Content&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="expertise-desc"&gt;I strategically write, direct, and sometimes appear in social media videos — combining strategic storytelling with hands-on production across platforms.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- ABOUT --&gt;</p>
+<p class="p1">&lt;section class="about-section" id="about"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="about-title"&gt;A designer who &lt;em&gt;thinks&lt;/em&gt; as much as she creates.&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="about-stats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-num"&gt;4+&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-label"&gt;Years experience&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-num"&gt;50%&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-label"&gt;Instagram growth&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-num"&gt;43%&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-label"&gt;LinkedIn impressions lift&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-num"&gt;2×&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat-label"&gt;Brand refreshes led&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-label"&gt;About Me&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="about-body"&gt;I'm a Melbourne-based Senior Graphic Designer with over four years of experience creating end-to-end creative content across brand, digital, video, motion, and social media.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="about-body"&gt;Experienced working as a one-person creative team in fast-paced environments, leading projects from concept through to delivery and building practical design systems in Figma. Collaborative, adaptable, fast, and passionate about creating meaningful, community-focused content.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#contact" class="hero-cta" style="margin-top: 1rem;"&gt;Get in Touch →&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- CONTACT --&gt;</p>
+<p class="p1">&lt;section class="contact-section" id="contact"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="section-label" style="color: rgba(26,58,42,0.6);"&gt;Let's work together&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2 class="contact-title"&gt;Need a designer?&lt;br&gt;I'd love to work with you.&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="contact-sub"&gt;Open to freelance, contract, and full-time opportunities.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a href="/cdn-cgi/l/email-protection#8ae0e5f9effae2e3e4efa4eeefa4e7ebf8e3ebcaede7ebe3e6a4e9e5e7" class="contact-email"&gt;&lt;span class="__cf_email__" data-cfemail="a9c3c6daccd9c1c0c7cc87cdcc87c4c8dbc0c8e9cec4c8c0c587cac6c4"&gt;[email&amp;#160;protected]&lt;/span&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="contact-links"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="tel:0400636229"&gt;0400 636 229&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#"&gt;Portfolio&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#"&gt;Figma&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#"&gt;LinkedIn&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- FOOTER --&gt;</p>
+<p class="p1">&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;span class="footer-copy"&gt;© 2026 Josephine De Maria. All rights reserved.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;span class="footer-right"&gt;Melbourne, Australia&lt;/span&gt;</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"&gt;&lt;/script&gt;&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Fade-up on scroll</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const observer = new IntersectionObserver((entries) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>entries.forEach((entry, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (entry.isIntersecting) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; entry.target.classList.add('visible'), i * 80);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>observer.unobserve(entry.target);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}, { threshold: 0.1 });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.fade-up').forEach(el =&gt; observer.observe(el));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Smooth active nav</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sections = document.querySelectorAll('section[id], div[id]');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const navLinks = document.querySelectorAll('.nav-links a');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>window.addEventListener('scroll', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let current = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sect</p>
+</body>
+</html>
