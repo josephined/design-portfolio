@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PROJECT NAME — Josephine De Maria Graphic Designer">
+
+<!-- ▼ CHANGE: Update the page title -->
+<title>Project Name — Josephine De Maria</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+
+<style>
+  /* ── FULL-BLEED HERO IMAGE ── */
+  .img-hero {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+    background: var(--green-mid);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .img-hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Dark gradient so header text sits on top of image cleanly */
+  .img-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,58,42,0.85) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .img-hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 3rem;
+    width: 100%;
+  }
+
+  .img-hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .img-hero-text h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .img-hero-text p {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.7);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  /* ── METADATA BAR ── */
+  .meta-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+
+  .meta-bar-item {
+    padding: 1.5rem 2.5rem;
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .meta-bar-item:last-child { border-right: none; }
+
+  .meta-bar-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .meta-bar-value {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  /* ── IMAGE LAYOUTS ── */
+
+  /* Single full-width */
+  .img-full {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: var(--green-mid);
+    display: block;
+  }
+
+  .img-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Two equal columns */
+  .img-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  /* Three equal columns */
+  .img-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  /* Large left, small right stack */
+  .img-feature-left {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3px;
+  }
+
+  /* Small left stack, large right */
+  .img-feature-right {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3px;
+  }
+
+  /* Right column stack (2 images stacked) */
+  .img-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  /* Image cell — the base unit */
+  .img-cell {
+    position: relative;
+    overflow: hidden;
+    background: var(--green-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .img-cell:hover img { transform: scale(1.03); }
+
+  /* Placeholder label — remove once real images are added */
+  .img-cell-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.5;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Standard heights */
+  .h-sm  { height: 320px; }
+  .h-md  { height: 480px; }
+  .h-lg  { height: 620px; }
+  .h-xl  { height: 80vh;  }
+  .h-sq  { aspect-ratio: 1/1; height: auto; }
+  .h-port { aspect-ratio: 3/4; height: auto; }
+
+  /* ── CAPTION BLOCK ── */
+  /* Sits between image groups — keep copy tight -->*/
+  .caption-block {
+    padding: 3rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .caption-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+    flex-shrink: 0;
+    max-width: 340px;
+  }
+
+  .caption-block h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .caption-block p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-marker {
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .section-marker-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .img-hero { height: 75vh; }
+    .img-duo,
+    .img-trio,
+    .img-feature-left,
+    .img-feature-right { grid-template-columns: 1fr; }
+    .caption-block { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; }
+    .meta-bar { flex-wrap: wrap; }
+    .meta-bar-item { border-bottom: 1px solid var(--border); }
+    .img-hero-text { padding: 2rem 1.5rem; }
+    .section-marker { padding: 1.25rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<!-- ▼ CHANGE: set class="active" on the nav link that matches this page -->
+<nav>
+  <a href="index.html" class="nav-logo">Josephine De Maria</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="brand-identity.html">Brand Identity</a></li>
+    <li><a href="video-content.html">Video</a></li>
+    <li><a href="motion-graphics.html">Motion</a></li>
+    <li><a href="y-careers.html">Y Careers</a></li>
+    <li><a href="selfwealth.html">Selfwealth</a></li>
+    <li><a href="illustration.html">Illustration</a></li>
+  </ul>
+</nav>
+
+<!-- ── FULL-BLEED HERO ── -->
+<div class="img-hero">
+  <!--
+    ▼ CHANGE: replace with your hero image
+    <img src="images/project-hero.jpg" alt="Project Name">
+  -->
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a3a2a,#256A50);"></div>
+
+  <div class="img-hero-text">
+
+    <!-- ▼ CHANGE: back link destination -->
+    <a href="brand-identity.html" class="back-link" style="margin-bottom:1.25rem;">← Brand Identity</a>
+
+    <!-- ▼ CHANGE: page title -->
+    <h1>Project <em>Name</em></h1>
+
+    <!-- ▼ CHANGE: one sentence — client, what it is, your role -->
+    <p>One sentence about the project — who the client is and what you created for them.</p>
+
+  </div>
+</div>
+
+<!-- ── METADATA BAR ── -->
+<!-- ▼ CHANGE: fill in your project details. Delete any items you don't need. -->
+<div class="meta-bar">
+  <div class="meta-bar-item">
+    <div class="meta-bar-label">Client</div>
+    <div class="meta-bar-value">Client Name</div>
+  </div>
+  <div class="meta-bar-item">
+    <div class="meta-bar-label">Year</div>
+    <div class="meta-bar-value">2024</div>
+  </div>
+  <div class="meta-bar-item">
+    <div class="meta-bar-label">Disciplines</div>
+    <div class="meta-bar-value">Brand Identity · Print · Packaging</div>
+  </div>
+  <div class="meta-bar-item">
+    <div class="meta-bar-label">Tools</div>
+    <div class="meta-bar-value">Figma · Illustrator · Photoshop</div>
+  </div>
+  <!-- Optional extra field: -->
+  <div class="meta-bar-item">
+    <div class="meta-bar-label">Industry</div>
+    <div class="meta-bar-value">Industry Name</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     IMAGE BLOCKS
+     Mix and match the layouts below.
+     Each block is independent — reorder,
+     duplicate, or delete as needed.
+     ═══════════════════════════════════════ -->
+
+
+<!-- BLOCK 1: Full-width image -->
+<div class="img-full img-cell h-xl fade-up">
+  <!--
+    ▼ CHANGE: replace with your image
+    <img src="images/project-01.jpg" alt="Description">
+  -->
+  <span class="img-cell-label">Full-width image — replace with yours</span>
+</div>
+
+<!-- Caption (optional — delete if not needed) -->
+<div class="caption-block fade-up">
+  <!-- ▼ CHANGE: section heading -->
+  <h2>A short <em>heading</em> about this section</h2>
+  <!-- ▼ CHANGE: 1–2 sentences max -->
+  <p>One or two sentences describing what's shown — what you designed, a key decision you made, or the outcome it achieved. Keep it brief; let the images do the talking.</p>
+</div>
+
+
+<!-- BLOCK 2: Two equal images side by side -->
+<div class="img-duo fade-up">
+  <div class="img-cell h-md">
+    <!-- <img src="images/project-02.jpg" alt="Description"> -->
+    <span class="img-cell-label">Image</span>
+  </div>
+  <div class="img-cell h-md">
+    <!-- <img src="images/project-03.jpg" alt="Description"> -->
+    <span class="img-cell-label">Image</span>
+  </div>
+</div>
+
+
+<!-- BLOCK 3: Large left, two stacked right -->
+<div class="img-feature-left fade-up">
+  <div class="img-cell h-lg">
+    <!-- <img src="images/project-04.jpg" alt="Description"> -->
+    <span class="img-cell-label">Large image</span>
+  </div>
+  <div class="img-stack">
+    <div class="img-cell" style="flex:1;">
+      <!-- <img src="images/project-05.jpg" alt="Description"> -->
+      <span class="img-cell-label">Image</span>
+    </div>
+    <div class="img-cell" style="flex:1;">
+      <!-- <img src="images/project-06.jpg" alt="Description"> -->
+      <span class="img-cell-label">Image</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Section marker (optional — use to separate themes/phases) -->
+<div class="section-marker fade-up">
+  <!-- ▼ CHANGE: section label e.g. "Campaign Assets" or "Social Media" -->
+  <span class="eyebrow" style="margin-bottom:0;">Section Label</span>
+  <div class="section-marker-line"></div>
+</div>
+
+
+<!-- BLOCK 4: Three equal images -->
+<div class="img-trio fade-up">
+  <div class="img-cell h-sq">
+    <!-- <img src="images/project-07.jpg" alt="Description"> -->
+    <span class="img-cell-label">Image</span>
+  </div>
+  <div class="img-cell h-sq">
+    <!-- <img src="images/project-08.jpg" alt="Description"> -->
+    <span class="img-cell-label">Image</span>
+  </div>
+  <div class="img-cell h-sq">
+    <!-- <img src="images/project-09.jpg" alt="Description"> -->
+    <span class="img-cell-label">Image</span>
+  </div>
+</div>
+
+
+<!-- Caption (optional) -->
+<div class="caption-block fade-up">
+  <h2>Another <em>section</em> heading</h2>
+  <p>A brief note about what these images show — one or two sentences is plenty.</p>
+</div>
+
+
+<!-- BLOCK 5: Two stacked left, large right -->
+<div class="img-feature-right fade-up">
+  <div class="img-stack">
+    <div class="img-cell" style="flex:1;">
+      <!-- <img src="images/project-10.jpg" alt="Description"> -->
+      <span class="img-cell-label">Image</span>
+    </div>
+    <div class="img-cell" style="flex:1;">
+      <!-- <img src="images/project-11.jpg" alt="Description"> -->
+      <span class="img-cell-label">Image</span>
+    </div>
+  </div>
+  <div class="img-cell h-lg">
+    <!-- <img src="images/project-12.jpg" alt="Description"> -->
+    <span class="img-cell-label">Large image</span>
+  </div>
+</div>
+
+
+<!-- BLOCK 6: Full-width closing image -->
+<div class="img-full img-cell h-lg fade-up">
+  <!--
+    ▼ CHANGE: replace with your closing image — a strong finisher
+    <img src="images/project-13.jpg" alt="Description">
+  -->
+  <span class="img-cell-label">Full-width closing image</span>
+</div>
+
+
+<!-- ── NEXT PROJECT ── -->
+<!-- ▼ CHANGE: update href and project name -->
+<a href="brand-identity.html" class="next-project">
+  <div>
+    <div class="next-label">Next Project</div>
+    <div class="next-title">Project Name</div>
+  </div>
+  <div class="next-arrow">→</div>
+</a>
+
+<!-- ── CONTACT STRIP ── -->
+<section class="contact-section">
+  <h2>Like what you see?</h2>
+  <p>Open to freelance, contract, and full-time opportunities.</p>
+  <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
+  <div class="contact-links">
+    <a href="tel:0400636229">0400 636 229</a>
+    <a href="https://www.linkedin.com/in/josephinedmaria" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.figma.com/@josephine" target="_blank" rel="noopener">Figma</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-right">Melbourne, Australia</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
