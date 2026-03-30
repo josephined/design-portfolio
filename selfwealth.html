@@ -143,16 +143,19 @@
 
   /* Small left stack, large right */
   .img-feature-right {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3px;
-  }
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3px;
+  height: 620px; /* 👈 controls everything */
+  height: 100%;
+ }
 
   /* Right column stack (2 images stacked) */
   .img-stack {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    height: 100%;
   }
 
   /* Image cell — the base unit */
@@ -163,6 +166,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1; /* equal split */
   }
 
   .img-cell img {
@@ -393,9 +397,9 @@
       <img src="assets/selfwealth/InternalAwardsProgram.png" alt="Description">
     </div>
   </div>
-  <div class="img-cell h-lg">
-   <img src="assets/selfwealth/MegaSideEmma.png" alt="Description">
-  </div>
+  <div class="img-cell">
+  <img src="assets/selfwealth/MegaSideEmma.png" alt="Description">
+</div>
 </div>
 
 
