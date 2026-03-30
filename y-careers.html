@@ -142,11 +142,12 @@
   }
 
   /* Small left stack, large right */
-  .img-feature-right {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3px;
-  }
+ .img-feature-right {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3px;
+  align-items: stretch; /* important */
+}
 
   /* Right column stack (2 images stacked) */
   .img-stack {
