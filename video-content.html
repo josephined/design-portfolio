@@ -218,6 +218,94 @@
     display: block;
   }
 
+   /* ── CAROUSEL ── */
+  .carousel-wrap {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+ 
+  .carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+ 
+  .carousel-arrows {
+    display: flex;
+    gap: 0.5rem;
+  }
+ 
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+ 
+  .carousel-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255,233,115,0.08);
+  }
+ 
+  .carousel-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+ 
+  .carousel-track-outer {
+    overflow: hidden;
+    /* Clips cards that scroll out of view */
+  }
+ 
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+ 
+  /* Each carousel card — fixed width so 6 show at once */
+  .carousel-item {
+    flex: 0 0 calc((100% - 5 * 1rem) / 6);
+    min-width: 0;
+  }
+ 
+  /* Smaller portrait thumbnail for carousel */
+  .vid-carousel {
+    aspect-ratio: 9 / 16;
+  }
+ 
+  /* Smaller play button for carousel cards */
+  .vid-play-sm {
+    width: 40px !important;
+    height: 40px !important;
+  }
+ 
+  @media (max-width: 960px) {
+    /* Show 3 cards on tablet */
+    .carousel-item {
+      flex: 0 0 calc((100% - 2 * 1rem) / 3);
+    }
+  }
+ 
+  @media (max-width: 540px) {
+    /* Show 2 cards on mobile */
+    .carousel-item {
+      flex: 0 0 calc((100% - 1rem) / 2);
+    }
+  }
+  
   /*
     THUMBNAIL: the <video> element acts as the still thumbnail.
     preload="metadata" loads only the first frame — no autoplay,
@@ -525,6 +613,132 @@
         <div class="vid-caption-desc">Street interviews are always engaging; it's just about finding your niche.</div>
       </div>
     </div>
+
+     <!-- Carousel card 1 -->
+        <div class="carousel-item">
+          <div class="vid vid-carousel fade-up"
+               data-src="assets/videos/reel-05.mp4"
+               data-portrait="true">
+            <video class="thumb" preload="metadata" muted playsinline>
+              <source src="assets/videos/reel-05.mp4" type="video/mp4">
+            </video>
+            <div class="vid-badge">Instagram</div>
+            <div class="vid-overlay"></div>
+            <div class="vid-play vid-play-sm">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M1 1l10 6-10 6V1z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vid-caption">
+            <div class="vid-caption-title">Reel Title</div>
+          </div>
+        </div>
+ 
+        <!-- Carousel card 2 -->
+        <div class="carousel-item">
+          <div class="vid vid-carousel fade-up"
+               data-src="assets/videos/reel-06.mp4"
+               data-portrait="true">
+            <video class="thumb" preload="metadata" muted playsinline>
+              <source src="assets/videos/reel-06.mp4" type="video/mp4">
+            </video>
+            <div class="vid-badge">TikTok</div>
+            <div class="vid-overlay"></div>
+            <div class="vid-play vid-play-sm">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M1 1l10 6-10 6V1z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vid-caption">
+            <div class="vid-caption-title">Reel Title</div>
+          </div>
+        </div>
+ 
+        <!-- Carousel card 3 -->
+        <div class="carousel-item">
+          <div class="vid vid-carousel fade-up"
+               data-src="assets/videos/reel-07.mp4"
+               data-portrait="true">
+            <video class="thumb" preload="metadata" muted playsinline>
+              <source src="assets/videos/reel-07.mp4" type="video/mp4">
+            </video>
+            <div class="vid-badge">Instagram</div>
+            <div class="vid-overlay"></div>
+            <div class="vid-play vid-play-sm">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M1 1l10 6-10 6V1z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vid-caption">
+            <div class="vid-caption-title">Reel Title</div>
+          </div>
+        </div>
+ 
+        <!-- Carousel card 4 -->
+        <div class="carousel-item">
+          <div class="vid vid-carousel fade-up"
+               data-src="assets/videos/reel-08.mp4"
+               data-portrait="true">
+            <video class="thumb" preload="metadata" muted playsinline>
+              <source src="assets/videos/reel-08.mp4" type="video/mp4">
+            </video>
+            <div class="vid-badge">Instagram</div>
+            <div class="vid-overlay"></div>
+            <div class="vid-play vid-play-sm">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M1 1l10 6-10 6V1z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vid-caption">
+            <div class="vid-caption-title">Reel Title</div>
+          </div>
+        </div>
+ 
+        <!-- Carousel card 5 -->
+        <div class="carousel-item">
+          <div class="vid vid-carousel fade-up"
+               data-src="assets/videos/reel-09.mp4"
+               data-portrait="true">
+            <video class="thumb" preload="metadata" muted playsinline>
+              <source src="assets/videos/reel-09.mp4" type="video/mp4">
+            </video>
+            <div class="vid-badge">TikTok</div>
+            <div class="vid-overlay"></div>
+            <div class="vid-play vid-play-sm">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M1 1l10 6-10 6V1z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vid-caption">
+            <div class="vid-caption-title">Reel Title</div>
+          </div>
+        </div>
+ 
+        <!-- Carousel card 6 -->
+        <div class="carousel-item">
+          <div class="vid vid-carousel fade-up"
+               data-src="assets/videos/reel-10.mp4"
+               data-portrait="true">
+            <video class="thumb" preload="metadata" muted playsinline>
+              <source src="assets/videos/reel-10.mp4" type="video/mp4">
+            </video>
+            <div class="vid-badge">Instagram</div>
+            <div class="vid-overlay"></div>
+            <div class="vid-play vid-play-sm">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M1 1l10 6-10 6V1z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vid-caption">
+            <div class="vid-caption-title">Reel Title</div>
+          </div>
+        </div>
 
      <!-- Portrait card 5 -->
     <div>
