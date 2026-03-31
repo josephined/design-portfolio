@@ -1,159 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motion Graphics — Josephine De Maria</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css">
-<style>
-.mg-hero { min-height:55vh; padding:10rem 3rem 5rem; display:flex; flex-direction:column; justify-content:flex-end; border-bottom:1px solid var(--border); }
-.mg-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; }
-.mg-hero h1 em { font-style:italic; color:var(--accent); }
-.mg-featured { display:grid; grid-template-columns:1fr 1fr; background:var(--green-mid); border:1px solid var(--border); overflow:hidden; margin-bottom:1.5rem; }
-.mg-featured-thumb { min-height:420px; display:flex; align-items:center; justify-content:center; position:relative; cursor:pointer; }
-.mg-featured-body { padding:3rem; display:flex; flex-direction:column; justify-content:center; }
-.mg-featured-title { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--cream); margin-bottom:1rem; }
-.mg-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-.mg-card { background:var(--green-mid); border:1px solid var(--border); overflow:hidden; transition:transform 0.3s; }
-.mg-card:hover { transform:translateY(-4px); }
-.mg-thumb { aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; position:relative; cursor:pointer; }
-.play-btn { width:56px; height:56px; border-radius:50%; border:2px solid rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; transition:border-color 0.2s,transform 0.2s; position:relative; z-index:1; }
-.mg-card:hover .play-btn, .mg-featured:hover .play-btn { border-color:var(--accent); transform:scale(1.1); }
-.mg-lbl { position:absolute; bottom:0; left:0; right:0; padding:0.65rem 1rem; background:linear-gradient(transparent,rgba(0,0,0,0.6)); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.65); }
-.mg-meta { padding:1.5rem; }
-.mg-meta-title { font-size:0.95rem; font-weight:500; color:var(--cream); margin-bottom:0.35rem; }
-.mg-meta-desc { font-size:0.8rem; color:var(--muted); }
-.spin-ring { width:90px; height:90px; border-radius:50%; border:3px solid transparent; border-top-color:var(--accent); border-right-color:var(--red); animation:spin 3s linear infinite; position:absolute; }
-@keyframes spin { to { transform:rotate(360deg); } }
-@media(max-width:960px){ .mg-featured{grid-template-columns:1fr;} .mg-featured-thumb{min-height:280px;} .mg-grid{grid-template-columns:1fr;} }
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motion Graphics — Josephine De Maria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── Motion Graphics grid ── */
+    .mg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* ── Each card ── */
+    .mg-card {
+      background: var(--green-mid);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .mg-card:hover { transform: translateY(-4px); }
+
+    /* ── Thumb: fixed 16/9 box that clips the video ── */
+    .mg-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--green-light);
+    }
+
+    /* ── Video fills the thumb exactly, no overflow ── */
+    .mg-thumb video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Gradient overlay so label is readable ── */
+    .mg-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,58,42,0.75) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── Play button centred on thumb ── */
+    .mg-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .mg-play svg { margin-left: 3px; }
+    .mg-card:hover .mg-play { background: rgba(0,0,0,0.75); }
+
+    /* ── Label bottom-left of thumb ── */
+    .mg-lbl {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.9rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      z-index: 2;
+    }
+
+    /* ── Card body below thumb ── */
+    .mg-body {
+      padding: 1.1rem 1.25rem 1.25rem;
+    }
+    .mg-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
+    }
+    .mg-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Section subtitle ── */
+    .section-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Fullscreen modal (same pattern as video-content.html) ── */
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-modal.active { display: flex; }
+    .modal-inner {
+      position: relative;
+      width: min(90vw, 1100px);
+    }
+    .modal-inner video {
+      width: 100%;
+      border-radius: 2px;
+      display: block;
+    }
+    .modal-close {
+      position: absolute;
+      top: -2.5rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .modal-close:hover { opacity: 1; }
+
+    @media (max-width: 960px) {
+      .mg-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .mg-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body><nav>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
   <a href="index.html" class="nav-logo">Josephine De Maria</a>
   <ul class="nav-links">
-    <li><a href="index.html" >Home</a></li>
-    <li><a href="brand-identity.html" >Brand Identity</a></li>
-    <li><a href="video-content.html" >Video</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="brand-identity.html">Brand Identity</a></li>
+    <li><a href="video-content.html">Video</a></li>
     <li><a href="motion-graphics.html" class="active">Motion</a></li>
-    <li><a href="y-careers.html" >Y Careers</a></li>
-    <li><a href="selfwealth.html" >Selfwealth</a></li>
-    <li><a href="illustration.html" >Illustration</a></li>
+    <li><a href="y-careers.html">Y Careers</a></li>
+    <li><a href="selfwealth.html">Selfwealth</a></li>
+    <li><a href="illustration.html">Illustration</a></li>
   </ul>
 </nav>
-<div class="mg-hero">
+
+<!-- ── HERO ── -->
+<section class="section" style="padding-top:7rem;">
   <span class="eyebrow">Animation · Motion Design · After Effects</span>
-  <h1>Motion <em>Graphics</em></h1>
-  <p class="intro" style="margin-top:1.5rem;">I use animation to bring brands to life and make content more engaging — from brand animations and social campaign motion to animated explainers that make complex concepts digestible.</p>
-</div>
+  <h1 class="display" style="font-size:clamp(2.8rem,6vw,5.5rem);margin-bottom:1.5rem;">
+    Motion <em>Graphics</em>
+  </h1>
+  <p class="intro">
+    I use animation to bring brands to life and make content more engaging — from brand animations and social campaign motion to animated explainers that make complex concepts digestible.
+  </p>
 
-<div class="marquee-wrap">
-  <div class="marquee-inner">
-    <span>After Effects</span><span>Logo Animation</span><span>Social Campaigns</span><span>Brand Motion</span><span>Lower Thirds</span><span>Explainer Video</span>
-    <span>After Effects</span><span>Logo Animation</span><span>Social Campaigns</span><span>Brand Motion</span><span>Lower Thirds</span><span>Explainer Video</span>
+  <!-- Tags -->
+  <div style="margin-top:1.75rem;">
+    <span class="tag">After Effects</span>
+    <span class="tag">Logo Animation</span>
+    <span class="tag">Social Campaigns</span>
+    <span class="tag">Brand Motion</span>
+    <span class="tag">Lower Thirds</span>
+    <span class="tag">Explainer Video</span>
   </div>
-</div>
-
-<section class="section">
-  <div style="margin-bottom:2rem;"><span class="tag">After Effects</span><span class="tag">Brand Animation</span><span class="tag">Social Campaigns</span><span class="tag">Explainer Video</span><span class="tag">Logo Animation</span></div>
-
-  <!-- Featured -->
-  <div class="mg-featured fade-up">
-    <div class="mg-featured-thumb" style="background:linear-gradient(135deg,#FFE973 0%,#EF373E 100%);min-height:420px;">
-      <video src="assets/motion-graphics/Work Different.mp4" autoplay muted loop style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      <div class="spin-ring"></div>
-      <div class="play-btn" style="z-index:2;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
-      <div class="mg-lbl">Y Careers · Brand Motion System</div>
-    </div>
-    <div class="mg-featured-body">
-      <span class="tag">Brand · Social · Campaign</span>
-      <h3 class="mg-featured-title">Y Careers — Brand Motion System</h3>
-      <p class="body-copy" style="margin-bottom:1.25rem;">Animated brand assets including logo animations, social media motion graphics, and campaign animations — bringing the bold visual identity to life across digital platforms.</p>
-      <p class="body-copy" style="margin-bottom:0;">These animations reached thousands of accounts with minimal ad spend, proving the value of high-quality motion in organic content strategy.</p>
-    </div>
-  </div>
-
-  <!-- Grid -->
-  <div class="mg-grid">
-    <div class="mg-card fade-up">
-      <div class="mg-thumb" style="background:linear-gradient(135deg,#1a3a2a,#256A50);">
-        Replace: <video src="assets/motion-graphics/USPromoFINAL.mp4">
-        <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
-        <div class="mg-lbl">Social Campaign Animation</div>
-      </div>
-      <div class="mg-meta"><div class="mg-meta-title">Social Campaign Motion</div><div class="mg-meta-desc">Animated social tiles and story graphics for digital campaign rollouts.</div></div>
-    </div>
-    <div class="mg-card fade-up">
-      <div class="mg-thumb" style="background:linear-gradient(135deg,#EF373E,#F9CCC2);">
-        <div class="mg-thumb">
-
-  <video 
-    src="assets/motion-graphics/LogoAnimation.mp4"
-    preload="metadata"
-    playsinline>
-  </video>
-
-  <div class="play-btn">
-    <svg width="16" height="16" viewBox="0 0 16 16">
-      <path d="M4 2l10 6-10 6V2z" fill="white"/>
-    </svg>
-  </div>
-
-  <div class="mg-lbl">Logo Animation</div>
-
-</div>
-        <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
-        <div class="mg-lbl">Logo Animation</div>
-      </div>
-      <div class="mg-meta"><div class="mg-meta-title">Logo Animation</div><div class="mg-meta-desc">Kinetic logo reveals and looping brand animations for digital use across platforms.</div></div>
-    </div>
-    <div class="mg-card fade-up">
-      <div class="mg-thumb" style="background:linear-gradient(135deg,#256A50,#FFE973);">
-        <video src="assets/motion-graphics/What is a GTO.mp4">
-        <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
-        <div class="mg-lbl">Animated Explainer</div>
-      </div>
-      <div class="mg-meta"><div class="mg-meta-title">Animated Explainer</div><div class="mg-meta-desc">Motion graphics that make complex ideas digestible — used across social and digital advertising.</div></div>
-    </div>
-    <div class="mg-card fade-up">
-      <div class="mg-thumb" style="background:linear-gradient(135deg,#FFE973,#1a3a2a);">
-        <video src="assets/motion-graphics/OOH_1920x1080Yash_1.mp4">
-        <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
-        <div class="mg-lbl">Animating illustrations</div>
-      </div>
-      <div class="mg-meta"><div class="mg-meta-title">Animating existing assets</div><div class="mg-meta-desc">Animating existing illustrations to bring the Selfwealth brand to life.</div></div>
-    </div>
-    <div class="mg-card fade-up">
-      <div class="mg-thumb" style="background:linear-gradient(135deg,#1a3a2a,#EF373E);">
-        <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
-        <div class="mg-lbl">Who we are explainers</div>
-      </div>
-      <div class="mg-meta"><div class="mg-meta-title">EDM & Digital Banners</div><div class="mg-meta-desc">Animated GIFs and HTML5 banners for EDM campaigns and performance marketing.</div></div>
-    </div>
-    <div class="mg-card fade-up">
-      <div class="mg-thumb" style="background:linear-gradient(135deg,#F9CCC2,#256A50);">
-        <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
-        <div class="mg-lbl">Brand Stinger</div>
-      </div>
-      <div class="mg-meta"><div class="mg-meta-title">Brand Stinger</div><div class="mg-meta-desc">Short animated brand ident used as an intro and outro across video content.</div></div>
-    </div>
-  </div>
-
-  <hr class="divider">
-  <div style="max-width:600px;" class="fade-up">
-    <span class="eyebrow">Process</span>
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--cream);margin-bottom:1rem;">How I work</h3>
-    <p class="body-copy" style="margin-bottom:1.25rem;">All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement — using timing and easing to give each animation its own personality.</p>
-    <p class="body-copy">For social-first animations, I prioritise the first two seconds — designing for autoplay on muted feeds while ensuring the animation holds up with sound on.</p>
-  </div>
-
 </section>
 
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>After Effects</span><span>Brand Animation</span><span>Social Campaigns</span>
+    <span>Explainer Video</span><span>Logo Animation</span><span>After Effects</span>
+    <span>Brand Animation</span><span>Social Campaigns</span><span>Explainer Video</span>
+    <span>Logo Animation</span>
+  </div>
+</div>
+
+<!-- ── MOTION GRID ── -->
+<section class="section">
+  <span class="eyebrow">Selected Work</span>
+  <h2 class="display" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:0.6rem;">Motion Projects</h2>
+  <p class="section-sub">Click any card to play the full video.</p>
+
+  <div class="mg-grid">
+
+    <!-- Card 1 -->
+    <div class="mg-card fade-up" data-video="assets/motion-graphics/Work Different.mp4">
+      <div class="mg-thumb">
+        <video src="assets/motion-graphics/Work Different.mp4" preload="metadata" muted playsinline></video>
+        <div class="mg-play">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
+        </div>
+        <div class="mg-lbl">Brand · Social · Campaign</div>
+      </div>
+      <div class="mg-body">
+        <div class="mg-title">Y Careers — Brand Motion System</div>
+        <div class="mg-desc">Animated brand assets including logo animations, social media motion graphics, and campaign animations — bringing the bold visual identity to life across digital platforms.</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="mg-card fade-up" data-video="assets/motion-graphics/USPromoFINAL.mp4">
+      <div class="mg-thumb">
+        <video src="assets/motion-graphics/USPromoFINAL.mp4" preload="metadata" muted playsinline></video>
+        <div class="mg-play">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
+        </div>
+        <div class="mg-lbl">Social Campaign Motion</div>
+      </div>
+      <div class="mg-body">
+        <div class="mg-title">Social Campaign Animation</div>
+        <div class="mg-desc">Animated social tiles and story graphics for digital campaign rollouts.</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="mg-card fade-up" data-video="assets/motion-graphics/LogoAnimation.mp4">
+      <div class="mg-thumb">
+        <video src="assets/motion-graphics/LogoAnimation.mp4" preload="metadata" muted playsinline></video>
+        <div class="mg-play">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
+        </div>
+        <div class="mg-lbl">Logo Animation</div>
+      </div>
+      <div class="mg-body">
+        <div class="mg-title">Logo Animation</div>
+        <div class="mg-desc">Kinetic logo reveals and looping brand animations for digital use across platforms.</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="mg-card fade-up" data-video="assets/motion-graphics/What is a GTO.mp4">
+      <div class="mg-thumb">
+        <video src="assets/motion-graphics/What is a GTO.mp4" preload="metadata" muted playsinline></video>
+        <div class="mg-play">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
+        </div>
+        <div class="mg-lbl">Animated Explainer</div>
+      </div>
+      <div class="mg-body">
+        <div class="mg-title">Animated Explainer</div>
+        <div class="mg-desc">Motion graphics that make complex ideas digestible — used across social and digital advertising.</div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="mg-card fade-up" data-video="assets/motion-graphics/OOH_1920x1080Yash_1.mp4">
+      <div class="mg-thumb">
+        <video src="assets/motion-graphics/OOH_1920x1080Yash_1.mp4" preload="metadata" muted playsinline></video>
+        <div class="mg-play">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
+        </div>
+        <div class="mg-lbl">Animating Existing Assets</div>
+      </div>
+      <div class="mg-body">
+        <div class="mg-title">Animating Illustrations</div>
+        <div class="mg-desc">Animating existing illustrations to bring the Selfwealth brand to life.</div>
+      </div>
+    </div>
+
+    <!-- Add more cards here following the same pattern -->
+
+  </div>
+</section>
+
+<!-- ── HOW I WORK ── -->
+<section class="section" style="padding-top:0;">
+  <hr class="divider"/>
+  <span class="eyebrow">Process</span>
+  <h2 class="display" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:1.25rem;">How I work</h2>
+  <p class="body-copy" style="max-width:640px;">
+    All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement — using timing and easing to give each animation its own personality.
+  </p>
+  <p class="body-copy" style="max-width:640px;margin-top:1rem;">
+    For social-first animations, I prioritise the first two seconds — designing for autoplay on muted feeds while ensuring the animation holds up with sound on.
+  </p>
+</section>
+
+<!-- ── NEXT PROJECT ── -->
 <a href="illustration.html" class="next-project">
-  <div><div class="next-label">Next</div><div class="next-title">Illustration</div></div>
+  <div>
+    <div class="next-label">Next</div>
+    <div class="next-title">Illustration</div>
+  </div>
   <div class="next-arrow">→</div>
 </a>
-<section class="contact-section">
+
+<!-- ── CONTACT ── -->
+<div class="contact-section">
   <h2>Need a designer?</h2>
   <p>Open to freelance, contract, and full-time opportunities.</p>
   <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
@@ -162,15 +325,53 @@
     <a href="#">Portfolio</a>
     <a href="#">LinkedIn</a>
   </div>
-</section>
+</div>
+
+<!-- ── FOOTER ── -->
 <footer>
   <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
+
+<!-- ── VIDEO MODAL ── -->
+<div class="video-modal" id="videoModal">
+  <div class="modal-inner">
+    <button class="modal-close" id="modalClose">✕ Close</button>
+    <video id="modalVideo" controls playsinline></video>
+  </div>
+</div>
+
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); obs.unobserve(e.target); } });
-}, {threshold:0.08});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  // ── Fade-up on scroll ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Click card → open modal ──
+  const modal      = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideo');
+  const closeBtn   = document.getElementById('modalClose');
+
+  document.querySelectorAll('.mg-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const src = card.dataset.video;
+      if (!src) return;
+      modalVideo.src = src;
+      modal.classList.add('active');
+      modalVideo.play();
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modalVideo.pause();
+    modalVideo.src = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
-</body></html>
+</body>
+</html>
