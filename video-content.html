@@ -259,6 +259,245 @@
     .img-hero-text { padding: 2rem 1.5rem; }
     .section-marker { padding: 1.25rem 1.5rem; }
   }
+
+  /* ════════════════════════════════════════════
+     SHARED VIDEO STYLES
+     ════════════════════════════════════════════ */
+ 
+  .video-section {
+    padding: 5rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+ 
+  .video-section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+ 
+  .video-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+ 
+  .video-section-header h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+ 
+  /* The clickable video card wrapper */
+  .vid {
+    position: relative;
+    overflow: hidden;
+    background: #0d0d0d;
+    cursor: pointer;
+    display: block;
+  }
+ 
+  /* Actual video or poster image fills the card */
+  .vid video,
+  .vid img.poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+ 
+  .vid:hover video,
+  .vid:hover img.poster {
+    transform: scale(1.03);
+  }
+ 
+  /* Dark overlay — lightens on hover */
+  .vid-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    transition: background 0.3s ease;
+    z-index: 1;
+  }
+ 
+  .vid:hover .vid-overlay {
+    background: rgba(0, 0, 0, 0.15);
+  }
+ 
+  /* Play button */
+  .vid-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+ 
+  .vid:hover .vid-play {
+    border-color: var(--accent);
+    background: rgba(255, 233, 115, 0.15);
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+ 
+  .vid-play svg {
+    margin-left: 4px;
+    transition: fill 0.25s;
+  }
+ 
+  .vid:hover .vid-play svg path {
+    fill: var(--accent);
+  }
+ 
+  /* Platform badge (optional — e.g. "Instagram" or "LinkedIn") */
+  .vid-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 2;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(0, 0, 0, 0.45);
+    padding: 0.3rem 0.65rem;
+    backdrop-filter: blur(4px);
+  }
+ 
+  /* Caption below each video */
+  .vid-caption {
+    padding: 1rem 0 0;
+  }
+ 
+  .vid-caption-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+ 
+  .vid-caption-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+ 
+  /* ════════════════════════════════════════════
+     SECTION A — 9:16 PORTRAIT (Reels / TikTok)
+     ════════════════════════════════════════════ */
+ 
+  /* Row scrolls horizontally on smaller screens */
+  .portrait-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+ 
+  /* Each portrait card holds the 9:16 ratio */
+  .vid-portrait {
+    aspect-ratio: 9 / 16;
+  }
+ 
+  /* ════════════════════════════════════════════
+     SECTION B — 16:9 LANDSCAPE (YouTube / LinkedIn)
+     ════════════════════════════════════════════ */
+ 
+  .landscape-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+ 
+  /* Featured landscape — spans full width */
+  .landscape-grid .vid-featured {
+    grid-column: span 2;
+  }
+ 
+  /* Each landscape card */
+  .vid-landscape {
+    aspect-ratio: 16 / 9;
+  }
+ 
+  /* ════════════════════════════════════════════
+     LIGHTBOX — clicking a video opens it fullscreen
+     ════════════════════════════════════════════ */
+ 
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.92);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+ 
+  .lightbox.open {
+    display: flex;
+  }
+ 
+  .lightbox-inner {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+  }
+ 
+  /* Portrait lightbox is narrower */
+  .lightbox-inner.is-portrait {
+    max-width: 420px;
+  }
+ 
+  .lightbox-inner video {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+  }
+ 
+  .lightbox-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+ 
+  .lightbox-close:hover { color: var(--accent); }
+ 
+  /* ════════════════════════════════════════════
+     RESPONSIVE
+     ════════════════════════════════════════════ */
+ 
+  @media (max-width: 960px) {
+    .video-section { padding: 3.5rem 1.5rem; }
+    .portrait-grid { grid-template-columns: repeat(2, 1fr); }
+    .landscape-grid { grid-template-columns: 1fr; }
+    .landscape-grid .vid-featured { grid-column: span 1; }
+    .video-section-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
+ 
+  @media (max-width: 540px) {
+    .portrait-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  }
 </style>
 </head>
 <body>
@@ -318,10 +557,113 @@
      ═══════════════════════════════════════ -->
 
 
-<!-- BLOCK 1: Full-width image -->
-<div class="img-full img-cell h-xl fade-up">
-    <img src="assets/selfwealth/1SwanstonStreet.png" alt="Description">
-</div>
+<section class="video-section">
+  <div class="video-section-header">
+    <div>
+      <!-- ▼ CHANGE: eyebrow and heading -->
+      <span class="eyebrow">Instagram · TikTok</span>
+      <h2>Short-form <em>Content</em></h2>
+    </div>
+    <!-- ▼ CHANGE or delete this tag row -->
+    <div>
+      <span class="tag">B2C Reels</span>
+      <span class="tag">B2B LinkedIn</span>
+      <span class="tag">Short-form</span>
+    </div>
+  </div>
+ 
+  <div class="portrait-grid">
+ 
+    <!-- ── Portrait video card 1 ── -->
+    <div>
+      <div class="vid vid-portrait fade-up"
+           data-src="images/videos/reel-01.mp4"
+           data-portrait="true">
+ 
+        <!--
+          ▼ POSTER IMAGE (shown before video plays):
+          Replace with: <img class="poster" src="images/thumbs/reel-01.jpg" alt="Reel 1">
+        -->
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#FFE973,#EF373E);"></div>
+ 
+        <!-- ▼ CHANGE or delete: platform badge -->
+        <div class="vid-badge">Instagram Reel</div>
+ 
+        <div class="vid-overlay"></div>
+ 
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+ 
+      <!-- ▼ CHANGE or delete caption -->
+      <div class="vid-caption">
+        <div class="vid-caption-title">Reel Title</div>
+        <div class="vid-caption-desc">Short description of the reel and its purpose.</div>
+      </div>
+    </div>
+ 
+    <!-- ── Portrait video card 2 ── -->
+    <div>
+      <div class="vid vid-portrait fade-up"
+           data-src="images/videos/reel-02.mp4"
+           data-portrait="true">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#EF373E,#F9CCC2);"></div>
+        <div class="vid-badge">Instagram Reel</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Reel Title</div>
+        <div class="vid-caption-desc">Short description of the reel and its purpose.</div>
+      </div>
+    </div>
+ 
+    <!-- ── Portrait video card 3 ── -->
+    <div>
+      <div class="vid vid-portrait fade-up"
+           data-src="images/videos/reel-03.mp4"
+           data-portrait="true">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#F9CCC2,#FFE973);"></div>
+        <div class="vid-badge">TikTok</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Reel Title</div>
+        <div class="vid-caption-desc">Short description of the reel and its purpose.</div>
+      </div>
+    </div>
+ 
+    <!-- ── Portrait video card 4 ── -->
+    <div>
+      <div class="vid vid-portrait fade-up"
+           data-src="images/videos/reel-04.mp4"
+           data-portrait="true">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a3a2a,#FFE973);"></div>
+        <div class="vid-badge">Instagram Reel</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Reel Title</div>
+        <div class="vid-caption-desc">Short description of the reel and its purpose.</div>
+      </div>
+    </div>
 
 <!-- Caption (optional — delete if not needed) -->
 <div class="caption-block fade-up">
