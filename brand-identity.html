@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Identity — Josephine De Maria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.brand-hero { min-height: 60vh; padding: 10rem 3rem 5rem; display: flex; flex-direction: column; justify-content: flex-end; border-bottom: 1px solid var(--border); }
+.brand-hero h1 { font-family: var(--serif); font-size: clamp(4rem,8vw,8rem); font-weight: 900; line-height: 0.95; color: var(--cream); letter-spacing: -0.02em; }
+.brand-hero h1 em { font-style: italic; color: var(--accent); }
+.featured-card { display: grid; grid-template-columns: 1fr 1fr; background: var(--green-mid); border: 1px solid var(--border); overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.3s; margin-bottom: 1.5rem; }
+.featured-card:hover { transform: translateY(-5px); }
+.featured-card .card-img { min-height: 480px; }
+.featured-card .card-body { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+.featured-card .card-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
+.brand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.brand-grid .card-img { height: 240px; }
+.brand-grid .card-title { font-size: 1.1rem; }
+@media(max-width:960px){
+  .featured-card{grid-template-columns:1fr;}
+  .featured-card .card-img{min-height:280px;}
+  .brand-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body><nav>
+  <a href="index.html" class="nav-logo">Josephine De Maria</a>
+  <ul class="nav-links">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="brand-identity.html" class="active">Brand Identity</a></li>
+    <li><a href="video-content.html" >Video</a></li>
+    <li><a href="motion-graphics.html" >Motion</a></li>
+    <li><a href="y-careers.html" >Y Careers</a></li>
+    <li><a href="selfwealth.html" >Selfwealth</a></li>
+    <li><a href="illustration.html" >Illustration</a></li>
+  </ul>
+</nav>
+<div class="brand-hero">
+  <span class="eyebrow">Selected Projects</span>
+  <h1>Brand <em>Identity</em></h1>
+  <p class="intro" style="margin-top:1.5rem;">From captivating logos to strategic visual systems — I build brands that are unforgettable, flexible, and built to last.</p>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>Y Careers</span><span>Selfwealth</span><span>Two Sense</span><span>The Valiants</span><span>Balor Australia</span><span>Melbourne Ponds</span>
+    <span>Y Careers</span><span>Selfwealth</span><span>Two Sense</span><span>The Valiants</span><span>Balor Australia</span><span>Melbourne Ponds</span>
+  </div>
+</div>
+
+<section class="section">
+
+  <!-- Featured: Y Careers -->
+  <a href="y-careers.html" class="featured-card fade-up">
+    <div class="card-img" style="background:linear-gradient(135deg,#FFE973 0%,#EF373E 100%);min-height:480px;align-items:flex-end;padding:2.5rem;">
+      <!-- Replace: <img src="y-careers-hero.jpg"> -->
+      <div style="position:relative;z-index:1;">
+        <p style="font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:#1a3a2a;line-height:0.95;letter-spacing:-0.02em;">REAL<br>SKILLS.<br><span style="color:#EF373E;">REAL<br>SUPPORT.</span></p>
+      </div>
+    </div>
+    <div class="card-body">
+      <span class="tag">Brand Strategy</span><span class="tag">Design System</span><span class="tag">Campaigns</span>
+      <h2 class="card-title" style="font-size:2.2rem;margin-top:1rem;">Y Careers</h2>
+      <p class="card-desc" style="font-size:0.95rem;">Led the creation of a full brand strategy and adaptable visual identity targeting three key audience groups — young people, parents/guardians, and employers. Built from scratch through collaborative workshops, resulting in a brand that genuinely connects with its audience.</p>
+      <span class="card-link">View Case Study →</span>
+    </div>
+  </a>
+
+  <!-- 3-column grid -->
+  <div class="brand-grid">
+
+    <a href="selfwealth.html" class="card fade-up">
+      <div class="card-img" style="height:240px;background:linear-gradient(135deg,#1a3a2a,#256A50);">
+        <!-- Replace: <img src="selfwealth-thumb.jpg"> -->
+        <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(255,233,115,0.15);">SW</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">Fintech</span><span class="tag">OOH</span>
+        <h3 class="card-title" style="font-size:1.2rem;margin-top:0.75rem;">Selfwealth</h3>
+        <p class="card-desc">Brand design system, two refreshes, and a national OOH awareness campaign across all channels.</p>
+        <span class="card-link">View Work →</span>
+      </div>
+    </a>
+
+    <a href="the-valiants.html" class="card fade-up">
+      <div class="card-img" style="height:240px;background:linear-gradient(135deg,#1a1a1a,#3a3a3a);">
+        <!-- Replace: <img src="valiants-thumb.jpg"> -->
+        <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(239,55,62,0.25);">TV</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">Music</span><span class="tag">Print</span>
+        <h3 class="card-title" style="font-size:1.2rem;margin-top:0.75rem;">The Valiants</h3>
+        <p class="card-desc">Full visual identity for an indie punk rock band — album artwork, merch, and brand collateral.</p>
+        <span class="card-link">View Work →</span>
+      </div>
+    </a>
+
+    <a href="two-sense.html" class="card fade-up">
+      <div class="card-img" style="height:240px;background:linear-gradient(135deg,#AECCB6,#256A50);">
+        <!-- Replace: <img src="twosense-thumb.jpg"> -->
+        <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(26,58,42,0.2);">TS</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">Fashion</span><span class="tag">Identity</span>
+        <h3 class="card-title" style="font-size:1.2rem;margin-top:0.75rem;">Two Sense</h3>
+        <p class="card-desc">Contemporary vintage fashion label — Wes Anderson-inspired palette with a detailed coin illustration mark.</p>
+        <span class="card-link">View Work →</span>
+      </div>
+    </a>
+
+    <a href="balor.html" class="card fade-up">
+      <div class="card-img" style="height:240px;background:linear-gradient(135deg,#e8d5c4,#c9b5a0);">
+        <!-- Replace: <img src="balor-thumb.jpg"> -->
+        <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(58,42,26,0.15);">BA</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">Skincare</span><span class="tag">Packaging</span>
+        <h3 class="card-title" style="font-size:1.2rem;margin-top:0.75rem;">Balor Australia</h3>
+        <p class="card-desc">Logo, branding and packaging for a local handmade beauty company — evoking nature, purity, and luxury.</p>
+        <span class="card-link">View Work →</span>
+      </div>
+    </a>
+
+    <a href="#" class="card fade-up">
+      <div class="card-img" style="height:240px;background:linear-gradient(135deg,#F9CCC2,#e8b5aa);">
+        <!-- Replace: <img src="rsnh-thumb.jpg"> -->
+        <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(26,58,42,0.2);">RS</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">NFP</span><span class="tag">Print</span>
+        <h3 class="card-title" style="font-size:1.2rem;margin-top:0.75rem;">Reynard Street Neighbourhood House</h3>
+        <p class="card-desc">Posters and marketing collateral for a community neighbourhood house.</p>
+        <span class="card-link">View Work →</span>
+      </div>
+    </a>
+
+    <a href="#" class="card fade-up">
+      <div class="card-img" style="height:240px;background:linear-gradient(135deg,#256A50,#1a4a38);">
+        <!-- Replace: <img src="mpg-thumb.jpg"> -->
+        <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(255,255,255,0.1);">MPG</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">Logo</span><span class="tag">Identity</span>
+        <h3 class="card-title" style="font-size:1.2rem;margin-top:0.75rem;">Melbourne Ponds & Gardens</h3>
+        <p class="card-desc">Logo and brand identity for a premium pond cleaning and landscaping business.</p>
+        <span class="card-link">View Work →</span>
+      </div>
+    </a>
+
+    <a href="#" class="card fade-up">
+      <div class="card-img" style="height:240px;background:linear-gradient(135deg,#EF373E,#c0272e);">
+        <!-- Replace: <img src="hoh-thumb.jpg"> -->
+        <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(255,255,255,0.15);">HH</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">NFP</span><span class="tag">Logo</span>
+        <h3 class="card-title" style="font-size:1.2rem;margin-top:0.75rem;">Hands on Heart Australia</h3>
+        <p class="card-desc">Logo design for a not-for-profit — communicating care and community connection.</p>
+        <span class="card-link">View Work →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+<section class="contact-section">
+  <h2>Need a designer?</h2>
+  <p>Open to freelance, contract, and full-time opportunities.</p>
+  <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
+  <div class="contact-links">
+    <a href="tel:0400636229">0400 636 229</a>
+    <a href="#">Portfolio</a>
+    <a href="#">LinkedIn</a>
+  </div>
+</section>
+<footer>
+  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-right">Melbourne, Australia</span>
+</footer>
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); obs.unobserve(e.target); } });
+}, {threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body></html>
