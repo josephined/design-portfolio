@@ -4,101 +4,531 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Illustration — Josephine De Maria</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-.il-hero { min-height:55vh; padding:10rem 3rem 5rem; display:flex; flex-direction:column; justify-content:flex-end; border-bottom:1px solid var(--border); }
-.il-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; }
-.il-hero h1 em { font-style:italic; color:var(--accent); }
-.masonry { columns:2; column-gap:1.5rem; }
-.masonry-item { break-inside:avoid; margin-bottom:1.5rem; background:var(--green-mid); border:1px solid var(--border); overflow:hidden; }
-.masonry-img { width:100%; display:flex; align-items:center; justify-content:center; position:relative; }
-.masonry-img img { width:100%; height:100%; object-fit:cover; display:block; }
-.masonry-caption { padding:1.25rem 1.5rem; }
-.masonry-caption-title { font-size:0.95rem; font-weight:500; color:var(--cream); margin-bottom:0.25rem; }
-.masonry-caption-desc { font-size:0.8rem; color:var(--muted); }
-@media(max-width:700px){ .masonry{columns:1;} }
+
+  /* ── HERO ── */
+  .il-hero {
+    min-height: 55vh;
+    padding: 10rem 3rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .il-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 8vw, 8rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+  }
+
+  .il-hero h1 em { font-style: italic; color: var(--accent); }
+
+  /* ── GALLERY LAYOUT ── */
+  .gallery { padding: 0; }
+
+  /* Base image cell */
+  .il-cell {
+    position: relative;
+    overflow: hidden;
+    background: var(--green-mid);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .il-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .il-cell:hover img { transform: scale(1.04); }
+
+  /* Hover overlay with caption */
+  .il-cell-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,58,42,0.88) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+  }
+
+  .il-cell:hover .il-cell-overlay { opacity: 1; }
+
+  .il-cell-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .il-cell-desc {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.5;
+  }
+
+  /* Expand icon top-right */
+  .il-cell-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .il-cell:hover .il-cell-icon { opacity: 1; }
+
+  /* ── ROW LAYOUTS ── */
+
+  /* Row 1: featured full-width */
+  .row-full .il-cell { height: 60vh; }
+
+  /* Row 2: 3-column equal */
+  .row-thirds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-top: 3px;
+  }
+
+  .row-thirds .il-cell { height: 420px; }
+
+  /* Row 3: wide left (2fr) + narrow right (1fr) */
+  .row-wide-left {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3px;
+    margin-top: 3px;
+  }
+
+  .row-wide-left .il-cell { height: 480px; }
+
+  /* Row 4: narrow left (1fr) + wide right (2fr) */
+  .row-wide-right {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3px;
+    margin-top: 3px;
+  }
+
+  .row-wide-right .il-cell { height: 400px; }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox-inner {
+    position: relative;
+    max-width: min(90vw, 1100px);
+    max-height: 90vh;
+    cursor: default;
+  }
+
+  .lightbox-inner img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-caption {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .lightbox-caption-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  .lightbox-caption-desc {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.6);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .lightbox-close:hover { color: var(--accent); }
+
+  /* Prev / Next arrows */
+  .lightbox-prev,
+  .lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    z-index: 1000;
+    font-size: 1.1rem;
+  }
+
+  .lightbox-prev { left: 1.5rem; }
+  .lightbox-next { right: 1.5rem; }
+  .lightbox-prev:hover,
+  .lightbox-next:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .row-thirds { grid-template-columns: 1fr 1fr; }
+    .row-thirds .il-cell:last-child { grid-column: span 2; }
+    .row-wide-left,
+    .row-wide-right { grid-template-columns: 1fr; }
+    .row-wide-left .il-cell,
+    .row-wide-right .il-cell { height: 320px; }
+  }
+
+  @media (max-width: 600px) {
+    .row-thirds { grid-template-columns: 1fr; }
+    .row-thirds .il-cell:last-child { grid-column: span 1; }
+    .row-full .il-cell { height: 50vw; }
+  }
+
 </style>
 </head>
-<body><nav>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
   <a href="index.html" class="nav-logo">Josephine De Maria</a>
   <ul class="nav-links">
-    <li><a href="index.html" >Home</a></li>
-    <li><a href="brand-identity.html" >Brand Identity</a></li>
-    <li><a href="video-content.html" >Video</a></li>
-    <li><a href="motion-graphics.html" >Motion</a></li>
-    <li><a href="y-careers.html" >Y Careers</a></li>
-    <li><a href="selfwealth.html" >Selfwealth</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="brand-identity.html">Brand Identity</a></li>
+    <li><a href="video-content.html">Video</a></li>
+    <li><a href="motion-graphics.html">Motion</a></li>
+    <li><a href="y-careers.html">Y Careers</a></li>
+    <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html" class="active">Illustration</a></li>
   </ul>
 </nav>
+
+<!-- ── HERO ── -->
 <div class="il-hero">
   <span class="eyebrow">Digital Illustration · Character · Brand</span>
   <h1><em>Illustration</em></h1>
   <p class="intro" style="margin-top:1.5rem;">Digital illustration work spanning character design, brand illustration, and decorative elements — often integrated directly into brand systems, packaging, or campaigns.</p>
+  <div style="margin-top:1.75rem;">
+    <span class="tag">Adobe Illustrator</span>
+    <span class="tag">Character Design</span>
+    <span class="tag">Digital Illustration</span>
+  </div>
 </div>
 
+<!-- ── GALLERY ── -->
+<div class="gallery">
 
-<section class="section">
-  <div style="margin-bottom:2.5rem;"><span class="tag">Adobe Illustrator</span><span class="tag">Character Design</span><span class="tag">Digital Illustration</span></div>
-
-  <div class="masonry">
-    <div class="masonry-item fade-up">
-      <div class="masonry-img" style="height:340px;background:linear-gradient(135deg,#AECCB6,#256A50);">
-        <img src="assets/illustrations/TwoSenseIllustration.png" alt="assets/illustrations/TwoSenseIllustration.png">
+  <!-- ROW 1: Featured full-width — Two Sense coin (most detailed piece) -->
+  <div class="row-full fade-up">
+    <div class="il-cell"
+         style="background:linear-gradient(135deg,#AECCB6,#256A50);"
+         data-index="0">
+      <img src="assets/illustrations/TwoSenseIllustration.png" alt="Two Sense Coin Illustration">
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">Two Sense — Coin Illustration</div>
+        <div class="il-cell-desc">Detailed coin illustration with art nouveau-inspired figure for the Two Sense brand identity.</div>
       </div>
-      <div class="masonry-caption"><div class="masonry-caption-title">Two Sense — Coin Illustration</div><div class="masonry-caption-desc">Detailed coin illustration with art nouveau-inspired figure for the Two Sense brand identity.</div></div>
-    </div>
-    <div class="masonry-item fade-up">
-      <div class="masonry-img" style="height:260px;background:linear-gradient(135deg,#F9CCC2,#EF373E);">
-        <img src="assets/illustrations/GirlsWNecklace.png">
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
       </div>
-      <div class="masonry-caption"><div class="masonry-caption-title">Character Illustration</div><div class="masonry-caption-desc">Character creation and illustration.</div></div>
-    </div>
-    <div class="masonry-item fade-up">
-      <div class="masonry-img" style="height:300px;background:linear-gradient(135deg,#FFE973,#1a3a2a);">
-        <img src="assets/illustrations/Botanicals.png">
-      </div>
-      <div class="masonry-caption"><div class="masonry-caption-title">Botanical Illustration</div><div class="masonry-caption-desc">Detailed botanical artwork for wedding invitations.</div></div>
-    </div>
-    <div class="masonry-item fade-up">
-      <div class="masonry-img" style="height:380px;background:linear-gradient(135deg,#1a3a2a,#AECCB6);">
-        <img src="assets/illustrations/TheValiantsIllustration.png">
-      </div>
-      <div class="masonry-caption"><div class="masonry-caption-title">Digital Illustration</div><div class="masonry-caption-desc">Halftone inspired digital illustration for an album cover.</div></div>
-    </div>
-    <div class="masonry-item fade-up">
-      <div class="masonry-img" style="height:280px;background:linear-gradient(135deg,#EF373E,#FFE973);">
-        <img src="assets/illustrations/SocialMediaPosts.png">
-      </div>
-      <div class="masonry-caption"><div class="masonry-caption-title">Selfwealth Icon Set</div><div class="masonry-caption-desc">Custom icon illustrations for Selfwealth brand system, used across digital collateral.</div></div>
-    </div>
-    <div class="masonry-item fade-up">
-      <div class="masonry-img" style="height:320px;background:linear-gradient(135deg,#256A50,#F9CCC2);">
-        <img src="assets/illustrations/Coburg.png">
-      </div>
-      <div class="masonry-caption"><div class="masonry-caption-title">Digital Illustration</div><div class="masonry-caption-desc">A commissioned digital illustration of Coburg for a poster.</div></div>
     </div>
   </div>
-</section>
-<section class="contact-section">
+
+  <!-- ROW 2: 3-column equal -->
+  <div class="row-thirds">
+
+    <div class="il-cell fade-up"
+         style="background:linear-gradient(135deg,#F9CCC2,#EF373E);"
+         data-index="1">
+      <img src="assets/illustrations/GirlsWNecklace.png" alt="Character Illustration">
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">Character Illustration</div>
+        <div class="il-cell-desc">Character creation and illustration.</div>
+      </div>
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="il-cell fade-up"
+         style="background:linear-gradient(135deg,#FFE973,#1a3a2a);"
+         data-index="2">
+      <img src="assets/illustrations/Botanicals.png" alt="Botanical Illustration">
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">Botanical Illustration</div>
+        <div class="il-cell-desc">Detailed botanical artwork for wedding invitations.</div>
+      </div>
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="il-cell fade-up"
+         style="background:linear-gradient(135deg,#1a3a2a,#AECCB6);"
+         data-index="3">
+      <img src="assets/illustrations/TheValiantsIllustration.png" alt="The Valiants Album Illustration">
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">The Valiants — Album Cover</div>
+        <div class="il-cell-desc">Halftone-inspired digital illustration for an album cover.</div>
+      </div>
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 3: wide left + narrow right -->
+  <div class="row-wide-left">
+
+    <div class="il-cell fade-up"
+         style="background:linear-gradient(135deg,#256A50,#F9CCC2);"
+         data-index="4">
+      <img src="assets/illustrations/Coburg.png" alt="Coburg Digital Illustration">
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">Coburg — Commissioned Illustration</div>
+        <div class="il-cell-desc">A commissioned digital illustration of Coburg for a poster.</div>
+      </div>
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="il-cell fade-up"
+         style="background:linear-gradient(135deg,#EF373E,#FFE973);"
+         data-index="5">
+      <img src="assets/illustrations/SocialMediaPosts.png" alt="Selfwealth Icon Set">
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">Selfwealth Icon Set</div>
+        <div class="il-cell-desc">Custom icon illustrations for the Selfwealth brand system.</div>
+      </div>
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 4: narrow left + wide right — Melbourne Ponds -->
+  <div class="row-wide-right">
+
+    <div class="il-cell fade-up"
+         style="background:linear-gradient(135deg,#1a4a38,#2d7a5a);"
+         data-index="6">
+      <!-- placeholder gradient until image is added -->
+      <span style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(255,255,255,0.1);position:relative;z-index:1;">MPG</span>
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">Melbourne Ponds &amp; Gardens — Logo</div>
+        <div class="il-cell-desc">Digital upscale and refinement of the Melbourne Ponds &amp; Gardens logo illustration.</div>
+      </div>
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="il-cell fade-up"
+         style="background:linear-gradient(135deg,#AECCB6,#1a3a2a);"
+         data-index="3">
+      <!-- Repeating Valiants large for impact in this wide slot — swap for another piece if preferred -->
+      <img src="assets/illustrations/TheValiantsIllustration.png" alt="The Valiants — detail">
+      <div class="il-cell-overlay">
+        <div class="il-cell-title">The Valiants — Detail</div>
+        <div class="il-cell-desc">Close detail of the halftone illustration work.</div>
+      </div>
+      <div class="il-cell-icon">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1h4M1 1v4M11 1H7M11 1v4M1 11h4M1 11V7M11 11H7M11 11V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /gallery -->
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" style="margin-top:3px;">
   <h2>Need a designer?</h2>
   <p>Open to freelance, contract, and full-time opportunities.</p>
   <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
   <div class="contact-links">
     <a href="tel:0400636229">0400 636 229</a>
-    <a href="#">Portfolio</a>
-    <a href="#">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/josephinedmaria" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </section>
+
+<!-- ── FOOTER ── -->
 <footer>
   <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose">✕ Close</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption">
+      <div class="lightbox-caption-title" id="lightboxTitle"></div>
+      <div class="lightbox-caption-desc" id="lightboxDesc"></div>
+    </div>
+  </div>
+  <button class="lightbox-prev" id="lightboxPrev">&#8592;</button>
+  <button class="lightbox-next" id="lightboxNext">&#8594;</button>
+</div>
+
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); obs.unobserve(e.target); } });
-}, {threshold:0.08});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  // ── Fade-up ──
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // ── Build image data array from cells that have an img ──
+  const cells = Array.from(document.querySelectorAll('.il-cell'));
+
+  // Collect only cells with a real <img> (skip MPG placeholder)
+  const items = cells.map(cell => {
+    const img   = cell.querySelector('img');
+    const title = cell.querySelector('.il-cell-title')?.textContent || '';
+    const desc  = cell.querySelector('.il-cell-desc')?.textContent  || '';
+    return { src: img ? img.src : null, alt: img ? img.alt : '', title, desc, cell };
+  }).filter(item => item.src);
+
+  // ── Lightbox state ──
+  const lightbox     = document.getElementById('lightbox');
+  const lightboxImg  = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc  = document.getElementById('lightboxDesc');
+  const closeBtn     = document.getElementById('lightboxClose');
+  const prevBtn      = document.getElementById('lightboxPrev');
+  const nextBtn      = document.getElementById('lightboxNext');
+
+  let current = 0;
+
+  function openLightbox(index) {
+    current = index;
+    const item = items[current];
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.alt;
+    lightboxTitle.textContent = item.title;
+    lightboxDesc.textContent  = item.desc;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateArrows();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  function updateArrows() {
+    prevBtn.style.opacity = current === 0 ? '0.25' : '1';
+    nextBtn.style.opacity = current === items.length - 1 ? '0.25' : '1';
+  }
+
+  function showPrev() { if (current > 0) openLightbox(current - 1); }
+  function showNext() { if (current < items.length - 1) openLightbox(current + 1); }
+
+  // Attach click to each cell with an image
+  items.forEach((item, i) => {
+    item.cell.addEventListener('click', () => openLightbox(i));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  prevBtn.addEventListener('click', e => { e.stopPropagation(); showPrev(); });
+  nextBtn.addEventListener('click', e => { e.stopPropagation(); showNext(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   showPrev();
+    if (e.key === 'ArrowRight')  showNext();
+  });
 </script>
-</body></html>
+</body>
+</html>
