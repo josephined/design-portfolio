@@ -1,3 +1,337 @@
+
+How do I fix this code so that the videos I upload don't blow out the cards AND the thumbnails are videos that can be played - 
+
+</div>
+<div class="mg-card fade-up">
+<div class="mg-thumb" style="background:linear-gradient(135deg,
+#EF373E,
+#F9CCC2);">
+        <video src="assets/motion-graphics/LogoAnimation.mp4">
+        <div class="mg-thumb">
+  <video 
+    src="assets/motion-graphics/LogoAnimation.mp4"
+    preload="metadata"
+    playsinline>
+  </video>
+  <div class="play-btn">
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 2l10 6-10 6V2z" fill="white"/>
+    </svg>
+  </div>
+  <div class="mg-lbl">Logo Animation</div>
+</div>
+<div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg></div>
+<div class="mg-lbl">Logo Animation</div>
+</div>
+
+Show more
+4:04 pm
+Could you share a bit more context so I can give you the most accurate fix?
+
+Do you have the full CSS for .mg-card, .mg-thumb, and .mg-lbl? The "blowing out" issue is almost certainly a sizing/overflow problem there.
+How do you want the video to behave — hover to play, click to play, or always autoplaying/muted in the card?
+In the meantime, here's what's clearly wrong and how to fix it:
+
+1. Malformed/nested HTML — your markup has duplicate elements and unclosed tags. Clean structure should be:
+
+html
+<div class="mg-card fade-up">
+  <div class="mg-thumb">
+    <video 
+      src="assets/motion-graphics/LogoAnimation.mp4"
+      preload="metadata"
+      playsinline
+      muted
+      loop>
+    </video>
+    <div class="play-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16">
+        <path d="M4 2l10 6-10 6V2z" fill="white"/>
+      </svg>
+    </div>
+    <div class="mg-lbl">Logo Animation</div>
+  </div>
+</div>
+2. Video blowing out the card — add this CSS so the video is contained within the thumb:
+
+css
+.mg-thumb {
+  position: relative;
+  overflow: hidden;        /* clips the video to the card bounds */
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* or whatever ratio your videos are */
+}
+
+.mg-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* fills the box without stretching */
+  display: block;
+}
+3. Play button overlay — make sure the play button sits on top of the video:
+
+css
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+4. Click to play — add this JS to make the play button functional:
+
+js
+document.querySelectorAll('.mg-thumb').forEach(thumb => {
+  const video = thumb.querySelector('video');
+  const btn = thumb.querySelector('.play-btn');
+
+  btn.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      btn.style.opacity = '0';
+    } else {
+      video.pause();
+      btn.style.opacity = '1';
+    }
+  });
+
+  video.addEventListener('click', () => {
+    video.pause();
+    btn.style.opacity = '1';
+  });
+});
+Share your CSS if you want me to dial in the exact sizing fix for your layout!
+
+
+shared.css
+116 lines
+
+css
+
+Here is my website - https://josephined.github.io/design-portfolio/motion-graphics.html
+A click to play like my video page - https://josephined.github.io/design-portfolio/video-content.html
+
+Can you please rewrite the code for me so I can just upload a new html file and all will be good
+
+4:05 pm
+
+Searched the web, viewed a file
+Searched the web, viewed a file
+Now I have everything I need. Let me build the clean, fixed HTML file.
+
+
+Created a file, read a file
+Created a file, read a file
+Drop this file straight into your repo and it'll replace the old one. Here's what was fixed:
+
+The blowout problem — the old code had a <video> tag inside a background: linear-gradient div with no size constraints. Now every .mg-thumb is aspect-ratio: 16/9 with overflow: hidden, and the video inside is position: absolute; inset: 0; object-fit: cover — so it fills the card perfectly no matter the video dimensions.
+
+Click to play — same modal pattern as your video page. Clicking any card opens the video fullscreen with controls. Press Escape, click outside, or hit ✕ to close. The data-video attribute on each card is where the src lives, making it easy to add new cards.
+
+To add a new card, just copy this block and update the three spots marked with your video path and text:
+
+html
+<div class="mg-card fade-up" data-video="assets/motion-graphics/YOUR-FILE.mp4">
+  <div class="mg-thumb">
+    <video src="assets/motion-graphics/YOUR-FILE.mp4" preload="metadata" muted playsinline></video>
+    <div class="mg-play">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
+    </div>
+    <div class="mg-lbl">Your Label</div>
+  </div>
+  <div class="mg-body">
+    <div class="mg-title">Card Title</div>
+    <div class="mg-desc">Short description here.</div>
+  </div>
+</div>
+Motion graphics
+Code · HTML 
+
+index.html
+html
+
+
+brand-identity.html
+187 lines
+
+html
+
+Can you please fill out brand identity page using the code from the index page?
+
+4:14 pm
+Let me read the index page first.
+
+
+Viewed 2 files
+Viewed 2 files
+Good, I have everything I need. Now I'll build the updated brand-identity.html using the index page's card styles, contact section, and footer patterns.
+
+
+Created a file, read a file
+Created a file, read a file
+Here's the updated file — just drop it into your repo to replace the old one. Here's what changed:
+
+Brought in from index.html:
+
+Featured card uses the same work-featured split layout (image left, content right) with hover scale on the image
+All grid cards use the work-card style with the consistent work-card-img / work-card-body structure
+Contact section is now the full yellow version with the larger heading, subtitle, and links row (matching index exactly)
+Footer is consistent
+Fade-up animation uses the same staggered timing logic
+Also added:
+
+A "Next → Video Content" bar between the grid and contact, so the page flows naturally into the rest of your site
+Image placeholder comments on every card so you know exactly where to drop in photos when you're ready (<!-- TO ADD IMAGE: <img src="..."> -->)
+Brand identity
+Code · HTML 
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="PROJECT NAME — Josephine De Maria Graphic Designer"> <!-- ▼ CHANGE: Update the page title --> <title>Project Name — Josephine De Ma
+
+pasted
+
+Why are my videos not playig when I click on them?
+
+https://josephined.github.io/design-portfolio/selfwealth.html
+
+3:18 pm
+The issue is simple — your video cards have no click handler. The data-src attributes and play buttons are there, but there's no JavaScript to actually open/play the video when clicked.
+
+Here's the script to add. Paste it just before </body>, replacing your existing <script> block:
+
+html
+<script>
+  // ── Fade-up on scroll ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Video modal ──
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92);
+    z-index:999; align-items:center; justify-content:center;
+  `;
+  modal.innerHTML = `
+    <div style="position:relative; width:min(90vw,640px);">
+      <button style="position:absolute;top:-2.5rem;right:0;background:none;border:none;
+        color:#f5f0e8;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+        cursor:pointer;opacity:0.7;" id="modalClose">✕ Close</button>
+      <video id="modalVideo" controls playsinline
+        style="width:100%;display:block;border-radius:2px;"></video>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const modalVideo = modal.querySelector('#modalVideo');
+
+  function openModal(src, isPortrait) {
+    modalVideo.src = src;
+    const inner = modal.querySelector('div');
+    inner.style.width = isPortrait ? 'min(90vw, 360px)' : 'min(90vw, 900px)';
+    modal.style.display = 'flex';
+    modalVideo.play();
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modalVideo.pause();
+    modalVideo.src = '';
+  }
+
+  modal.querySelector('#modalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  document.querySelectorAll('.vid[data-src]').forEach(card => {
+    card.addEventListener('click', () => {
+      const src = card.dataset.src;
+      const isPortrait = card.dataset.portrait === 'true';
+      openModal(src, isPortrait);
+    });
+  });
+</script>
+That's the only change needed — the HTML is all correct. The script reads the data-src and data-portrait attributes you already have on every .vid card and opens a modal sized correctly for portrait (TikToks) vs landscape videos.
+
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="PROJECT NAME — Josephine De Maria Graphic Designer"> <!-- ▼ CHANGE: Update the page title --> <title>Project Name — Josephine De Ma
+
+pasted
+
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Video Content — Josephine De Maria Graphic Designer"> <title>Video Content — Josephine De Maria</title> <link rel="preconnect" href
+
+pasted
+
+Can you please fix the Selfwealth code so that the landscape cards sit side by side as in the video content page
+
+3:45 pm
+Looking at both files, the selfwealth page has two loose landscape video cards sitting outside any grid container — they're just floating in the HTML with no wrapper. I'll fix that by wrapping them in a proper landscape-grid like the video-content page uses.
+
+
+Created a file, read a file
+Created a file, read a file
+Here's the fixed file. The core problem was that the two landscape video cards had no wrapper — they were just loose <div>s floating in the HTML after the social section closed. Here's what I fixed:
+
+The landscape cards are now wrapped in a proper <section class="landscape-section"> with a landscape-grid that puts them side by side at 1fr 1fr, exactly like the video-content page. It also has a matching header with eyebrow, heading, and a "See all videos →" link.
+
+Also cleaned up while I was in there:
+
+Removed the stray </div> that was orphaned after the image duo block
+Added the thumbnail seek script (v.currentTime = 0.1) so the first frame shows instead of a black screen
+Tidied the modal so modalInner is properly referenced for portrait/landscape sizing
+Collapsed to one consistent play button size (vid-play-sm) across all video cards on this page
+Selfwealth
+Code · HTML 
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Motion Graphics — Josephine De Maria</title> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://font
+
+pasted
+
+Can you change the layout of the motions graphics page to be more visually interesting like the video content page but only with the 6 horizontal videos - https://josephined.github.io/design-portfolio/video-content.html
+
+4:17 pm
+Let me look at the video content page to get the exact layout details.
+
+
+Fetched: Video Content
+Fetched: Video Content
+Good — I have the full picture. I'll rework the motion graphics grid to use the video-content page's layout language: a featured full-width card, then a 2-column row, then a 3-column row, with section headers, badges, and captions — all using the vid / vid-landscape pattern.
+
+
+Created 2 files, ran a command, read a file
+Created 2 files, ran a command, read a file
+Here's the updated file. The layout now mirrors the video-content page's structure across your 6 videos:
+
+Row 1 — Featured full-width with the large play button: Y Careers Brand Motion System
+Row 2 — 2-column side by side: Social Campaign + Company Explainer
+Row 3 — 3-column: Logo Animation, Animated Explainer, Animating Illustrations
+Each card uses the same vid / vid-badge / vid-overlay pattern as the video page, with the thumbnail seeking to frame 1 so you never see a black screen. The "How I work" section is now a two-column split layout rather than stacked text, and the lightbox uses the exact same open/close logic as the video-content page.
+
+Motion graphics
+Code · HTML 
+
+Want to be notified when Claude responds?
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Motion graphics · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,157 +343,219 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="shared.css"/>
   <style>
-    /* ── Motion Graphics grid ── */
-    .mg-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+ 
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 10rem 3rem 5rem;
+      border-bottom: 1px solid var(--border);
     }
-
-    /* ── Each card ── */
-    .mg-card {
-      background: var(--green-mid);
-      border: 1px solid var(--border);
+ 
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+ 
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+ 
+    .page-hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+ 
+    /* ── VIDEO SECTION ── */
+    .video-section {
+      padding: 5rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .video-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+ 
+    .video-section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.1;
+    }
+ 
+    .video-section-header h2 em { font-style: italic; color: var(--accent); }
+ 
+    /* ── VIDEO CARD ── */
+    .vid {
+      position: relative;
       overflow: hidden;
+      background: #0d0d0d;
       cursor: pointer;
-      position: relative;
-      transition: transform 0.3s ease;
+      display: block;
     }
-    .mg-card:hover { transform: translateY(-4px); }
-
-    /* ── Thumb: fixed 16/9 box that clips the video ── */
-    .mg-thumb {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: var(--green-light);
-    }
-
-    /* ── Video fills the thumb exactly, no overflow ── */
-    .mg-thumb video {
+ 
+    .vid-landscape { aspect-ratio: 16 / 9; }
+ 
+    .vid video.thumb {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      pointer-events: none;
     }
-
-    /* ── Gradient overlay so label is readable ── */
-    .mg-thumb::after {
-      content: '';
+ 
+    .vid-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(26,58,42,0.75) 0%, transparent 55%);
-      pointer-events: none;
+      background: rgba(0,0,0,0.35);
+      transition: background 0.3s ease;
       z-index: 1;
     }
-
-    /* ── Play button centred on thumb ── */
-    .mg-play {
+ 
+    .vid:hover .vid-overlay { background: rgba(0,0,0,0.1); }
+ 
+    .vid-play {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 44px;
-      height: 44px;
+      z-index: 2;
+      width: 64px; height: 64px;
       border-radius: 50%;
-      background: rgba(0,0,0,0.55);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-      transition: background 0.2s, opacity 0.2s;
+      border: 2px solid rgba(255,255,255,0.7);
+      background: rgba(0,0,0,0.25);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
-    .mg-play svg { margin-left: 3px; }
-    .mg-card:hover .mg-play { background: rgba(0,0,0,0.75); }
-
-    /* ── Label bottom-left of thumb ── */
-    .mg-lbl {
+ 
+    .vid:hover .vid-play {
+      border-color: var(--accent);
+      background: rgba(255,233,115,0.15);
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+ 
+    .vid-play svg { margin-left: 4px; }
+    .vid:hover .vid-play svg path { fill: var(--accent); }
+ 
+    .vid-play-lg { width: 80px; height: 80px; }
+ 
+    .vid-badge {
       position: absolute;
-      bottom: 0.75rem;
-      left: 0.9rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cream);
+      top: 1rem; left: 1rem;
       z-index: 2;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      background: rgba(0,0,0,0.5);
+      padding: 0.35rem 0.75rem;
+      backdrop-filter: blur(4px);
     }
-
-    /* ── Card body below thumb ── */
-    .mg-body {
-      padding: 1.1rem 1.25rem 1.25rem;
+ 
+    .vid-caption { padding: 1rem 0 0; }
+    .vid-caption-title { font-size: 0.9rem; font-weight: 500; color: var(--cream); margin-bottom: 0.2rem; }
+    .vid-caption-desc  { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+ 
+    /* ── LAYOUT GRIDS ── */
+    .vid-featured { margin-bottom: 1.5rem; }
+ 
+    .landscape-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
-    .mg-title {
-      font-family: var(--serif);
+ 
+    .landscape-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+ 
+    /* ── PROCESS ── */
+    .process-section {
+      padding: 5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .process-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
       font-weight: 700;
-      font-size: 1rem;
       color: var(--cream);
-      margin-bottom: 0.35rem;
-      line-height: 1.2;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
     }
-    .mg-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ── Section subtitle ── */
-    .section-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      letter-spacing: 0.04em;
-    }
-
-    /* ── Fullscreen modal (same pattern as video-content.html) ── */
-    .video-modal {
+ 
+    .process-section h2 em { font-style: italic; color: var(--accent); }
+ 
+    /* ── LIGHTBOX ── */
+    .lightbox {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.92);
       z-index: 999;
+      background: rgba(0,0,0,0.94);
       align-items: center;
       justify-content: center;
+      padding: 2rem;
     }
-    .video-modal.active { display: flex; }
-    .modal-inner {
+ 
+    .lightbox.open { display: flex; }
+ 
+    .lightbox-inner {
       position: relative;
-      width: min(90vw, 1100px);
-    }
-    .modal-inner video {
       width: 100%;
-      border-radius: 2px;
-      display: block;
+      max-width: 1000px;
     }
-    .modal-close {
+ 
+    .lightbox-inner video { width: 100%; display: block; }
+ 
+    .lightbox-close {
       position: absolute;
-      top: -2.5rem;
-      right: 0;
-      background: none;
-      border: none;
-      color: var(--cream);
-      font-size: 1rem;
-      letter-spacing: 0.1em;
+      top: -3rem; right: 0;
+      background: none; border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
+      font-family: 'DM Sans', sans-serif;
     }
-    .modal-close:hover { opacity: 1; }
-
+ 
+    .lightbox-close:hover { color: var(--accent); }
+ 
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      .mg-grid { grid-template-columns: 1fr 1fr; }
+      .page-hero { padding: 7rem 1.5rem 3rem; }
+      .video-section { padding: 3.5rem 1.5rem; }
+      .video-section-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .landscape-grid-2 { grid-template-columns: 1fr; }
+      .landscape-grid-3 { grid-template-columns: 1fr 1fr; }
+      .process-section { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
     }
+ 
     @media (max-width: 600px) {
-      .mg-grid { grid-template-columns: 1fr; }
+      .landscape-grid-3 { grid-template-columns: 1fr; }
     }
+ 
   </style>
 </head>
 <body>
-
+ 
 <!-- ── NAV ── -->
 <nav>
   <a href="index.html" class="nav-logo">Josephine De Maria</a>
@@ -173,18 +569,12 @@
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
 </nav>
-
+ 
 <!-- ── HERO ── -->
-<section class="section" style="padding-top:7rem;">
+<div class="page-hero">
   <span class="eyebrow">Animation · Motion Design · After Effects</span>
-  <h1 class="display" style="font-size:clamp(2.8rem,6vw,5.5rem);margin-bottom:1.5rem;">
-    Motion <em>Graphics</em>
-  </h1>
-  <p class="intro">
-    I use animation to bring brands to life and make content more engaging — from brand animations and social campaign motion to animated explainers that make complex concepts digestible.
-  </p>
-
-  <!-- Tags -->
+  <h1>Motion <em>Graphics</em></h1>
+  <p>I use animation to bring brands to life and make content more engaging — from brand animations and social campaign motion to animated explainers that make complex concepts digestible.</p>
   <div style="margin-top:1.75rem;">
     <span class="tag">After Effects</span>
     <span class="tag">Logo Animation</span>
@@ -193,123 +583,195 @@
     <span class="tag">Lower Thirds</span>
     <span class="tag">Explainer Video</span>
   </div>
+</div>
+ 
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>After Effects</span><span>Brand Animation</span><span>Social Campaigns</span>
+    <span>Explainer Video</span><span>Logo Animation</span><span>After Effects</span>
+    <span>Brand Animation</span><span>Social Campaigns</span><span>Explainer Video</span>
+    <span>Logo Animation</span>
+  </div>
+</div>
+ 
+<!-- ── MOTION WORK SECTION ── -->
+<section class="video-section">
+ 
+  <div class="video-section-header">
+    <div>
+      <span class="eyebrow">After Effects · Brand Motion</span>
+      <h2>Selected <em>Work</em></h2>
+    </div>
+    <div>
+      <span class="tag">Brand Motion</span>
+      <span class="tag">Social</span>
+      <span class="tag">Explainer</span>
+    </div>
+  </div>
+ 
+  <!-- FEATURED: full width -->
+  <div class="vid-featured">
+    <div class="vid vid-landscape fade-up"
+         data-src="assets/motion-graphics/Work Different.mp4"
+         data-portrait="false">
+      <video class="thumb" preload="metadata" muted playsinline>
+        <source src="assets/motion-graphics/Work Different.mp4" type="video/mp4">
+      </video>
+      <div class="vid-badge">Featured</div>
+      <div class="vid-overlay"></div>
+      <div class="vid-play vid-play-lg">
+        <svg width="20" height="22" viewBox="0 0 20 22" fill="none">
+          <path d="M1 1.5l18 9.5L1 20.5V1.5z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+    <div class="vid-caption">
+      <div class="vid-caption-title">Y Careers — Brand Motion System</div>
+      <div class="vid-caption-desc">Animated brand assets including logo animations, social media motion graphics, and campaign animations — bringing the bold visual identity to life across digital platforms.</div>
+    </div>
+  </div>
+ 
+  <!-- 2-COLUMN ROW -->
+  <div class="landscape-grid-2">
+ 
+    <div>
+      <div class="vid vid-landscape fade-up"
+           data-src="assets/motion-graphics/USPromoFINAL.mp4"
+           data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/USPromoFINAL.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Social Campaign</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Social Campaign Animation</div>
+        <div class="vid-caption-desc">Animated social tiles and story graphics for digital campaign rollouts.</div>
+      </div>
+    </div>
+ 
+    <div>
+      <div class="vid vid-landscape fade-up"
+           data-src="assets/motion-graphics/WhoIsYCareersFINAL.mp4"
+           data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Explainer</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Company Explainer</div>
+        <div class="vid-caption-desc">An animated introduction is a digestible way to explain what your company does.</div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <!-- 3-COLUMN ROW -->
+  <div class="landscape-grid-3">
+ 
+    <div>
+      <div class="vid vid-landscape fade-up"
+           data-src="assets/motion-graphics/LogoAnimation.mp4"
+           data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/LogoAnimation.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Logo</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Logo Animation</div>
+        <div class="vid-caption-desc">Kinetic logo reveals and looping brand animations for digital platforms.</div>
+      </div>
+    </div>
+ 
+    <div>
+      <div class="vid vid-landscape fade-up"
+           data-src="assets/motion-graphics/What is a GTO.mp4"
+           data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Explainer</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Animated Explainer</div>
+        <div class="vid-caption-desc">Motion graphics that make complex ideas digestible — used across social and advertising.</div>
+      </div>
+    </div>
+ 
+    <div>
+      <div class="vid vid-landscape fade-up"
+           data-src="assets/motion-graphics/OOH_1920x1080Yash_1.mp4"
+           data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/OOH_1920x1080Yash_1.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Brand</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Animating Illustrations</div>
+        <div class="vid-caption-desc">Bringing existing Selfwealth illustrations to life with purposeful motion.</div>
+      </div>
+    </div>
+ 
+  </div>
+ 
 </section>
-
-<!-- ── MOTION GRID ── -->
-<section class="section">
-  <span class="eyebrow">Selected Work</span>
-  <h2 class="display" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:0.6rem;">Motion Projects</h2>
-  <p class="section-sub">Click any card to play the full video.</p>
-
-  <div class="mg-grid">
-
-    <!-- Card 1 -->
-    <div class="mg-card fade-up" data-video="assets/motion-graphics/Work Different.mp4">
-      <div class="mg-thumb">
-        <video src="assets/motion-graphics/Work Different.mp4" preload="metadata" muted playsinline></video>
-        <div class="mg-play">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
-        </div>
-        <div class="mg-lbl">Brand · Social · Campaign</div>
-      </div>
-      <div class="mg-body">
-        <div class="mg-title">Y Careers — Brand Motion System</div>
-        <div class="mg-desc">Animated brand assets including logo animations, social media motion graphics, and campaign animations — bringing the bold visual identity to life across digital platforms.</div>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="mg-card fade-up" data-video="assets/motion-graphics/USPromoFINAL.mp4">
-      <div class="mg-thumb">
-        <video src="assets/motion-graphics/USPromoFINAL.mp4" preload="metadata" muted playsinline></video>
-        <div class="mg-play">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
-        </div>
-        <div class="mg-lbl">Social Campaign Motion</div>
-      </div>
-      <div class="mg-body">
-        <div class="mg-title">Social Campaign Animation</div>
-        <div class="mg-desc">Animated social tiles and story graphics for digital campaign rollouts.</div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="mg-card fade-up" data-video="assets/motion-graphics/LogoAnimation.mp4">
-      <div class="mg-thumb">
-        <video src="assets/motion-graphics/LogoAnimation.mp4" preload="metadata" muted playsinline></video>
-        <div class="mg-play">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
-        </div>
-        <div class="mg-lbl">Logo Animation</div>
-      </div>
-      <div class="mg-body">
-        <div class="mg-title">Logo Animation</div>
-        <div class="mg-desc">Kinetic logo reveals and looping brand animations for digital use across platforms.</div>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="mg-card fade-up" data-video="assets/motion-graphics/What is a GTO.mp4">
-      <div class="mg-thumb">
-        <video src="assets/motion-graphics/What is a GTO.mp4" preload="metadata" muted playsinline></video>
-        <div class="mg-play">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
-        </div>
-        <div class="mg-lbl">Animated Explainer</div>
-      </div>
-      <div class="mg-body">
-        <div class="mg-title">Animated Explainer</div>
-        <div class="mg-desc">Motion graphics that make complex ideas digestible — used across social and digital advertising.</div>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="mg-card fade-up" data-video="assets/motion-graphics/OOH_1920x1080Yash_1.mp4">
-      <div class="mg-thumb">
-        <video src="assets/motion-graphics/OOH_1920x1080Yash_1.mp4" preload="metadata" muted playsinline></video>
-        <div class="mg-play">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
-        </div>
-        <div class="mg-lbl">Animating Existing Assets</div>
-      </div>
-      <div class="mg-body">
-        <div class="mg-title">Animating Illustrations</div>
-        <div class="mg-desc">Animating existing illustrations to bring the Selfwealth brand to life.</div>
-      </div>
-    </div>
-    
- <!-- Card 6 -->
-    <div class="mg-card fade-up" data-video="assets/motion-graphics/WhoIsYCareersFINAL.mp4">
-      <div class="mg-thumb">
-        <video src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" preload="metadata" muted playsinline></video>
-        <div class="mg-play">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z" fill="white"/></svg>
-        </div>
-        <div class="mg-lbl">Animated explainers</div>
-      </div>
-      <div class="mg-body">
-        <div class="mg-title">Company explainers</div>
-        <div class="mg-desc">An animated introduction is a digestable way to explain what your company does.</div>
-      </div>
-    </div>
-    <!-- Add more cards here following the same pattern -->
-
+ 
+<!-- ── HOW I WORK ── -->
+<section class="process-section">
+  <div class="fade-up">
+    <span class="eyebrow">Process</span>
+    <h2>How I <em>work</em></h2>
+    <p class="body-copy">All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement — using timing and easing to give each animation its own personality.</p>
+  </div>
+  <div class="fade-up">
+    <span class="eyebrow">Social-First</span>
+    <h2>Designed for <em>the feed</em></h2>
+    <p class="body-copy">For social-first animations, I prioritise the first two seconds — designing for autoplay on muted feeds while ensuring the animation holds up with sound on.</p>
   </div>
 </section>
-
-<!-- ── HOW I WORK ── -->
-<section class="section" style="padding-top:0;">
-  <hr class="divider"/>
-  <span class="eyebrow">Process</span>
-  <h2 class="display" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:1.25rem;">How I work</h2>
-  <p class="body-copy" style="max-width:640px;">
-    All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement — using timing and easing to give each animation its own personality.
-  </p>
-  <p class="body-copy" style="max-width:640px;margin-top:1rem;">
-    For social-first animations, I prioritise the first two seconds — designing for autoplay on muted feeds while ensuring the animation holds up with sound on.
-  </p>
-</section>
-
+ 
+<!-- ── NEXT PROJECT ── -->
+<a href="illustration.html" class="next-project">
+  <div>
+    <div class="next-label">Next</div>
+    <div class="next-title">Illustration</div>
+  </div>
+  <div class="next-arrow">→</div>
+</a>
+ 
 <!-- ── CONTACT ── -->
 <div class="contact-section">
   <h2>Need a designer?</h2>
@@ -317,56 +779,81 @@
   <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
   <div class="contact-links">
     <a href="tel:0400636229">0400 636 229</a>
-    <a href="#">Portfolio</a>
-    <a href="#">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/josephinedmaria" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </div>
-
+ 
 <!-- ── FOOTER ── -->
 <footer>
   <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
-
-<!-- ── VIDEO MODAL ── -->
-<div class="video-modal" id="videoModal">
-  <div class="modal-inner">
-    <button class="modal-close" id="modalClose">✕ Close</button>
-    <video id="modalVideo" controls playsinline></video>
+ 
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightboxInner">
+    <button class="lightbox-close" id="lightboxClose">✕ Close</button>
+    <video id="lightboxVideo" controls playsinline></video>
   </div>
 </div>
-
+ 
 <script>
   // ── Fade-up on scroll ──
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // ── Click card → open modal ──
-  const modal      = document.getElementById('videoModal');
-  const modalVideo = document.getElementById('modalVideo');
-  const closeBtn   = document.getElementById('modalClose');
-
-  document.querySelectorAll('.mg-card').forEach(card => {
+ 
+  // ── Seek thumbnails to first frame ──
+  document.querySelectorAll('video.thumb').forEach(v => {
+    v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
+    if (v.readyState >= 1) v.currentTime = 0.1;
+  });
+ 
+  // ── Lightbox ──
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxVideo = document.getElementById('lightboxVideo');
+  const lightboxClose = document.getElementById('lightboxClose');
+ 
+  document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      const src = card.dataset.video;
-      if (!src) return;
-      modalVideo.src = src;
-      modal.classList.add('active');
-      modalVideo.play();
+      lightboxVideo.src = card.dataset.src;
+      lightboxVideo.load();
+      lightboxVideo.play();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
   });
-
-  function closeModal() {
-    modal.classList.remove('active');
-    modalVideo.pause();
-    modalVideo.src = '';
+ 
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+ 
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxVideo.pause();
+    lightboxVideo.src = '';
+    document.body.style.overflow = '';
   }
-
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
