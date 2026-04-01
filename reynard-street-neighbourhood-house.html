@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reynard Street Neighbourhood House — Josephine De Maria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .page-intro-block { padding:10rem 3rem 4rem; border-bottom:1px solid var(--border); }
+  .page-intro-block h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,7rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:1.5rem; }
+  .page-intro-block h1 em { font-style:italic; color:var(--accent); }
+  .page-intro-block p { font-size:1.05rem; color:var(--muted); max-width:600px; line-height:1.8; }
+
+  .img-full { width:100%; position:relative; overflow:hidden; background:var(--green-mid); display:block; }
+  .img-full img { width:100%; height:100%; object-fit:cover; display:block; }
+  .img-duo  { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+  .img-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+  .img-feature-left  { display:grid; grid-template-columns:2fr 1fr; gap:3px; align-items:stretch; }
+  .img-feature-right { display:grid; grid-template-columns:1fr 2fr; gap:3px; align-items:stretch; }
+  .img-stack { display:flex; flex-direction:column; gap:3px; }
+  .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; }
+  .img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
+  .img-cell:hover img { transform:scale(1.03); }
+  .h-sm { height:320px; } .h-md { height:480px; } .h-lg { height:620px; } .h-xl { height:80vh; }
+  .h-sq { aspect-ratio:1/1; height:auto; } .h-port { aspect-ratio:3/4; height:auto; }
+  .h-45 { aspect-ratio:4/5; height:auto; } .h-169 { aspect-ratio:16/9; height:auto; }
+
+  .caption-block { padding:3rem; border-bottom:1px solid var(--border); display:flex; align-items:baseline; justify-content:space-between; gap:4rem; }
+  .caption-block h2 { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,2.5vw,2.2rem); font-weight:700; color:var(--cream); line-height:1.1; flex-shrink:0; max-width:340px; }
+  .caption-block h2 em { font-style:italic; color:var(--accent); }
+  .caption-block p { font-size:0.9rem; color:var(--muted); line-height:1.8; max-width:480px; }
+  .section-marker { padding:1.5rem 3rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:1.5rem; }
+  .section-marker-line { flex:1; height:1px; background:var(--border); }
+
+  @media(max-width:768px) {
+    .page-intro-block { padding:7rem 1.5rem 3rem; }
+    .img-duo,.img-trio,.img-feature-left,.img-feature-right { grid-template-columns:1fr; }
+    .caption-block { flex-direction:column; gap:1rem; padding:2rem 1.5rem; }
+    .section-marker { padding:1.25rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">JDM</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="brand-identity.html">Brand Identity</a></li>
+    <li><a href="video-content.html">Video</a></li>
+    <li><a href="motion-graphics.html">Motion</a></li>
+    <li><a href="y-careers.html">Y Careers</a></li>
+    <li><a href="selfwealth.html">Selfwealth</a></li>
+    <li><a href="illustration.html">Illustration</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<ul class="nav-drawer" id="navDrawer">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="brand-identity.html">Brand Identity</a></li>
+  <li><a href="video-content.html">Video</a></li>
+  <li><a href="motion-graphics.html">Motion</a></li>
+  <li><a href="y-careers.html">Y Careers</a></li>
+  <li><a href="selfwealth.html">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
+</ul>
+
+<!-- PAGE INTRO -->
+<div class="page-intro-block">
+  <a href="brand-identity.html" class="back-link">← Brand Identity</a>
+  <span class="eyebrow">NFP · Print · Marketing Collateral</span>
+  <h1>Reynard Street <em>Neighbourhood House</em></h1>
+  <p>While volunteering for the Reynard Street Neighbourhood House, I had the opportunity to design a fresh new take on their current branding — creating posters and marketing collateral that would genuinely appeal to local community members.</p>
+</div>
+
+<!-- IMAGE 1: Full-width hero -->
+<!-- Replace src with your first RSNH image -->
+<div class="img-full img-cell h-xl fade-up">
+  <img src="assets/reynard-street/ReynardStreet1.png" alt="Reynard Street Neighbourhood House brand">
+</div>
+
+<!-- CAPTION -->
+<div class="caption-block fade-up">
+  <h2>Design for the <em>community</em></h2>
+  <p>The challenge was to refresh an existing identity in a way that felt modern and welcoming without losing the warmth and familiarity the local community already associated with the house. The result was a approachable, vibrant visual direction for their print collateral and community-facing materials.</p>
+</div>
+
+<!-- IMAGES 2 & 3: Side by side -->
+<!-- Replace srcs with your RSNH images -->
+<div class="img-duo fade-up">
+  <div class="img-cell h-md">
+    <img src="assets/reynard-street/ReynardStreet2.png" alt="Reynard Street poster design">
+  </div>
+  <div class="img-cell h-md">
+    <img src="assets/reynard-street/ReynardStreet3.png" alt="Reynard Street marketing collateral">
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <h2>Like what you see?</h2>
+  <p>Open to freelance, contract, and full-time opportunities.</p>
+  <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
+  <div class="contact-links">
+    <a href="tel:0400636229">0400 636 229</a>
+    <a href="https://www.linkedin.com/in/josephine-de-maria/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-right">Melbourne, Australia</span>
+</footer>
+
+<script>
+  const _obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
+</script>
+</body>
+</html>
