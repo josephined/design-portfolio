@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PROJECT NAME — Josephine De Maria Graphic Designer">
-
-<!-- ▼ CHANGE: Update the page title -->
-<title>Project Name — Josephine De Maria</title>
+<meta name="description" content="Selfwealth — Josephine De Maria Graphic Designer">
+<title>Selfwealth — Josephine De Maria</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,14 +14,14 @@
 <style>
   /* ── FULL-BLEED HERO IMAGE ── */
   .img-hero {
-  width: 100%;
-  aspect-ratio: 16 / 9; /* 👈 key line */
-  position: relative;
-  overflow: hidden;
-  background: var(--green-mid);
-  display: flex;
-  align-items: flex-end;
- }
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    background: var(--green-mid);
+    display: flex;
+    align-items: flex-end;
+  }
 
   .img-hero img {
     position: absolute;
@@ -33,7 +31,6 @@
     object-fit: cover;
   }
 
-  /* Dark gradient so header text sits on top of image cleanly */
   .img-hero::after {
     content: '';
     position: absolute;
@@ -59,10 +56,7 @@
     margin-bottom: 0.75rem;
   }
 
-  .img-hero-text h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .img-hero-text h1 em { font-style: italic; color: var(--accent); }
 
   .img-hero-text p {
     font-size: 1rem;
@@ -103,8 +97,6 @@
   }
 
   /* ── IMAGE LAYOUTS ── */
-
-  /* Single full-width */
   .img-full {
     width: 100%;
     position: relative;
@@ -120,37 +112,31 @@
     display: block;
   }
 
-  /* Two equal columns */
   .img-duo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3px;
   }
 
-  /* Three equal columns */
   .img-trio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3px;
   }
 
-  /* Large left, small right stack */
   .img-feature-left {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 3px;
   }
 
-  /* Small left stack, large right */
   .img-feature-right {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3px;
-  height: 620px; /* 👈 controls everything */
-  height: 100%;
- }
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3px;
+    height: 620px;
+  }
 
-  /* Right column stack (2 images stacked) */
   .img-stack {
     display: flex;
     flex-direction: column;
@@ -158,7 +144,6 @@
     height: 100%;
   }
 
-  /* Image cell — the base unit */
   .img-cell {
     position: relative;
     overflow: hidden;
@@ -166,7 +151,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1; /* equal split */
+    flex: 1;
   }
 
   .img-cell img {
@@ -179,7 +164,6 @@
 
   .img-cell:hover img { transform: scale(1.03); }
 
-  /* Placeholder label — remove once real images are added */
   .img-cell-label {
     font-size: 0.68rem;
     letter-spacing: 0.1em;
@@ -190,16 +174,14 @@
     z-index: 1;
   }
 
-  /* Standard heights */
   .h-sm  { height: 320px; }
   .h-md  { height: 480px; }
   .h-lg  { height: 620px; }
-  .h-xl  { height: 80vh;  }
+  .h-xl  { height: 80vh; }
   .h-sq  { aspect-ratio: 1/1; height: auto; }
   .h-port { aspect-ratio: 3/4; height: auto; }
 
   /* ── CAPTION BLOCK ── */
-  /* Sits between image groups — keep copy tight -->*/
   .caption-block {
     padding: 3rem;
     border-bottom: 1px solid var(--border);
@@ -219,10 +201,7 @@
     max-width: 340px;
   }
 
-  .caption-block h2 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .caption-block h2 em { font-style: italic; color: var(--accent); }
 
   .caption-block p {
     font-size: 0.9rem;
@@ -246,80 +225,95 @@
     background: var(--border);
   }
 
-   /* ── VIDEO — shared ── */
+  /* ── VIDEO — shared ── */
   .vid {
-    position: relative; overflow: hidden;
-    background: #0d0d0d; cursor: pointer; display: block;
+    position: relative;
+    overflow: hidden;
+    background: #0d0d0d;
+    cursor: pointer;
+    display: block;
   }
 
   .vid-landscape { aspect-ratio: 16 / 9; }
   .vid-portrait  { aspect-ratio: 9 / 16; }
 
   .vid video.thumb {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     pointer-events: none;
   }
 
   .vid-overlay {
-    position: absolute; inset: 0;
-    background: rgba(0,0,0,0.4); transition: background 0.3s; z-index: 1;
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    transition: background 0.3s;
+    z-index: 1;
   }
 
   .vid:hover .vid-overlay { background: rgba(0,0,0,0.12); }
 
   .vid-badge {
-    position: absolute; top: 1.25rem; left: 1.25rem; z-index: 2;
-    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.5);
-    padding: 0.35rem 0.75rem; backdrop-filter: blur(4px);
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 2;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.5);
+    padding: 0.35rem 0.75rem;
+    backdrop-filter: blur(4px);
   }
 
-  /* Large play — workshop video */
+  /* Play button — large */
   .vid-play-lg {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%); z-index: 2;
-    width: 80px; height: 80px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.7); background: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.3);
     display: flex; align-items: center; justify-content: center;
     transition: border-color 0.25s, background 0.25s, transform 0.25s;
   }
 
   .vid:hover .vid-play-lg {
-    border-color: var(--accent); background: rgba(255,233,115,0.18);
+    border-color: var(--accent);
+    background: rgba(255,233,115,0.18);
     transform: translate(-50%,-50%) scale(1.1);
   }
 
   .vid:hover .vid-play-lg svg path { fill: var(--accent); }
 
-  /* Small play — reel cards */
+  /* Play button — small */
   .vid-play-sm {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%); z-index: 2;
-    width: 48px; height: 48px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.65); background: rgba(0,0,0,0.25);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.65);
+    background: rgba(0,0,0,0.25);
     display: flex; align-items: center; justify-content: center;
     transition: border-color 0.25s, background 0.25s, transform 0.25s;
   }
 
   .vid:hover .vid-play-sm {
-    border-color: var(--accent); background: rgba(255,233,115,0.15);
+    border-color: var(--accent);
+    background: rgba(255,233,115,0.15);
     transform: translate(-50%,-50%) scale(1.1);
   }
 
   .vid:hover .vid-play-sm svg path { fill: var(--accent); }
-
-  /* ── WORKSHOP VIDEO ── */
-  .workshop-video-wrap { border-bottom: 1px solid var(--border); }
-
-  .workshop-video-caption {
-    padding: 1.5rem 3rem; border-top: 1px solid var(--border);
-    background: var(--green-mid);
-  }
-
-  .workshop-video-caption p {
-    font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 640px;
-  }
 
   /* ── SOCIAL MEDIA SECTION ── */
   .social-section {
@@ -329,24 +323,35 @@
   }
 
   .social-section-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     margin-bottom: 2.5rem;
   }
 
   .social-section-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700; color: var(--cream); line-height: 1.1;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
   }
 
   .social-section-header h2 em { font-style: italic; color: var(--accent); }
 
   .see-all-link {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none;
-    border-bottom: 1px solid rgba(245,240,232,0.2); padding-bottom: 2px;
-    white-space: nowrap; transition: color 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245,240,232,0.2);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
   }
 
   .see-all-link:hover { color: var(--cream); border-color: var(--cream); }
@@ -358,11 +363,41 @@
     gap: 1.25rem;
   }
 
-  /* Captions below reels */
+  /* ── LANDSCAPE VIDEO SECTION ── */
+  .landscape-section {
+    padding: 4rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .landscape-section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  .landscape-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+
+  .landscape-section-header h2 em { font-style: italic; color: var(--accent); }
+
+  /* 2-column landscape grid — matches video-content.html */
+  .landscape-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Captions below videos */
   .vid-caption { padding: 0.75rem 0 0; }
   .vid-caption-title { font-size: 0.85rem; font-weight: 500; color: var(--cream); }
   .vid-caption-desc  { font-size: 0.75rem; color: var(--muted); line-height: 1.5; margin-top: 0.2rem; }
-  
+
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
     .img-hero { height: 75vh; }
@@ -370,18 +405,22 @@
     .img-trio,
     .img-feature-left,
     .img-feature-right { grid-template-columns: 1fr; }
+    .img-feature-right { height: auto; }
     .caption-block { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; }
     .meta-bar { flex-wrap: wrap; }
     .meta-bar-item { border-bottom: 1px solid var(--border); }
     .img-hero-text { padding: 2rem 1.5rem; }
     .section-marker { padding: 1.25rem 1.5rem; }
+    .social-section { padding: 3rem 1.5rem; }
+    .social-grid { grid-template-columns: repeat(2, 1fr); }
+    .landscape-section { padding: 3rem 1.5rem; }
+    .landscape-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <!-- ── NAV ── -->
-<!-- ▼ CHANGE: set class="active" on the nav link that matches this page -->
 <nav>
   <a href="index.html" class="nav-logo">Josephine De Maria</a>
   <ul class="nav-links">
@@ -397,25 +436,17 @@
 
 <!-- ── FULL-BLEED HERO ── -->
 <div class="img-hero">
-  
   <video autoplay muted loop playsinline
-          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <source src="assets/selfwealth/SelfwealthAnimation.mp4" type="video/mp4">
-        </video>
-
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <source src="assets/selfwealth/SelfwealthAnimation.mp4" type="video/mp4">
+  </video>
   <div class="img-hero-text">
-
-    <!-- ▼ CHANGE: page title -->
     <h1>Self<em>wealth</em></h1>
-
-    <!-- ▼ CHANGE: one sentence — client, what it is, your role -->
     <p>Selfwealth is a share trading platform that aims to make investing accessible for everyone. As their designer, my mission was to make finance captivating across two full brand refreshes, a national OOH campaign, animation, social media, and UX.</p>
-
   </div>
 </div>
 
 <!-- ── METADATA BAR ── -->
-<!-- ▼ CHANGE: fill in your project details. Delete any items you don't need. -->
 <div class="meta-bar">
   <div class="meta-bar-item">
     <div class="meta-bar-label">Company</div>
@@ -423,7 +454,7 @@
   </div>
   <div class="meta-bar-item">
     <div class="meta-bar-label">Year</div>
-    <div class="meta-bar-value">2020-2022</div>
+    <div class="meta-bar-value">2020–2022</div>
   </div>
   <div class="meta-bar-item">
     <div class="meta-bar-label">Disciplines</div>
@@ -433,63 +464,45 @@
     <div class="meta-bar-label">Tools</div>
     <div class="meta-bar-value">Figma · Adobe CC Suite · Social Media</div>
   </div>
-  <!-- Optional extra field: -->
   <div class="meta-bar-item">
     <div class="meta-bar-label">Industry</div>
     <div class="meta-bar-value">Fintech</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     IMAGE BLOCKS
-     Mix and match the layouts below.
-     Each block is independent — reorder,
-     duplicate, or delete as needed.
-     ═══════════════════════════════════════ -->
-
-
-<!-- BLOCK 1: Full-width image -->
+<!-- ── BLOCK 1: Full-width image ── -->
 <div class="img-full img-cell h-169 fade-up">
-    <img src="assets/selfwealth/1SwanstonStreet.png" alt="Description">
+  <img src="assets/selfwealth/1SwanstonStreet.png" alt="1 Swanston Street OOH campaign">
 </div>
 
-<!-- Caption (optional — delete if not needed) -->
+<!-- ── CAPTION ── -->
 <div class="caption-block fade-up">
-  <!-- ▼ CHANGE: section heading -->
-  <h2>Complex ideas <em>made </em>simple</h2>
-  <!-- ▼ CHANGE: 1–2 sentences max -->
-  <p>Partnering closely with marketing and product teams, I translated complex financial information into approachable, user-focused design, helping reinforce Selfwealth's credibility and support customer growth within a highly regulated industry.
-</p>
+  <h2>Complex ideas <em>made</em> simple</h2>
+  <p>Partnering closely with marketing and product teams, I translated complex financial information into approachable, user-focused design, helping reinforce Selfwealth's credibility and support customer growth within a highly regulated industry.</p>
 </div>
 
-
-<!-- BLOCK 3: Large left, two stacked right -->
+<!-- ── BLOCK 2: Image duo ── -->
 <div class="img-duo fade-up">
   <div class="img-cell h-md">
-   <img src="assets/selfwealth/SocialMediaPosts-1.png" alt="Description">
+    <img src="assets/selfwealth/SocialMediaPosts-1.png" alt="Social media posts">
   </div>
   <div class="img-cell h-md">
-    <img src="assets/selfwealth/SocialMediaPosts.png" alt="Description">
+    <img src="assets/selfwealth/SocialMediaPosts.png" alt="Social media posts">
   </div>
 </div>
-</div>
 
-<!-- SOCIAL MEDIA SECTION -->
+<!-- ── SOCIAL / TIKTOK SECTION ── -->
 <section class="social-section">
-
   <div class="social-section-header">
     <div>
       <span class="eyebrow">TikTok</span>
       <h2>Social <em>Content</em></h2>
     </div>
-    <!-- ▼ UPDATE href if your video page has a different filename -->
     <a href="video-content.html" class="see-all-link">See all videos →</a>
   </div>
 
   <div class="social-grid">
 
-    <!-- Reel 1 -->
-    <!-- ▼ UPDATE data-src and <source src> to your actual reel file paths -->
     <div>
       <div class="vid vid-portrait fade-up"
            data-src="assets/selfwealth/LockDownVibes.mp4"
@@ -506,12 +519,10 @@
         </div>
       </div>
       <div class="vid-caption">
-        <div class="vid-caption-title"></div>
-        <div class="vid-caption-desc"></div>
+        <div class="vid-caption-title">Lockdown Vibes</div>
       </div>
     </div>
 
-    <!-- Reel 2 -->
     <div>
       <div class="vid vid-portrait fade-up"
            data-src="assets/selfwealth/ShortingStocks.mp4"
@@ -528,12 +539,10 @@
         </div>
       </div>
       <div class="vid-caption">
-        <div class="vid-caption-title"></div>
-        <div class="vid-caption-desc"></div>
+        <div class="vid-caption-title">Shorting Stocks</div>
       </div>
     </div>
 
-    <!-- Reel 3 -->
     <div>
       <div class="vid vid-portrait fade-up"
            data-src="assets/selfwealth/EmailTrend.mp4"
@@ -550,12 +559,10 @@
         </div>
       </div>
       <div class="vid-caption">
-        <div class="vid-caption-title"></div>
-        <div class="vid-caption-desc"></div>
+        <div class="vid-caption-title">Email Trend</div>
       </div>
     </div>
 
-    <!-- Reel 4 -->
     <div>
       <div class="vid vid-portrait fade-up"
            data-src="assets/selfwealth/millionaireportfolios.mp4"
@@ -572,44 +579,46 @@
         </div>
       </div>
       <div class="vid-caption">
-        <div class="vid-caption-title"></div>
-        <div class="vid-caption-desc"></div>
+        <div class="vid-caption-title">Millionaire Portfolios</div>
       </div>
     </div>
 
-    <!--
-      ▼ TO ADD MORE REELS:
-      Copy one card block above and paste it here.
-      Update data-src and <source src> to your file.
-    -->
-
   </div>
+</section>
 
-
-<!-- Caption (optional) -->
+<!-- ── CAPTION ── -->
 <div class="caption-block fade-up">
   <h2>Process <em>driven</em> design</h2>
-  <p>I established Selfwealth's brand design system from scratch and led two brand refreshes, both resulting in stronger alignment with the target audience of everyday Australians wanting to invest.
-</p>
+  <p>I established Selfwealth's brand design system from scratch and led two brand refreshes, both resulting in stronger alignment with the target audience of everyday Australians wanting to invest.</p>
 </div>
 
-
-<!-- BLOCK 5: Two stacked left, large right -->
+<!-- ── BLOCK: Two stacked left, large right ── -->
 <div class="img-feature-right fade-up">
   <div class="img-stack">
     <div class="img-cell" style="flex:1;">
-      <img src="assets/selfwealth/BigSwingingStocks.png" alt="Description">
+      <img src="assets/selfwealth/BigSwingingStocks.png" alt="Big Swinging Stocks">
     </div>
     <div class="img-cell" style="flex:1;">
-      <img src="assets/selfwealth/InternalAwardsProgram.png" alt="Description">
+      <img src="assets/selfwealth/InternalAwardsProgram.png" alt="Internal Awards Program">
     </div>
   </div>
   <div class="img-cell">
-  <img src="assets/selfwealth/MegaSideEmma.png" alt="Description">
-</div>
+    <img src="assets/selfwealth/MegaSideEmma.png" alt="Campaign">
+  </div>
 </div>
 
- <!-- Landscape card 1 -->
+<!-- ── LINKEDIN VIDEO SECTION ── -->
+<section class="landscape-section">
+  <div class="landscape-section-header">
+    <div>
+      <span class="eyebrow">LinkedIn</span>
+      <h2>Long-form <em>Video</em></h2>
+    </div>
+    <a href="video-content.html" class="see-all-link">See all videos →</a>
+  </div>
+
+  <div class="landscape-grid">
+
     <div>
       <div class="vid vid-landscape fade-up"
            data-src="assets/videos/JAG Trainees are amazing.mp4"
@@ -619,9 +628,9 @@
         </video>
         <div class="vid-badge">LinkedIn</div>
         <div class="vid-overlay"></div>
-        <div class="vid-play">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+        <div class="vid-play-sm">
+          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+            <path d="M1 1l12 7-12 7V1z" fill="white"/>
           </svg>
         </div>
       </div>
@@ -631,7 +640,6 @@
       </div>
     </div>
 
-    <!-- Landscape card 2 -->
     <div>
       <div class="vid vid-landscape fade-up"
            data-src="assets/videos/BrandWorkshopRound2.mp4"
@@ -641,9 +649,9 @@
         </video>
         <div class="vid-badge">LinkedIn</div>
         <div class="vid-overlay"></div>
-        <div class="vid-play">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
+        <div class="vid-play-sm">
+          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+            <path d="M1 1l12 7-12 7V1z" fill="white"/>
           </svg>
         </div>
       </div>
@@ -652,18 +660,21 @@
         <div class="vid-caption-desc">It is important to document the process of building a brand, this video does just that.</div>
       </div>
     </div>
-  
-<!-- BLOCK 6: Full-width closing image -->
+
+  </div>
+</section>
+
+<!-- ── BLOCK: Full-width closing image ── -->
 <div class="img-cell h-lg fade-up">
-    <img src="assets/selfwealth/SocialMediaPosts-2.png" alt="Description">
+  <img src="assets/selfwealth/SocialMediaPosts-2.png" alt="Social media posts">
 </div>
 
-<!-- BLOCK 1: Full-width image -->
+<!-- ── BLOCK: Full-width EDM image ── -->
 <div class="img-full img-cell h-xl fade-up">
-    <img src="assets/selfwealth/EDMs-1.png" alt="Description">
+  <img src="assets/selfwealth/EDMs-1.png" alt="EDM campaigns">
 </div>
 
-<!-- ── CONTACT STRIP ── -->
+<!-- ── CONTACT ── -->
 <section class="contact-section">
   <h2>Like what you see?</h2>
   <p>Please reach out.</p>
@@ -691,6 +702,12 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+  // ── Seek thumbnails to first frame ──
+  document.querySelectorAll('video.thumb').forEach(v => {
+    v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
+    if (v.readyState >= 1) v.currentTime = 0.1;
+  });
+
   // ── Video modal ──
   const modal = document.createElement('div');
   modal.style.cssText = `
@@ -698,7 +715,7 @@
     z-index:999; align-items:center; justify-content:center;
   `;
   modal.innerHTML = `
-    <div style="position:relative; width:min(90vw,640px);">
+    <div style="position:relative; width:min(90vw,900px);" id="modalInner">
       <button style="position:absolute;top:-2.5rem;right:0;background:none;border:none;
         color:#f5f0e8;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
         cursor:pointer;opacity:0.7;" id="modalClose">✕ Close</button>
@@ -709,11 +726,11 @@
   document.body.appendChild(modal);
 
   const modalVideo = modal.querySelector('#modalVideo');
+  const modalInner = modal.querySelector('#modalInner');
 
   function openModal(src, isPortrait) {
     modalVideo.src = src;
-    const inner = modal.querySelector('div');
-    inner.style.width = isPortrait ? 'min(90vw, 360px)' : 'min(90vw, 900px)';
+    modalInner.style.width = isPortrait ? 'min(90vw, 380px)' : 'min(90vw, 900px)';
     modal.style.display = 'flex';
     modalVideo.play();
   }
@@ -730,9 +747,7 @@
 
   document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      const src = card.dataset.src;
-      const isPortrait = card.dataset.portrait === 'true';
-      openModal(src, isPortrait);
+      openModal(card.dataset.src, card.dataset.portrait === 'true');
     });
   });
 </script>
