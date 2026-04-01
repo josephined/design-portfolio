@@ -637,6 +637,7 @@
 </footer>
 
 <script>
+  // ── Fade-up on scroll ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -646,6 +647,51 @@
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Video modal ──
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92);
+    z-index:999; align-items:center; justify-content:center;
+  `;
+  modal.innerHTML = `
+    <div style="position:relative; width:min(90vw,640px);">
+      <button style="position:absolute;top:-2.5rem;right:0;background:none;border:none;
+        color:#f5f0e8;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+        cursor:pointer;opacity:0.7;" id="modalClose">✕ Close</button>
+      <video id="modalVideo" controls playsinline
+        style="width:100%;display:block;border-radius:2px;"></video>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const modalVideo = modal.querySelector('#modalVideo');
+
+  function openModal(src, isPortrait) {
+    modalVideo.src = src;
+    const inner = modal.querySelector('div');
+    inner.style.width = isPortrait ? 'min(90vw, 360px)' : 'min(90vw, 900px)';
+    modal.style.display = 'flex';
+    modalVideo.play();
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modalVideo.pause();
+    modalVideo.src = '';
+  }
+
+  modal.querySelector('#modalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  document.querySelectorAll('.vid[data-src]').forEach(card => {
+    card.addEventListener('click', () => {
+      const src = card.dataset.src;
+      const isPortrait = card.dataset.portrait === 'true';
+      openModal(src, isPortrait);
+    });
+  });
 </script>
 
 </body>
