@@ -3,28 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Balor — Josephine De Maria</title>
+<title>Hands on Heart Australia — Josephine De Maria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-
-  .img-hero { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:flex-end; }
-  .img-hero img, .img-hero video.hero-vid { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .img-hero::after {
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(
-      to top,
-      rgba(10,28,18,0.97) 0%,
-      rgba(10,28,18,0.75) 30%,
-      rgba(10,28,18,0.25) 60%,
-      transparent 100%
-    );
-    pointer-events:none;
-  }
-  .img-hero-text { position:relative; z-index:2; padding:3rem; width:100%; }
-  .img-hero-text h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,6rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:0.75rem; }
-  .img-hero-text h1 em { font-style:italic; color:var(--accent); }
-  .img-hero-text p { font-size:1rem; color:rgba(245,240,232,0.85); max-width:540px; line-height:1.7; }
+  .page-intro-block { padding:10rem 3rem 4rem; border-bottom:1px solid var(--border); }
+  .page-intro-block h1 { font-family:'Playfair Display',serif; font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:1.5rem; }
+  .page-intro-block h1 em { font-style:italic; color:var(--accent); }
+  .page-intro-block p { font-size:1.05rem; color:var(--muted); max-width:600px; line-height:1.8; }
 
   .meta-bar { display:flex; gap:0; border-bottom:1px solid var(--border); overflow-x:auto; }
   .meta-bar-item { padding:1.5rem 2.5rem; border-right:1px solid var(--border); white-space:nowrap; flex-shrink:0; }
@@ -42,14 +28,9 @@
   .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; }
   .img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
   .img-cell:hover img { transform:scale(1.03); }
-  .h-sm  { height:320px; }
-  .h-md  { height:480px; }
-  .h-lg  { height:620px; }
-  .h-xl  { height:80vh; }
-  .h-sq  { aspect-ratio:1/1; height:auto; }
-  .h-port{ aspect-ratio:3/4; height:auto; }
-  .h-45  { aspect-ratio:4/5; height:auto; }
-  .h-169 { aspect-ratio:16/9; height:auto; }
+  .h-sm { height:320px; } .h-md { height:480px; } .h-lg { height:620px; } .h-xl { height:80vh; }
+  .h-sq { aspect-ratio:1/1; height:auto; } .h-port { aspect-ratio:3/4; height:auto; }
+  .h-45 { aspect-ratio:4/5; height:auto; } .h-169 { aspect-ratio:16/9; height:auto; }
 
   .caption-block { padding:3rem; border-bottom:1px solid var(--border); display:flex; align-items:baseline; justify-content:space-between; gap:4rem; }
   .caption-block h2 { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,2.5vw,2.2rem); font-weight:700; color:var(--cream); line-height:1.1; flex-shrink:0; max-width:340px; }
@@ -59,12 +40,11 @@
   .section-marker-line { flex:1; height:1px; background:var(--border); }
 
   @media(max-width:768px) {
-    .img-hero { height:75vh; aspect-ratio:auto; }
+    .page-intro-block { padding:7rem 1.5rem 3rem; }
     .img-duo,.img-trio,.img-feature-left,.img-feature-right { grid-template-columns:1fr; }
     .caption-block { flex-direction:column; gap:1rem; padding:2rem 1.5rem; }
     .meta-bar { flex-wrap:wrap; }
     .meta-bar-item { border-bottom:1px solid var(--border); }
-    .img-hero-text { padding:2rem 1.5rem; }
     .section-marker { padding:1.25rem 1.5rem; }
   }
 </style>
@@ -82,46 +62,51 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+<ul class="nav-drawer" id="navDrawer">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="brand-identity.html">Brand Identity</a></li>
+  <li><a href="video-content.html">Video</a></li>
+  <li><a href="motion-graphics.html">Motion</a></li>
+  <li><a href="y-careers.html">Y Careers</a></li>
+  <li><a href="selfwealth.html">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
+</ul>
 
-<!-- HERO IMAGE -->
-<div class="img-hero">
-  <img src="assets/hands-on-heart/HandsOnHeartAus.png" alt="HOHA Heart">
-  <div class="img-hero-text">
-    <h1>Hands on <em>Heart </em>Australia</h1>
-    <p>Hands on Heart Australia, a non-profit organisation dedicated to teaching CPR, was established by an individual whose life was saved thanks to CPR. Collaboratively, we transformed his vision into reality.</p>
-  </div>
+<div class="page-intro-block">
+  <a href="brand-identity.html" class="back-link">← Brand Identity</a>
+  <span class="eyebrow">NFP · Logo Design · Brand Identity</span>
+  <h1>Hands on <em>Heart</em></h1>
+  <p>Hands on Heart Australia is a non-profit organisation dedicated to teaching CPR — founded by an individual whose life was saved by CPR. Collaboratively, we transformed his vision into a brand that communicates care, urgency, and community connection.</p>
 </div>
 
-<!-- FULL-WIDTH IMAGE -->
 <div class="img-full img-cell h-xl fade-up">
-  <img src="assets/hands-on-heart/HandsOnHeartAuslogo.png" alt="Hands on heart full logo">
+  <img src="assets/hands-on-heart/HandsOnHeartAus.png" alt="Hands on Heart Australia brand">
 </div>
 
-<!-- CAPTION -->
 <div class="caption-block fade-up">
-  <h2>Hands of <em>life.</em></h2>
-  <p>Balor Australia is a local, handmade beauty company focused on providing high-quality, natural skincare products. The design brief called for a brand that felt premium yet approachable — communicating the natural origins of the products without sacrificing the sense of luxury customers expect.
-
-I incorporated botanical elements and a refined colour palette to evoke the natural, handcrafted nature of the products while positioning Balor in the premium skincare space.</p>
+  <h2>A brand built on <em>life</em></h2>
+  <p>The logo needed to feel immediately recognisable — warm and human, yet carrying the urgency of a life-saving mission. The design centres hands in a gesture of care, directly referencing the CPR act while conveying community and connection. Every element was crafted to inspire trust and encourage action.</p>
 </div>
 
-<!-- TWO EQUAL IMAGES -->
+<div class="img-full img-cell h-xl fade-up">
+  <img src="assets/hands-on-heart/HandsOnHeartAuslogo.png" alt="Hands on Heart full logo">
+</div>
+
 <div class="img-duo fade-up">
   <div class="img-cell h-md">
-    <img src="assets/hands-on-heart/HandsColours.png" alt="HOHA colour palette">
+    <img src="assets/hands-on-heart/HandsColours.png" alt="Hands on Heart colour palette">
   </div>
   <div class="img-cell h-md">
-    <img src="assets/hands-on-heart/HandsTypeface.png" alt="HOHA typeface">
+    <img src="assets/hands-on-heart/HandsTypeface.png" alt="Hands on Heart typeface">
   </div>
 </div>
 
-<!-- CLOSING FULL-WIDTH IMAGE -->
 <div class="img-full img-cell h-lg fade-up">
-  <img src="assets/hands-on-heart/HandsSign.png" alt="HOHA sign">
+  <img src="assets/hands-on-heart/HandsSign.png" alt="Hands on Heart signage">
 </div>
 
-<!-- CONTACT -->
 <section class="contact-section">
   <h2>Like what you see?</h2>
   <p>Open to freelance, contract, and full-time opportunities.</p>
@@ -139,14 +124,13 @@ I incorporated botanical elements and a refined colour palette to evoke the natu
 
 <script>
   const _obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        _obs.unobserve(e.target);
-      }
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
 </script>
 </body>
 </html>
