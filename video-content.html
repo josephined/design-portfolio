@@ -7,48 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-
+  /* ── HERO — identical to motion-graphics page ── */
   .page-hero { padding:10rem 3rem 5rem; border-bottom:1px solid var(--border); }
   .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:1.5rem; }
   .page-hero h1 em { font-style:italic; color:var(--accent); }
   .page-hero p { font-size:1.05rem; color:var(--muted); max-width:600px; line-height:1.8; }
-
 
   .meta-bar { display:flex; gap:0; border-bottom:1px solid var(--border); overflow-x:auto; }
   .meta-bar-item { padding:1.5rem 2.5rem; border-right:1px solid var(--border); white-space:nowrap; flex-shrink:0; }
   .meta-bar-item:last-child { border-right:none; }
   .meta-bar-label { font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.3rem; }
   .meta-bar-value { font-size:0.88rem; font-weight:500; color:var(--cream); }
-
-
-  .img-full { width:100%; position:relative; overflow:hidden; background:var(--green-mid); display:block; }
-  .img-full img { width:100%; height:100%; object-fit:cover; display:block; }
-  .img-duo  { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
-  .img-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
-  .img-feature-left  { display:grid; grid-template-columns:2fr 1fr; gap:3px; align-items:stretch; }
-  .img-feature-right { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
-  .img-stack { display:flex; flex-direction:column; gap:3px; }
-  .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; }
-  .img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
-  .img-cell:hover img { transform:scale(1.03); }
-  .img-cell-label { font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); opacity:0.5; position:relative; z-index:1; }
-  .h-sm  { height:320px; }
-  .h-md  { height:480px; }
-  .h-lg  { height:620px; }
-  .h-xl  { height:80vh; }
-  .h-sq  { aspect-ratio:1/1; height:auto; }
-  .h-port{ aspect-ratio:3/4; height:auto; }
-  .h-45  { aspect-ratio:4/5; height:auto; }
-  .h-169 { aspect-ratio:16/9; height:auto; }
-
-
-  .caption-block { padding:3rem; border-bottom:1px solid var(--border); display:flex; align-items:baseline; justify-content:space-between; gap:4rem; }
-  .caption-block h2 { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,2.5vw,2.2rem); font-weight:700; color:var(--cream); line-height:1.1; flex-shrink:0; max-width:340px; }
-  .caption-block h2 em { font-style:italic; color:var(--accent); }
-  .caption-block p { font-size:0.9rem; color:var(--muted); line-height:1.8; max-width:480px; }
-  .section-marker { padding:1.5rem 3rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:1.5rem; }
-  .section-marker-line { flex:1; height:1px; background:var(--border); }
-
 
   .vid { position:relative; overflow:hidden; background:#0d0d0d; cursor:pointer; display:block; }
   .vid-landscape { aspect-ratio:16/9; }
@@ -70,7 +39,6 @@
   .vid-caption-title { font-size:0.85rem; font-weight:500; color:var(--cream); }
   .vid-caption-desc  { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
 
-
   .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
   .lightbox.open { display:flex; }
   .lightbox-inner { position:relative; width:100%; max-width:1100px; }
@@ -80,14 +48,13 @@
   .lightbox-close:hover { color:var(--accent); }
 
   .portrait-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
-  .vid-portrait { aspect-ratio:9/16; }
   .landscape-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
   .landscape-grid .vid-featured { grid-column:span 2; }
-  .vid-landscape { aspect-ratio:16/9; }
   .video-section { padding:5rem 3rem; border-bottom:1px solid var(--border); }
   .video-section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:3rem; }
   .video-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; color:var(--cream); line-height:1.1; }
   .video-section-header h2 em { font-style:italic; color:var(--accent); }
+
   @media(max-width:768px) {
     .page-hero { padding:7rem 1.5rem 3rem; }
     .portrait-grid { grid-template-columns:repeat(2,1fr); }
@@ -98,7 +65,8 @@
   }
 </style>
 </head>
-<body><nav>
+<body>
+<nav>
   <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -109,25 +77,28 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="index.html">Home</a></li>
-    <li><a href="brand-identity.html">Brand Identity</a></li>
-    <li><a href="video-content.html" class="active">Video</a></li>
-    <li><a href="motion-graphics.html">Motion</a></li>
-    <li><a href="y-careers.html">Y Careers</a></li>
-    <li><a href="selfwealth.html">Selfwealth</a></li>
-    <li><a href="illustration.html">Illustration</a></li>
+  <li><a href="brand-identity.html">Brand Identity</a></li>
+  <li><a href="video-content.html" class="active">Video</a></li>
+  <li><a href="motion-graphics.html">Motion</a></li>
+  <li><a href="y-careers.html">Y Careers</a></li>
+  <li><a href="selfwealth.html">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
 </ul>
+
 <div class="page-hero">
+  <span class="eyebrow">Production · Filming · Editing</span>
   <h1>Video <em>Content</em></h1>
-  <p>I create social media content from concept to completion -- directing, writing, and appearing in videos. I handle everything from scripting to filming and editing, creating authentic stories that connect with each brand's audience.</p>
+  <p>I create social media content from concept to completion — directing, writing, and appearing in videos. I handle everything from scripting to filming and editing, creating authentic stories that connect with each brand's audience.</p>
 </div>
 
-<div class="meta-bar"><div class="meta-bar-item"><div class="meta-bar-label">Disciplines</div><div class="meta-bar-value">Production · Filming · Editing</div></div><div class="meta-bar-item"><div class="meta-bar-label">Tools</div><div class="meta-bar-value">Premiere · After Effects · CapCut</div></div></div>
+<div class="meta-bar">
+  <div class="meta-bar-item"><div class="meta-bar-label">Disciplines</div><div class="meta-bar-value">Production · Filming · Editing</div></div>
+  <div class="meta-bar-item"><div class="meta-bar-label">Tools</div><div class="meta-bar-value">Premiere · After Effects · CapCut</div></div>
+</div>
 
 <section class="video-section">
   <div class="video-section-header">
@@ -139,117 +110,69 @@
   </div>
   <div class="portrait-grid">
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Pacifique_Subs.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Pacifique_Subs.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Reel</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Meet Pacifique</div>
-    <div class="vid-caption-desc">A video series showcasing real young people and how their traineeships are meaningful to them.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/Pacifique_Subs.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Pacifique_Subs.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Reel</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Meet Pacifique</div><div class="vid-caption-desc">A video series showcasing real young people and how their traineeships are meaningful to them.</div></div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Get the Shot.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Get the Shot.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Reel</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Get the shot</div>
-    <div class="vid-caption-desc">A trend-style reel to capture attention and be relatable to young people.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/Get the Shot.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Get the Shot.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Reel</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Get the shot</div><div class="vid-caption-desc">A trend-style reel to capture attention and be relatable to young people.</div></div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Red Slime Job Ad.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Red Slime Job Ad.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">ASMR</div>
-    <div class="vid-caption-desc">How do you get a young person's attention? Slime, of course!</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/Red Slime Job Ad.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Red Slime Job Ad.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">ASMR</div><div class="vid-caption-desc">How do you get a young person's attention? Slime, of course!</div></div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Voxpop_Kayla.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Voxpop_Kayla.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Reel</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Voxpop Content</div>
-    <div class="vid-caption-desc">Street interviews are always engaging; it is just about finding your niche.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/Voxpop_Kayla.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Voxpop_Kayla.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Reel</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Voxpop Content</div><div class="vid-caption-desc">Street interviews are always engaging; it's just about finding your niche.</div></div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/JobNoExpereinceMEME.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/JobNoExpereinceMEME.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Jobs Crashout Meme</div>
-    <div class="vid-caption-desc">People want to be entertained -- it is important to get your point across with funny content.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/JobNoExpereinceMEME.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/JobNoExpereinceMEME.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Jobs Crashout Meme</div><div class="vid-caption-desc">People want to be entertained — it's important to get your point across with funny content.</div></div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/YCareersStaff.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/YCareersStaff.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Reel</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">All staff video</div>
-    <div class="vid-caption-desc">Audiences want to see the people behind the company; trends are an easy way to do this.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/YCareersStaff.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/YCareersStaff.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Reel</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">All staff video</div><div class="vid-caption-desc">Audiences want to see the people behind the company; trends are an easy way to do this.</div></div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/FunniestThing.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/FunniestThing.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Relatable moments</div>
-    <div class="vid-caption-desc">Everyone has had funny moments with children. Why not use them as a recurring signature?</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/FunniestThing.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/FunniestThing.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Relatable moments</div><div class="vid-caption-desc">Everyone has had funny moments with children. Why not use them as a recurring signature?</div></div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Supported.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Supported.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Reel</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Engaging 3 seconds</div>
-    <div class="vid-caption-desc">I make my videos with different hooks at the beginning to hold attention.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/Supported.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Supported.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Reel</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Engaging 3 seconds</div><div class="vid-caption-desc">I make my videos with different hooks at the beginning to hold attention.</div></div>
+    </div>
   </div>
 </section>
 
@@ -263,75 +186,45 @@
   </div>
   <div class="landscape-grid">
     <div class="vid-featured">
-  <div class="vid vid-landscape  fade-up" data-src="assets/videos/InductionDay_LinkedIn.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/InductionDay_LinkedIn.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Featured</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-lg"><svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Induction day video</div>
-    <div class="vid-caption-desc">A video made to showcase a business partnership with an in-person induction.</div>
-  </div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/videos/InductionDay_LinkedIn.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/InductionDay_LinkedIn.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Featured</div><div class="vid-overlay"></div>
+        <div class="vid-play-lg"><svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Induction day video</div><div class="vid-caption-desc">A video made to showcase a business partnership with an in-person induction.</div></div>
+    </div>
     <div>
-  <div class="vid vid-landscape  fade-up" data-src="assets/videos/JAG Trainees are amazing.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/JAG Trainees are amazing.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">LinkedIn</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Showcasing partnerships</div>
-    <div class="vid-caption-desc">Showing the audience how great it feels to have young people in care roles.</div>
-  </div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/videos/JAG Trainees are amazing.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/JAG Trainees are amazing.mp4" type="video/mp4"></video>
+        <div class="vid-badge">LinkedIn</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Showcasing partnerships</div><div class="vid-caption-desc">Showing the audience how great it feels to have young people in care roles.</div></div>
+    </div>
     <div>
-  <div class="vid vid-landscape  fade-up" data-src="assets/videos/BrandWorkshopRound2.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/BrandWorkshopRound2.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">LinkedIn</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Showcasing co-design workshops</div>
-    <div class="vid-caption-desc">Documenting the process of building a brand with the people it is made for.</div>
-  </div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/videos/BrandWorkshopRound2.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/BrandWorkshopRound2.mp4" type="video/mp4"></video>
+        <div class="vid-badge">LinkedIn</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Showcasing co-design workshops</div><div class="vid-caption-desc">Documenting the process of building a brand with the people it's made for.</div></div>
+    </div>
     <div>
-  <div class="vid vid-landscape  fade-up" data-src="assets/videos/Welcometoycareers.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Welcometoycareers.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">YouTube</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Welcome to Y Careers</div>
-    <div class="vid-caption-desc">A short internal video welcoming new trainees at their induction.</div>
-  </div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/videos/Welcometoycareers.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Welcometoycareers.mp4" type="video/mp4"></video>
+        <div class="vid-badge">YouTube</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Welcome to Y Careers</div><div class="vid-caption-desc">A short internal video welcoming new trainees at their induction.</div></div>
+    </div>
     <div>
-  <div class="vid vid-landscape  fade-up" data-src="assets/videos/selfwealthtutorial.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/selfwealthtutorial.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">YouTube</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Tutorials</div>
-    <div class="vid-caption-desc">Tutorials are always popular -- audiences love being shown how something works.</div>
-  </div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/videos/selfwealthtutorial.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/selfwealthtutorial.mp4" type="video/mp4"></video>
+        <div class="vid-badge">YouTube</div><div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Tutorials</div><div class="vid-caption-desc">Tutorials are always popular — audiences love being shown how something works.</div></div>
+    </div>
   </div>
 </section>
 
@@ -345,79 +238,49 @@
   </div>
 </section>
 <footer>
-  <span class="footer-copy">&copy; 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
 
-  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
-  .lightbox.open { display:flex; }
-  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
-  .lightbox-inner.is-portrait { max-width:400px; }
-  .lightbox-inner video { width:100%; display:block; }
-  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
-  .lightbox-close:hover { color:var(--accent); }
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">✕ Close</button>
+    <video id="lightbox-video" controls playsinline></video>
+  </div>
+</div>
 
 <script>
   const _obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        _obs.unobserve(e.target);
-      }
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
-</script>
-<script>
+
   document.querySelectorAll('video.thumb').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
     if (v.readyState >= 1) v.currentTime = 0.1;
   });
-</script>
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner" id="lightbox-inner">
-    <button class="lightbox-close" id="lightbox-close">Close</button>
-    <video id="lightbox-video" controls playsinline></video>
-  </div>
-</div>
-<script>
+
   const _lb      = document.getElementById('lightbox');
   const _lbInner = document.getElementById('lightbox-inner');
   const _lbVid   = document.getElementById('lightbox-video');
   const _lbClose = document.getElementById('lightbox-close');
   document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      _lbVid.src = card.dataset.src;
-      _lbVid.load(); _lbVid.play();
+      _lbVid.src = card.dataset.src; _lbVid.load(); _lbVid.play();
       _lbInner.classList.toggle('is-portrait', card.dataset.portrait === 'true');
-      _lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      _lb.classList.add('open'); document.body.style.overflow = 'hidden';
     });
   });
   _lbClose.addEventListener('click', _closeLb);
   _lb.addEventListener('click', e => { if (e.target === _lb) _closeLb(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeLb(); });
-  function _closeLb() {
-    _lb.classList.remove('open');
-    _lbVid.pause(); _lbVid.src = '';
-    document.body.style.overflow = '';
-  }
+  function _closeLb() { _lb.classList.remove('open'); _lbVid.pause(); _lbVid.src = ''; document.body.style.overflow = ''; }
+
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
 </script>
-<script>
-  // Burger menu
-  const burger  = document.getElementById('navBurger');
-  const drawer  = document.getElementById('navDrawer');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    drawer.classList.toggle('open');
-    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      burger.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-</script>
-</body></html>
+</body>
+</html>

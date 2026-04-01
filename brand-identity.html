@@ -7,9 +7,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-  .brand-hero { min-height:60vh; padding:10rem 3rem 5rem; display:flex; flex-direction:column; justify-content:flex-end; border-bottom:1px solid var(--border); }
-  .brand-hero h1 { font-family:var(--serif); font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; }
-  .brand-hero h1 em { font-style:italic; color:var(--accent); }
+  /* ── HERO — identical to motion-graphics page ── */
+  .page-hero { padding:10rem 3rem 5rem; border-bottom:1px solid var(--border); }
+  .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:1.5rem; }
+  .page-hero h1 em { font-style:italic; color:var(--accent); }
+  .page-hero p { font-size:1.05rem; color:var(--muted); max-width:600px; line-height:1.8; }
+
   .work-featured { display:grid; grid-template-columns:1fr 1fr; background:var(--green-mid); border:1px solid var(--border); overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.3s; margin-bottom:1.5rem; }
   .work-featured:hover { transform:translateY(-5px); }
   .work-featured-img { min-height:480px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:2.5rem; }
@@ -27,7 +30,7 @@
   .work-card-body .work-card-title { font-size:1.1rem; margin:0.5rem 0; }
   .work-card-body .work-card-desc { font-size:0.82rem; margin-bottom:0.75rem; }
   @media(max-width:768px) {
-    .brand-hero { padding:8rem 1.5rem 3.5rem; }
+    .page-hero { padding:7rem 1.5rem 3rem; }
     .work-featured { grid-template-columns:1fr; }
     .work-featured-img { min-height:260px; }
     .work-featured-content { padding:2rem 1.5rem; }
@@ -35,7 +38,8 @@
   }
 </style>
 </head>
-<body><nav>
+<body>
+<nav>
   <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -46,23 +50,22 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="index.html">Home</a></li>
-    <li><a href="brand-identity.html" class="active">Brand Identity</a></li>
-    <li><a href="video-content.html">Video</a></li>
-    <li><a href="motion-graphics.html">Motion</a></li>
-    <li><a href="y-careers.html">Y Careers</a></li>
-    <li><a href="selfwealth.html">Selfwealth</a></li>
-    <li><a href="illustration.html">Illustration</a></li>
+  <li><a href="brand-identity.html" class="active">Brand Identity</a></li>
+  <li><a href="video-content.html">Video</a></li>
+  <li><a href="motion-graphics.html">Motion</a></li>
+  <li><a href="y-careers.html">Y Careers</a></li>
+  <li><a href="selfwealth.html">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
 </ul>
-<div class="brand-hero">
+
+<div class="page-hero">
   <span class="eyebrow">Selected Projects</span>
   <h1>Brand <em>Identity</em></h1>
-  <p class="intro" style="margin-top:1.5rem;">From captivating logos to strategic visual systems -- I build brands that are unforgettable, flexible, and built to last.</p>
+  <p>From captivating logos to strategic visual systems — I build brands that are unforgettable, flexible, and built to last.</p>
 </div>
 
 <section class="section">
@@ -75,8 +78,8 @@
     <div class="work-featured-content">
       <div><span class="tag">Brand Strategy</span><span class="tag">Design System</span><span class="tag">Campaigns</span></div>
       <h2 class="work-card-title">Y Careers</h2>
-      <p class="work-card-desc">Led the creation of a full brand strategy and adaptable visual identity targeting three key audience groups -- young people, parents/guardians, and employers. Built from scratch through collaborative workshops, resulting in a brand that genuinely connects with its audience.</p>
-      <span class="card-link">View Work &#8594;</span>
+      <p class="work-card-desc">Led the creation of a full brand strategy and adaptable visual identity targeting three key audience groups — young people, parents/guardians, and employers. Built from scratch through collaborative workshops, resulting in a brand that genuinely connects with its audience.</p>
+      <span class="card-link">View Work →</span>
     </div>
   </a>
 
@@ -89,7 +92,7 @@
         <span class="tag">Fintech</span><span class="tag">OOH</span>
         <h3 class="work-card-title">Selfwealth</h3>
         <p class="work-card-desc">Brand design system, two refreshes, and a national OOH awareness campaign across all channels.</p>
-        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
       </div>
     </a>
     <a href="the-valiants.html" class="work-card fade-up">
@@ -99,8 +102,8 @@
       <div class="work-card-body">
         <span class="tag">Music</span><span class="tag">Print</span>
         <h3 class="work-card-title">The Valiants</h3>
-        <p class="work-card-desc">Full visual identity for an indie punk rock band -- album artwork, merch, and brand collateral.</p>
-        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
+        <p class="work-card-desc">Full visual identity for an indie punk rock band — album artwork, merch, and brand collateral.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
       </div>
     </a>
     <a href="two-sense.html" class="work-card fade-up">
@@ -110,8 +113,8 @@
       <div class="work-card-body">
         <span class="tag">Fashion</span><span class="tag">Identity</span>
         <h3 class="work-card-title">Two Sense</h3>
-        <p class="work-card-desc">Contemporary vintage fashion label -- Wes Anderson-inspired palette with a detailed coin illustration mark.</p>
-        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
+        <p class="work-card-desc">Contemporary vintage fashion label — Wes Anderson-inspired palette with a detailed coin illustration mark.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
       </div>
     </a>
     <a href="balor.html" class="work-card fade-up">
@@ -121,8 +124,8 @@
       <div class="work-card-body">
         <span class="tag">Skincare</span><span class="tag">Packaging</span>
         <h3 class="work-card-title">Balor Australia</h3>
-        <p class="work-card-desc">Logo, branding and packaging for a local handmade beauty company -- evoking nature, purity, and luxury.</p>
-        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
+        <p class="work-card-desc">Logo, branding and packaging for a local handmade beauty company — evoking nature, purity, and luxury.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
       </div>
     </a>
     <a href="#" class="work-card fade-up">
@@ -133,7 +136,7 @@
         <span class="tag">NFP</span><span class="tag">Print</span>
         <h3 class="work-card-title">Reynard Street Neighbourhood House</h3>
         <p class="work-card-desc">Posters and marketing collateral for a community neighbourhood house.</p>
-        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
       </div>
     </a>
     <a href="#" class="work-card fade-up">
@@ -144,18 +147,18 @@
         <span class="tag">Logo</span><span class="tag">Identity</span>
         <h3 class="work-card-title">Melbourne Ponds &amp; Gardens</h3>
         <p class="work-card-desc">Logo and brand identity for a premium pond cleaning and landscaping business.</p>
-        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
       </div>
     </a>
-  <a href="hands-on-heart-australia.html" class="work-card fade-up">
-  <div class="work-card-img" style="background:linear-gradient(135deg,#EF373E,#c0272e);">
+    <a href="hands-on-heart-australia.html" class="work-card fade-up">
+      <div class="work-card-img" style="background:linear-gradient(135deg,#EF373E,#c0272e);">
         <img src="assets/brand-identity/Hands on Heart Australia.png" alt="Hands on Heart">
       </div>
       <div class="work-card-body">
         <span class="tag">NFP</span><span class="tag">Logo</span>
         <h3 class="work-card-title">Hands on Heart Australia</h3>
-        <p class="work-card-desc">Logo design for a not-for-profit -- communicating care and community connection.</p>
-        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
+        <p class="work-card-desc">Logo design for a not-for-profit — communicating care and community connection.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
       </div>
     </a>
   </div>
@@ -171,35 +174,19 @@
   </div>
 </section>
 <footer>
-  <span class="footer-copy">&copy; 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
+
 <script>
   const _obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        _obs.unobserve(e.target);
-      }
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
 </script>
-<script>
-  // Burger menu
-  const burger  = document.getElementById('navBurger');
-  const drawer  = document.getElementById('navDrawer');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    drawer.classList.toggle('open');
-    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      burger.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-</script>
-</body></html>
+</body>
+</html>
