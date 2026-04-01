@@ -3,27 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PROJECT NAME — Josephine De Maria Graphic Designer">
-
-<!-- ▼ CHANGE: Update the page title -->
-<title>Project Name — Josephine De Maria</title>
-
+<meta name="description" content="Y Careers — Josephine De Maria Graphic Designer">
+<title>Y Careers — Josephine De Maria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
-
 <style>
+
   /* ── FULL-BLEED HERO IMAGE ── */
-.img-hero {
-  width: 100%;
-  aspect-ratio: 16 / 9; /* 👈 key line */
-  position: relative;
-  overflow: hidden;
-  background: var(--green-mid);
-  display: flex;
-  align-items: flex-end;
-}
+  .img-hero {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    background: var(--green-mid);
+    display: flex;
+    align-items: flex-end;
+  }
 
   .img-hero img {
     position: absolute;
@@ -33,7 +30,6 @@
     object-fit: cover;
   }
 
-  /* Dark gradient so header text sits on top of image cleanly */
   .img-hero::after {
     content: '';
     position: absolute;
@@ -59,10 +55,7 @@
     margin-bottom: 0.75rem;
   }
 
-  .img-hero-text h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .img-hero-text h1 em { font-style: italic; color: var(--accent); }
 
   .img-hero-text p {
     font-size: 1rem;
@@ -103,8 +96,6 @@
   }
 
   /* ── IMAGE LAYOUTS ── */
-
-  /* Single full-width */
   .img-full {
     width: 100%;
     position: relative;
@@ -113,50 +104,17 @@
     display: block;
   }
 
-  .img-full img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+  .img-full img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* Two equal columns */
-  .img-duo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-  }
+  .img-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .img-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
 
-  /* Three equal columns */
-  .img-trio {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
-  }
+  .img-feature-left { display: grid; grid-template-columns: 2fr 1fr; gap: 3px; align-items: stretch; }
 
-  /* Large left, small right stack */
-  .img-feature-left {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3px;
-    align-items: stretch;
-  }
+  .img-feature-right { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
 
-  /* Small left stack, large right */
- .img-feature-right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px;
- }
+  .img-stack { display: flex; flex-direction: column; gap: 3px; }
 
-  /* Right column stack (2 images stacked) */
-  .img-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  /* Image cell — the base unit */
   .img-cell {
     position: relative;
     overflow: hidden;
@@ -176,7 +134,6 @@
 
   .img-cell:hover img { transform: scale(1.03); }
 
-  /* Placeholder label — remove once real images are added */
   .img-cell-label {
     font-size: 0.68rem;
     letter-spacing: 0.1em;
@@ -187,16 +144,14 @@
     z-index: 1;
   }
 
-  /* Standard heights */
   .h-sm  { height: 320px; }
   .h-md  { height: 480px; }
   .h-lg  { height: 620px; }
-  .h-xl  { height: 80vh;  }
+  .h-xl  { height: 80vh; }
   .h-sq  { aspect-ratio: 1/1; height: auto; }
   .h-port { aspect-ratio: 3/4; height: auto; }
 
   /* ── CAPTION BLOCK ── */
-  /* Sits between image groups — keep copy tight -->*/
   .caption-block {
     padding: 3rem;
     border-bottom: 1px solid var(--border);
@@ -216,10 +171,7 @@
     max-width: 340px;
   }
 
-  .caption-block h2 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .caption-block h2 em { font-style: italic; color: var(--accent); }
 
   .caption-block p {
     font-size: 0.9rem;
@@ -228,7 +180,7 @@
     max-width: 480px;
   }
 
-  /* ── SECTION LABEL ── */
+  /* ── SECTION MARKER ── */
   .section-marker {
     padding: 1.5rem 3rem;
     border-bottom: 1px solid var(--border);
@@ -237,15 +189,144 @@
     gap: 1.5rem;
   }
 
-  .section-marker-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+  .section-marker-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── WORKSHOP VIDEO ── */
+  .workshop-video-wrap {
+    border-bottom: 1px solid var(--border);
   }
+
+  /* The clickable video card */
+  .vid {
+    position: relative;
+    overflow: hidden;
+    background: #0d0d0d;
+    cursor: pointer;
+    display: block;
+  }
+
+  /* 16:9 aspect ratio for the workshop video */
+  .vid-landscape { aspect-ratio: 16 / 9; }
+
+  /* First-frame still thumbnail */
+  .vid video.thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* Dark overlay */
+  .vid-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+    z-index: 1;
+  }
+
+  .vid:hover .vid-overlay { background: rgba(0, 0, 0, 0.15); }
+
+  /* Platform badge */
+  .vid-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 2;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.35rem 0.75rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Large centred play button */
+  .vid-play-lg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+
+  .vid:hover .vid-play-lg {
+    border-color: var(--accent);
+    background: rgba(255, 233, 115, 0.18);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .vid:hover .vid-play-lg svg path { fill: var(--accent); }
+
+  /* Caption beneath the video */
+  .workshop-video-caption {
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--border);
+    background: var(--green-mid);
+  }
+
+  .workshop-video-caption p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.94);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .lightbox-inner video { width: 100%; display: block; }
+
+  .lightbox-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .lightbox-close:hover { color: var(--accent); }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
-    .img-hero { height: 75vh; }
+    .img-hero { height: 75vh; aspect-ratio: auto; }
     .img-duo,
     .img-trio,
     .img-feature-left,
@@ -255,13 +336,14 @@
     .meta-bar-item { border-bottom: 1px solid var(--border); }
     .img-hero-text { padding: 2rem 1.5rem; }
     .section-marker { padding: 1.25rem 1.5rem; }
+    .workshop-video-caption { padding: 1.25rem 1.5rem; }
   }
+
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<!-- ▼ CHANGE: set class="active" on the nav link that matches this page -->
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Josephine De Maria</a>
   <ul class="nav-links">
@@ -275,27 +357,19 @@
   </ul>
 </nav>
 
-<!-- ── FULL-BLEED HERO ── -->
+<!-- HERO — video background -->
 <div class="img-hero">
-  
   <video autoplay muted loop playsinline
-          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <source src="assets/ycareers/WhoIsYCareersFINAL.mp4" type="video/mp4">
-        </video>
-
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <source src="assets/ycareers/WhoIsYCareersFINAL.mp4" type="video/mp4">
+  </video>
   <div class="img-hero-text">
-
-    <!-- ▼ CHANGE: page title -->
     <h1>Y <em>Careers</em></h1>
-
-    <!-- ▼ CHANGE: one sentence — client, what it is, your role -->
     <p>Y Careers is a not-for-profit social enterprise dedicated to bridging the gap in the care industry's workforce. I built this brand from the ground up — from concept and co-design workshops through to a full visual identity, design system, social strategy, video, and motion.</p>
-
   </div>
 </div>
 
-<!-- ── METADATA BAR ── -->
-<!-- ▼ CHANGE: fill in your project details. Delete any items you don't need. -->
+<!-- METADATA BAR -->
 <div class="meta-bar">
   <div class="meta-bar-item">
     <div class="meta-bar-label">Company</div>
@@ -313,108 +387,105 @@
     <div class="meta-bar-label">Tools</div>
     <div class="meta-bar-value">Figma · Adobe CC Suite · Social Media</div>
   </div>
-  <!-- Optional extra field: -->
   <div class="meta-bar-item">
     <div class="meta-bar-label">Industry</div>
     <div class="meta-bar-value">NFP</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     IMAGE BLOCKS
-     Mix and match the layouts below.
-     Each block is independent — reorder,
-     duplicate, or delete as needed.
-     ═══════════════════════════════════════ -->
-
-
 <!-- BLOCK 1: Full-width image -->
 <div class="img-full img-cell h-xl fade-up">
-    <img src="assets/ycareers/9Banners.png" alt="Description">
+  <img src="assets/ycareers/9Banners.png" alt="Y Careers banners">
 </div>
 
-<!-- Caption (optional — delete if not needed) -->
+<!-- Caption -->
 <div class="caption-block fade-up">
-  <!-- ▼ CHANGE: section heading -->
   <h2>Co-designed <em>with</em> young people</h2>
-  <!-- ▼ CHANGE: 1–2 sentences max -->
-  <p>Rather than assuming what young people wanted, I ran workshops directly with them to shape both the brand direction and social media strategy.
-
-</p>
+  <p>Rather than assuming what young people wanted, I ran workshops directly with them to shape both the brand direction and social media strategy.</p>
 </div>
 
+<!-- WORKSHOP VIDEO -->
+<!--
+  ▼ UPDATE: change both src paths below to your workshop video file.
+  The <video class="thumb"> shows the first frame as a still.
+  Clicking the card plays the video fullscreen in the lightbox.
+-->
+<div class="workshop-video-wrap fade-up">
+  <div class="vid vid-landscape"
+       data-src="assets/ycareers/workshop.mp4"
+       data-portrait="false">
+    <video class="thumb" preload="metadata" muted playsinline>
+      <source src="assets/ycareers/workshop.mp4" type="video/mp4">
+    </video>
+    <div class="vid-badge">Workshop — Brand Co-design with Young People</div>
+    <div class="vid-overlay"></div>
+    <div class="vid-play-lg">
+      <svg width="22" height="24" viewBox="0 0 22 24" fill="none">
+        <path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+  <div class="workshop-video-caption">
+    <p>Running co-design sessions with young people to ensure the Y Careers brand genuinely reflected their voice — not what we assumed they'd want.</p>
+  </div>
+</div>
 
-<!-- BLOCK 3: Large left, two stacked right -->
+<!-- BLOCK 3: Two equal images -->
 <div class="img-duo fade-up">
   <div class="img-cell h-md">
-   <img src="assets/ycareers/2Logo-1.png" alt="Description">
+    <img src="assets/ycareers/2Logo-1.png" alt="Y Careers logo">
   </div>
   <div class="img-cell h-md">
-    <img src="assets/ycareers/6SocialMediaPosts.png" alt="Description">
+    <img src="assets/ycareers/6SocialMediaPosts.png" alt="Social media posts">
   </div>
 </div>
-</div>
 
-
-<!-- Section marker (optional — use to separate themes/phases) -->
+<!-- SECTION MARKER -->
 <div class="section-marker fade-up">
-  <!-- ▼ CHANGE: section label e.g. "Campaign Assets" or "Social Media" -->
   <span class="eyebrow" style="margin-bottom:0;">Social Media</span>
   <div class="section-marker-line"></div>
 </div>
 
-
 <!-- BLOCK 4: Three equal images -->
 <div class="img-trio fade-up">
   <div class="img-cell h-sq">
-    <img src="assets/ycareers/Reel1.png" alt="Description">
+    <img src="assets/ycareers/Reel1.png" alt="Y Careers reel">
   </div>
   <div class="img-cell h-sq">
-    <img src="assets/ycareers/Reel2.png" alt="Description">
+    <img src="assets/ycareers/Reel2.png" alt="Y Careers reel">
   </div>
   <div class="img-cell h-sq">
-    <img src="assets/ycareers/Reel3.png" alt="Description">
+    <img src="assets/ycareers/Reel3.png" alt="Y Careers reel">
   </div>
 </div>
 
-
-<!-- Caption (optional) -->
+<!-- Caption -->
 <div class="caption-block fade-up">
   <h2>Design <em>outside</em> the box</h2>
-  <p>I translated outdated guidelines into a fresh, youth-focused identity that resonates with Gen Z, and I've driven how the brand shows up across video, motion graphics, social media, and web.
-
-</p>
+  <p>I translated outdated guidelines into a fresh, youth-focused identity that resonates with Gen Z, and I've driven how the brand shows up across video, motion graphics, social media, and web.</p>
 </div>
-
 
 <!-- BLOCK 5: Two stacked left, large right -->
 <div class="img-feature-right fade-up">
-
-  <!-- LEFT STACK -->
   <div class="img-stack">
     <div class="img-cell">
-      <img src="assets/ycareers/4YCareersColours.png" alt="">
+      <img src="assets/ycareers/4YCareersColours.png" alt="Y Careers colour palette">
     </div>
     <div class="img-cell">
-      <img src="assets/ycareers/5Typography.png" alt="">
+      <img src="assets/ycareers/5Typography.png" alt="Y Careers typography">
     </div>
   </div>
-
-  <!-- RIGHT LARGE -->
   <div class="img-cell">
-    <img src="assets/ycareers/1Logo.png" alt="">
+    <img src="assets/ycareers/1Logo.png" alt="Y Careers logo system">
   </div>
-
 </div>
-
 
 <!-- BLOCK 6: Full-width closing image -->
 <div class="img-full img-cell h-lg fade-up">
-    <img src="assets/ycareers/7Merch.png" alt="Description">
+  <img src="assets/ycareers/7Merch.png" alt="Y Careers merch">
 </div>
 
-
-<!-- ── CONTACT STRIP ── -->
+<!-- CONTACT STRIP -->
 <section class="contact-section">
   <h2>Like what you see?</h2>
   <p>Please reach out.</p>
@@ -424,13 +495,22 @@
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
   <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">✕ Close</button>
+    <video id="lightbox-video" controls playsinline></video>
+  </div>
+</div>
+
 <script>
+  // Fade-up on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -440,6 +520,42 @@
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Seek thumb video to first frame once metadata loads
+  document.querySelectorAll('video.thumb').forEach(v => {
+    v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
+    if (v.readyState >= 1) v.currentTime = 0.1;
+  });
+
+  // Lightbox
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxInner = document.getElementById('lightbox-inner');
+  const lightboxVideo = document.getElementById('lightbox-video');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  document.querySelectorAll('.vid').forEach(card => {
+    card.addEventListener('click', () => {
+      const src      = card.dataset.src;
+      const portrait = card.dataset.portrait === 'true';
+      lightboxVideo.src = src;
+      lightboxVideo.load();
+      lightboxVideo.play();
+      lightboxInner.classList.toggle('is-portrait', portrait);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxVideo.pause();
+    lightboxVideo.src = '';
+    document.body.style.overflow = '';
+  }
 </script>
 
 </body>
