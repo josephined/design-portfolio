@@ -3,365 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Y Careers — Josephine De Maria Graphic Designer">
-<title>Y Careers — Josephine De Maria</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Y Careers -- Josephine De Maria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
 
-  /* ── HERO ── */
-  .img-hero {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    position: relative;
-    overflow: hidden;
-    background: var(--green-mid);
-    display: flex;
-    align-items: flex-end;
+  .img-hero { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:flex-end; }
+  .img-hero img, .img-hero video.hero-vid { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .img-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(26,58,42,0.85) 0%,transparent 55%); pointer-events:none; }
+  .img-hero-text { position:relative; z-index:2; padding:3rem; width:100%; }
+  .img-hero-text h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,6rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:0.75rem; }
+  .img-hero-text h1 em { font-style:italic; color:var(--accent); }
+  .img-hero-text p { font-size:1rem; color:rgba(245,240,232,0.7); max-width:540px; line-height:1.7; }
+
+
+  .meta-bar { display:flex; gap:0; border-bottom:1px solid var(--border); overflow-x:auto; }
+  .meta-bar-item { padding:1.5rem 2.5rem; border-right:1px solid var(--border); white-space:nowrap; flex-shrink:0; }
+  .meta-bar-item:last-child { border-right:none; }
+  .meta-bar-label { font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.3rem; }
+  .meta-bar-value { font-size:0.88rem; font-weight:500; color:var(--cream); }
+
+
+  .img-full { width:100%; position:relative; overflow:hidden; background:var(--green-mid); display:block; }
+  .img-full img { width:100%; height:100%; object-fit:cover; display:block; }
+  .img-duo  { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+  .img-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+  .img-feature-left  { display:grid; grid-template-columns:2fr 1fr; gap:3px; align-items:stretch; }
+  .img-feature-right { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+  .img-stack { display:flex; flex-direction:column; gap:3px; }
+  .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; }
+  .img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
+  .img-cell:hover img { transform:scale(1.03); }
+  .img-cell-label { font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); opacity:0.5; position:relative; z-index:1; }
+  .h-sm  { height:320px; }
+  .h-md  { height:480px; }
+  .h-lg  { height:620px; }
+  .h-xl  { height:80vh; }
+  .h-sq  { aspect-ratio:1/1; height:auto; }
+  .h-port{ aspect-ratio:3/4; height:auto; }
+  .h-45  { aspect-ratio:4/5; height:auto; }
+  .h-169 { aspect-ratio:16/9; height:auto; }
+
+
+  .caption-block { padding:3rem; border-bottom:1px solid var(--border); display:flex; align-items:baseline; justify-content:space-between; gap:4rem; }
+  .caption-block h2 { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,2.5vw,2.2rem); font-weight:700; color:var(--cream); line-height:1.1; flex-shrink:0; max-width:340px; }
+  .caption-block h2 em { font-style:italic; color:var(--accent); }
+  .caption-block p { font-size:0.9rem; color:var(--muted); line-height:1.8; max-width:480px; }
+  .section-marker { padding:1.5rem 3rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:1.5rem; }
+  .section-marker-line { flex:1; height:1px; background:var(--border); }
+
+
+  .vid { position:relative; overflow:hidden; background:#0d0d0d; cursor:pointer; display:block; }
+  .vid-landscape { aspect-ratio:16/9; }
+  .vid-portrait  { aspect-ratio:9/16; }
+  .vid video.thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+  .vid-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.4); transition:background 0.3s; z-index:1; }
+  .vid:hover .vid-overlay { background:rgba(0,0,0,0.12); }
+  .vid-badge { position:absolute; top:1.25rem; left:1.25rem; z-index:2; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.85); background:rgba(0,0,0,0.5); padding:0.35rem 0.75rem; backdrop-filter:blur(4px); }
+  .vid-play-lg { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:80px; height:80px; border-radius:50%; border:2px solid rgba(255,255,255,0.7); background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
+  .vid:hover .vid-play-lg { border-color:var(--accent); background:rgba(255,233,115,0.18); transform:translate(-50%,-50%) scale(1.1); }
+  .vid:hover .vid-play-lg svg path { fill:var(--accent); }
+  .vid-play-md { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:64px; height:64px; border-radius:50%; border:2px solid rgba(255,255,255,0.7); background:rgba(0,0,0,0.25); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
+  .vid:hover .vid-play-md { border-color:var(--accent); background:rgba(255,233,115,0.15); transform:translate(-50%,-50%) scale(1.12); }
+  .vid:hover .vid-play-md svg path { fill:var(--accent); }
+  .vid-play-sm { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:48px; height:48px; border-radius:50%; border:2px solid rgba(255,255,255,0.65); background:rgba(0,0,0,0.25); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
+  .vid:hover .vid-play-sm { border-color:var(--accent); background:rgba(255,233,115,0.15); transform:translate(-50%,-50%) scale(1.1); }
+  .vid:hover .vid-play-sm svg path { fill:var(--accent); }
+  .vid-caption { padding:0.75rem 0 0; }
+  .vid-caption-title { font-size:0.85rem; font-weight:500; color:var(--cream); }
+  .vid-caption-desc  { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
+
+
+  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
+  .lightbox.open { display:flex; }
+  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
+  .lightbox-inner.is-portrait { max-width:400px; }
+  .lightbox-inner video { width:100%; display:block; }
+  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
+  .lightbox-close:hover { color:var(--accent); }
+
+
+  .social-section { padding:4rem 3rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .social-section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2.5rem; }
+  .social-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; color:var(--cream); line-height:1.1; }
+  .social-section-header h2 em { font-style:italic; color:var(--accent); }
+  .see-all-link { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.2); padding-bottom:2px; white-space:nowrap; transition:color 0.2s,border-color 0.2s; }
+  .see-all-link:hover { color:var(--cream); border-color:var(--cream); }
+  .social-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+
+  .workshop-video-wrap { border-bottom:1px solid var(--border); }
+  .workshop-video-caption { padding:1.5rem 3rem; border-top:1px solid var(--border); background:var(--green-mid); }
+  .workshop-video-caption p { font-size:0.88rem; color:var(--muted); line-height:1.7; max-width:640px; }
+  .landscape-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; padding:0 3rem; margin-bottom:1.5rem; }
+  .landscape-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; padding:0 3rem; }
+  @media(max-width:768px) {
+    .img-hero { height:75vh; aspect-ratio:auto; }
+    .img-duo,.img-trio,.img-feature-left,.img-feature-right { grid-template-columns:1fr; }
+    .caption-block { flex-direction:column; gap:1rem; padding:2rem 1.5rem; }
+    .meta-bar { flex-wrap:wrap; }
+    .meta-bar-item { border-bottom:1px solid var(--border); }
+    .img-hero-text { padding:2rem 1.5rem; }
+    .section-marker { padding:1.25rem 1.5rem; }
+    .workshop-video-caption { padding:1.25rem 1.5rem; }
+    .social-section { padding:3rem 1.5rem; }
+    .social-grid { grid-template-columns:repeat(2,1fr); }
+    .landscape-grid-2,.landscape-grid-3 { grid-template-columns:1fr; padding:0 1.5rem; }
+    /* Merch image responsive */
+    .img-full.img-cell.h-lg { height:auto; aspect-ratio:16/9; }
   }
-
-  .img-hero img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover;
-  }
-
-  .img-hero::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(26,58,42,0.85) 0%, transparent 55%);
-    pointer-events: none;
-  }
-
-  .img-hero-text {
-    position: relative; z-index: 2;
-    padding: 3rem; width: 100%;
-  }
-
-  .img-hero-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 6vw, 6rem);
-    font-weight: 900; line-height: 0.95;
-    color: var(--cream); letter-spacing: -0.02em; margin-bottom: 0.75rem;
-  }
-
-  .img-hero-text h1 em { font-style: italic; color: var(--accent); }
-
-  .img-hero-text p {
-    font-size: 1rem; color: rgba(245,240,232,0.7);
-    max-width: 540px; line-height: 1.7;
-  }
-
-  /* ── METADATA BAR ── */
-  .meta-bar {
-    display: flex; gap: 0;
-    border-bottom: 1px solid var(--border); overflow-x: auto;
-  }
-
-  .meta-bar-item {
-    padding: 1.5rem 2.5rem;
-    border-right: 1px solid var(--border);
-    white-space: nowrap; flex-shrink: 0;
-  }
-
-  .meta-bar-item:last-child { border-right: none; }
-
-  .meta-bar-label {
-    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 0.3rem;
-  }
-
-  .meta-bar-value { font-size: 0.88rem; font-weight: 500; color: var(--cream); }
-
-  /* ── IMAGE LAYOUTS ── */
-  .img-full { width: 100%; position: relative; overflow: hidden; background: var(--green-mid); display: block; }
-  .img-full img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  .img-duo  { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-  .img-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-
-  .img-feature-left  { display: grid; grid-template-columns: 2fr 1fr; gap: 3px; align-items: stretch; }
-  .img-feature-right { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-
-  .img-stack { display: flex; flex-direction: column; gap: 3px; }
-
-  .img-cell {
-    position: relative; overflow: hidden;
-    background: var(--green-mid);
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .img-cell img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    transition: transform 0.5s ease;
-  }
-
-  .img-cell:hover img { transform: scale(1.03); }
-
-  .img-cell-label {
-    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); opacity: 0.5; position: relative; z-index: 1;
-  }
-
-  /* Heights */
-  .h-sm   { height: 320px; }
-  .h-md   { height: 480px; }
-  .h-lg   { height: 620px; }
-  .h-xl   { height: 80vh; }
-  .h-sq   { aspect-ratio: 1/1;  height: auto; }
-  .h-port { aspect-ratio: 3/4;  height: auto; }
-  .h-45   { aspect-ratio: 4/5;  height: auto; }
-
-  /* ── CAPTION BLOCK ── */
-  .caption-block {
-    padding: 3rem; border-bottom: 1px solid var(--border);
-    display: flex; align-items: baseline; justify-content: space-between; gap: 4rem;
-  }
-
-  .caption-block h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-    font-weight: 700; color: var(--cream); line-height: 1.1;
-    flex-shrink: 0; max-width: 340px;
-  }
-
-  .caption-block h2 em { font-style: italic; color: var(--accent); }
-
-  .caption-block p {
-    font-size: 0.9rem; color: var(--muted); line-height: 1.8; max-width: 480px;
-  }
-
-  /* ── SECTION MARKER ── */
-  .section-marker {
-    padding: 1.5rem 3rem; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 1.5rem;
-  }
-
-  .section-marker-line { flex: 1; height: 1px; background: var(--border); }
-
-  /* ── VIDEO — shared ── */
-  .vid {
-    position: relative; overflow: hidden;
-    background: #0d0d0d; cursor: pointer; display: block;
-  }
-
-  .vid-landscape { aspect-ratio: 16 / 9; }
-  .vid-portrait  { aspect-ratio: 9 / 16; }
-
-  .vid video.thumb {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    pointer-events: none;
-  }
-
-  .vid-overlay {
-    position: absolute; inset: 0;
-    background: rgba(0,0,0,0.4); transition: background 0.3s; z-index: 1;
-  }
-
-  .vid:hover .vid-overlay { background: rgba(0,0,0,0.12); }
-
-  .vid-badge {
-    position: absolute; top: 1.25rem; left: 1.25rem; z-index: 2;
-    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.5);
-    padding: 0.35rem 0.75rem; backdrop-filter: blur(4px);
-  }
-
-  /* Large play */
-  .vid-play-lg {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%); z-index: 2;
-    width: 80px; height: 80px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.7); background: rgba(0,0,0,0.3);
-    display: flex; align-items: center; justify-content: center;
-    transition: border-color 0.25s, background 0.25s, transform 0.25s;
-  }
-
-  .vid:hover .vid-play-lg {
-    border-color: var(--accent); background: rgba(255,233,115,0.18);
-    transform: translate(-50%,-50%) scale(1.1);
-  }
-
-  .vid:hover .vid-play-lg svg path { fill: var(--accent); }
-
-  /* Small play */
-  .vid-play-sm {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%); z-index: 2;
-    width: 48px; height: 48px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.65); background: rgba(0,0,0,0.25);
-    display: flex; align-items: center; justify-content: center;
-    transition: border-color 0.25s, background 0.25s, transform 0.25s;
-  }
-
-  .vid:hover .vid-play-sm {
-    border-color: var(--accent); background: rgba(255,233,115,0.15);
-    transform: translate(-50%,-50%) scale(1.1);
-  }
-
-  .vid:hover .vid-play-sm svg path { fill: var(--accent); }
-
-  /* Medium play — for landscape grid cards */
-  .vid-play-md {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%); z-index: 2;
-    width: 64px; height: 64px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.7); background: rgba(0,0,0,0.25);
-    display: flex; align-items: center; justify-content: center;
-    transition: border-color 0.25s, background 0.25s, transform 0.25s;
-  }
-
-  .vid:hover .vid-play-md {
-    border-color: var(--accent); background: rgba(255,233,115,0.15);
-    transform: translate(-50%,-50%) scale(1.12);
-  }
-
-  .vid:hover .vid-play-md svg path { fill: var(--accent); }
-
-  /* ── WORKSHOP VIDEO ── */
-  .workshop-video-wrap { border-bottom: 1px solid var(--border); }
-
-  .workshop-video-caption {
-    padding: 1.5rem 3rem; border-top: 1px solid var(--border);
-    background: var(--green-mid);
-  }
-
-  .workshop-video-caption p {
-    font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 640px;
-  }
-
-  /* ── SOCIAL MEDIA SECTION ── */
-  .social-section {
-    padding: 4rem 3rem;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .social-section-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    margin-bottom: 2.5rem;
-  }
-
-  .social-section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700; color: var(--cream); line-height: 1.1;
-  }
-
-  .social-section-header h2 em { font-style: italic; color: var(--accent); }
-
-  .see-all-link {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none;
-    border-bottom: 1px solid rgba(245,240,232,0.2); padding-bottom: 2px;
-    white-space: nowrap; transition: color 0.2s, border-color 0.2s;
-  }
-
-  .see-all-link:hover { color: var(--cream); border-color: var(--cream); }
-
-  /* 4-column portrait reel grid */
-  .social-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-  }
-
-  /* Captions below reels */
-  .vid-caption { padding: 0.75rem 0 0; }
-  .vid-caption-title { font-size: 0.85rem; font-weight: 500; color: var(--cream); }
-  .vid-caption-desc  { font-size: 0.75rem; color: var(--muted); line-height: 1.5; margin-top: 0.2rem; }
-
-  /* ── LINKEDIN VIDEO SECTION ── */
-  .linkedin-section {
-    padding: 4rem 3rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .linkedin-section-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    margin-bottom: 2.5rem;
-  }
-
-  .linkedin-section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700; color: var(--cream); line-height: 1.1;
-  }
-
-  .linkedin-section-header h2 em { font-style: italic; color: var(--accent); }
-
-  /* 2-column row — matches motion graphics page row 2 */
-  .landscape-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  /* 3-column row — matches motion graphics page row 3 */
-  .landscape-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    display: none; position: fixed; inset: 0; z-index: 999;
-    background: rgba(0,0,0,0.94);
-    align-items: center; justify-content: center; padding: 2rem;
-  }
-
-  .lightbox.open { display: flex; }
-
-  .lightbox-inner { position: relative; width: 100%; max-width: 1100px; }
-  .lightbox-inner.is-portrait { max-width: 400px; }
-  .lightbox-inner video { width: 100%; display: block; }
-
-  .lightbox-close {
-    position: absolute; top: -3rem; right: 0;
-    background: none; border: none;
-    color: rgba(255,255,255,0.6); font-size: 0.78rem;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    cursor: pointer; transition: color 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .lightbox-close:hover { color: var(--accent); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .img-hero { height: 75vh; aspect-ratio: auto; }
-    .img-duo, .img-trio, .img-feature-left, .img-feature-right { grid-template-columns: 1fr; }
-    .caption-block { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; }
-    .meta-bar { flex-wrap: wrap; }
-    .meta-bar-item { border-bottom: 1px solid var(--border); }
-    .img-hero-text { padding: 2rem 1.5rem; }
-    .section-marker { padding: 1.25rem 1.5rem; }
-    .workshop-video-caption { padding: 1.25rem 1.5rem; }
-    .social-section { padding: 3rem 1.5rem; }
-    .social-grid { grid-template-columns: repeat(2, 1fr); }
-    .social-section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .linkedin-section { padding: 3rem 1.5rem; }
-    .linkedin-section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .landscape-grid-2 { grid-template-columns: 1fr; }
-    .landscape-grid-3 { grid-template-columns: 1fr 1fr; }
-  }
-
-  @media (max-width: 600px) {
-    .landscape-grid-3 { grid-template-columns: 1fr; }
-  }
-
 </style>
 </head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">Josephine De Maria</a>
+<body><nav>
+  <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="brand-identity.html">Brand Identity</a></li>
@@ -371,422 +124,299 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
-<!-- HERO — video background -->
+<ul class="nav-drawer" id="navDrawer">
+  <li><a href="index.html">Home</a></li>
+    <li><a href="brand-identity.html">Brand Identity</a></li>
+    <li><a href="video-content.html">Video</a></li>
+    <li><a href="motion-graphics.html">Motion</a></li>
+    <li><a href="y-careers.html" class="active">Y Careers</a></li>
+    <li><a href="selfwealth.html">Selfwealth</a></li>
+    <li><a href="illustration.html">Illustration</a></li>
+</ul>
 <div class="img-hero">
-  <video autoplay muted loop playsinline
-         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+  <video autoplay muted loop playsinline class="hero-vid">
     <source src="assets/ycareers/WhoIsYCareersFINAL.mp4" type="video/mp4">
   </video>
   <div class="img-hero-text">
     <h1>Y <em>Careers</em></h1>
-    <p>Y Careers is a not-for-profit social enterprise dedicated to bridging the gap in the care industry's workforce. I built this brand from the ground up — from concept and co-design workshops through to a full visual identity, design system, social strategy, video, and motion.</p>
+    <p>Y Careers is a not-for-profit social enterprise dedicated to bridging the gap in the care industry's workforce. I built this brand from the ground up -- from concept and co-design workshops through to a full visual identity, design system, social strategy, video, and motion.</p>
   </div>
 </div>
 
-<!-- METADATA BAR -->
-<div class="meta-bar">
-  <div class="meta-bar-item">
-    <div class="meta-bar-label">Company</div>
-    <div class="meta-bar-value">Y Careers</div>
-  </div>
-  <div class="meta-bar-item">
-    <div class="meta-bar-label">Year</div>
-    <div class="meta-bar-value">Since 2023</div>
-  </div>
-  <div class="meta-bar-item">
-    <div class="meta-bar-label">Disciplines</div>
-    <div class="meta-bar-value">Brand Identity · Strategy · Motion</div>
-  </div>
-  <div class="meta-bar-item">
-    <div class="meta-bar-label">Tools</div>
-    <div class="meta-bar-value">Figma · Adobe CC Suite · Social Media</div>
-  </div>
-  <div class="meta-bar-item">
-    <div class="meta-bar-label">Industry</div>
-    <div class="meta-bar-value">NFP</div>
-  </div>
-</div>
+<div class="meta-bar"><div class="meta-bar-item"><div class="meta-bar-label">Company</div><div class="meta-bar-value">Y Careers</div></div><div class="meta-bar-item"><div class="meta-bar-label">Year</div><div class="meta-bar-value">Since 2023</div></div><div class="meta-bar-item"><div class="meta-bar-label">Disciplines</div><div class="meta-bar-value">Brand Identity · Strategy · Motion</div></div><div class="meta-bar-item"><div class="meta-bar-label">Tools</div><div class="meta-bar-value">Figma · Adobe CC Suite · Social Media</div></div><div class="meta-bar-item"><div class="meta-bar-label">Industry</div><div class="meta-bar-value">NFP</div></div></div>
 
-<!-- BLOCK 1: Full-width image -->
 <div class="img-full img-cell h-xl fade-up">
   <img src="assets/ycareers/9Banners.png" alt="Y Careers banners">
 </div>
 
-<!-- Caption -->
 <div class="caption-block fade-up">
   <h2>Co-designed <em>with</em> young people</h2>
   <p>Rather than assuming what young people wanted, I ran workshops directly with them to shape both the brand direction and social media strategy.</p>
 </div>
 
-<!-- WORKSHOP VIDEO -->
 <div class="workshop-video-wrap fade-up">
-  <div class="vid vid-landscape"
-       data-src="assets/ycareers/YoungAssociates_BrandWorkshopHor.mp4"
-       data-portrait="false">
+  <div class="vid vid-landscape" data-src="assets/ycareers/YoungAssociates_BrandWorkshopHor.mp4" data-portrait="false">
     <video class="thumb" preload="metadata" muted playsinline>
       <source src="assets/ycareers/YoungAssociates_BrandWorkshopHor.mp4" type="video/mp4">
     </video>
-    <div class="vid-badge">Workshop — Brand Co-design with Young People</div>
+    <div class="vid-badge">Workshop -- Brand Co-design with Young People</div>
     <div class="vid-overlay"></div>
-    <div class="vid-play-lg">
-      <svg width="22" height="24" viewBox="0 0 22 24" fill="none">
-        <path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/>
-      </svg>
-    </div>
+    <div class="vid-play-lg"><svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/></svg></div>
   </div>
   <div class="workshop-video-caption">
-    <p>Running co-design sessions with young people to ensure the Y Careers brand genuinely reflected their voice — not what we assumed they'd want.</p>
+    <p>Running co-design sessions with young people to ensure the Y Careers brand genuinely reflected their voice -- not what we assumed they would want.</p>
   </div>
 </div>
 
-<!-- BLOCK 3: Two equal images -->
 <div class="img-duo fade-up">
-  <div class="img-cell h-md">
-    <img src="assets/ycareers/2Logo-1.png" alt="Y Careers logo">
-  </div>
-  <div class="img-cell h-md">
-    <img src="assets/ycareers/6SocialMediaPosts.png" alt="Social media posts">
-  </div>
+  <div class="img-cell h-md"><img src="assets/ycareers/2Logo-1.png" alt="Y Careers logo"></div>
+  <div class="img-cell h-md"><img src="assets/ycareers/6SocialMediaPosts.png" alt="Social media posts"></div>
 </div>
 
-<!-- SECTION MARKER -->
 <div class="section-marker fade-up">
   <span class="eyebrow" style="margin-bottom:0;">Advertising</span>
   <div class="section-marker-line"></div>
 </div>
 
-<!-- BLOCK 4: Three images at 4:5 ratio -->
 <div class="img-trio fade-up">
-  <div class="img-cell h-45">
-    <img src="assets/ycareers/Ad1.jpg" alt="Y Careers ad">
-  </div>
-  <div class="img-cell h-45">
-    <img src="assets/ycareers/Ad2.jpg" alt="Y Careers ad">
-  </div>
-  <div class="img-cell h-45">
-    <img src="assets/ycareers/Ad3.jpg" alt="Y Careers ad">
-  </div>
+  <div class="img-cell h-45"><img src="assets/ycareers/Ad1.jpg" alt="Y Careers ad"></div>
+  <div class="img-cell h-45"><img src="assets/ycareers/Ad2.jpg" alt="Y Careers ad"></div>
+  <div class="img-cell h-45"><img src="assets/ycareers/Ad3.jpg" alt="Y Careers ad"></div>
 </div>
 
-<!-- Caption -->
 <div class="caption-block fade-up">
   <h2>Design <em>outside</em> the box</h2>
-  <p>I translated outdated guidelines into a fresh, youth-focused identity that resonates with Gen Z, and I've driven how the brand shows up across video, motion graphics, social media, and web.</p>
+  <p>I translated outdated guidelines into a fresh, youth-focused identity that resonates with Gen Z, and I have driven how the brand shows up across video, motion graphics, social media, and web.</p>
 </div>
 
-<!-- BLOCK 5: Two stacked left, large right -->
 <div class="img-feature-right fade-up">
   <div class="img-stack">
-    <div class="img-cell">
-      <img src="assets/ycareers/4YCareersColours.png" alt="Y Careers colour palette">
-    </div>
-    <div class="img-cell">
-      <img src="assets/ycareers/5Typography.png" alt="Y Careers typography">
-    </div>
+    <div class="img-cell"><img src="assets/ycareers/4YCareersColours.png" alt="Y Careers colour palette"></div>
+    <div class="img-cell"><img src="assets/ycareers/5Typography.png" alt="Y Careers typography"></div>
   </div>
-  <div class="img-cell">
-    <img src="assets/ycareers/1Logo.png" alt="Y Careers logo system">
-  </div>
+  <div class="img-cell"><img src="assets/ycareers/1Logo.png" alt="Y Careers logo system"></div>
 </div>
 
-<!-- BLOCK 6: Full-width closing image -->
 <div class="img-full img-cell h-lg fade-up">
   <img src="assets/ycareers/7Merch.png" alt="Y Careers merch">
 </div>
 
-<!-- SOCIAL MEDIA SECTION -->
 <section class="social-section">
-
   <div class="social-section-header">
     <div>
       <span class="eyebrow">Instagram · TikTok · LinkedIn · YouTube</span>
       <h2>Social <em>Content</em></h2>
     </div>
-    <a href="video-content.html" class="see-all-link">See all videos →</a>
+    <a href="video-content.html" class="see-all-link">See all videos &#8594;</a>
   </div>
-
   <div class="social-grid">
-
     <div>
-      <div class="vid vid-portrait fade-up"
-           data-src="assets/videos/Pacifique_Subs.mp4"
-           data-portrait="true">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/Pacifique_Subs.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Instagram</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-sm">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M1 1l12 7-12 7V1z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Meet Pacifique</div>
-        <div class="vid-caption-desc">A video series showcasing real young people and how their traineeships are meaningful to them.</div>
-      </div>
-    </div>
-
+  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Pacifique_Subs.mp4" data-portrait="true">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/Pacifique_Subs.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Instagram</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
+  <div class="vid-caption">
+    <div class="vid-caption-title">Meet Pacifique</div>
+    <div class="vid-caption-desc">A video series showcasing real young people and how their traineeships are meaningful to them.</div>
+  </div>
+</div>
     <div>
-      <div class="vid vid-portrait fade-up"
-           data-src="assets/videos/Voxpop_Kayla.mp4"
-           data-portrait="true">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/Voxpop_Kayla.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">TikTok</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-sm">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M1 1l12 7-12 7V1z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Voxpop Content</div>
-        <div class="vid-caption-desc">Street interviews are always engaging; it's just about finding your niche.</div>
-      </div>
-    </div>
-
+  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Voxpop_Kayla.mp4" data-portrait="true">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/Voxpop_Kayla.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">TikTok</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
+  <div class="vid-caption">
+    <div class="vid-caption-title">Voxpop Content</div>
+    <div class="vid-caption-desc">Street interviews are always engaging; it is just about finding your niche.</div>
+  </div>
+</div>
     <div>
-      <div class="vid vid-portrait fade-up"
-           data-src="assets/videos/JAG ad.mp4"
-           data-portrait="true">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/JAG ad.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Instagram</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-sm">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M1 1l12 7-12 7V1z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Advertising on Socials</div>
-        <div class="vid-caption-desc">Using a common reel format to advertise with, an engaging hook.</div>
-      </div>
-    </div>
-
+  <div class="vid vid-portrait  fade-up" data-src="assets/videos/JAG ad.mp4" data-portrait="true">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/JAG ad.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Instagram</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
+  <div class="vid-caption">
+    <div class="vid-caption-title">Advertising on Socials</div>
+    <div class="vid-caption-desc">Using a common reel format to advertise with an engaging hook.</div>
+  </div>
+</div>
     <div>
-      <div class="vid vid-portrait fade-up"
-           data-src="assets/videos/FunniestThing.mp4"
-           data-portrait="true">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/FunniestThing.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Instagram</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-sm">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M1 1l12 7-12 7V1z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Relatable moments</div>
-        <div class="vid-caption-desc">Everyone has had funny moments with children. Why not use them as a funny signature?</div>
-      </div>
-    </div>
-
+  <div class="vid vid-portrait  fade-up" data-src="assets/videos/FunniestThing.mp4" data-portrait="true">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/FunniestThing.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Instagram</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
+  <div class="vid-caption">
+    <div class="vid-caption-title">Relatable moments</div>
+    <div class="vid-caption-desc">Everyone has had funny moments with children. Why not use them as a recurring signature?</div>
+  </div>
+</div>
   </div>
 </section>
 
-  <!-- Row 1: 2-column -->
-  <div class="landscape-grid-2">
-
-    <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/videos/InductionDay_LinkedIn.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/InductionDay_LinkedIn.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">LinkedIn</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-md">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Induction day video</div>
-        <div class="vid-caption-desc">A video made to showcase a business partnership with an in-person induction.</div>
-      </div>
-    </div>
-
-    <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/videos/JAG Trainees are amazing.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/JAG Trainees are amazing.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">LinkedIn</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-md">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Showcasing partnerships</div>
-        <div class="vid-caption-desc">Showing the audience how amazing it feels to have young people in care roles.</div>
-      </div>
-    </div>
-
+<div class="landscape-grid-2 fade-up" style="padding-top:3rem;">
+  <div>
+    <div class="vid vid-landscape  fade-up" data-src="assets/videos/InductionDay_LinkedIn.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/InductionDay_LinkedIn.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">LinkedIn</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+</div>
+    <div class="vid-caption"><div class="vid-caption-title">Induction day video</div><div class="vid-caption-desc">A video made to showcase a business partnership with an in-person induction.</div></div>
   </div>
-
-  <!-- Row 2: 3-column -->
-  <div class="landscape-grid-3">
-
-    <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/videos/BrandWorkshopRound2.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/BrandWorkshopRound2.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">LinkedIn</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-sm">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M1 1l12 7-12 7V1z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Showcasing co-design workshops</div>
-        <div class="vid-caption-desc">Documenting the process of building a brand.</div>
-      </div>
-    </div>
-
-    <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/videos/Welcometoycareers.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/videos/Welcometoycareers.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">YouTube</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-sm">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M1 1l12 7-12 7V1z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Welcome to Y Careers</div>
-        <div class="vid-caption-desc">A short internal video welcoming new trainees at induction.</div>
-      </div>
-    </div>
-
-    <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/motion-graphics/What is a GTO.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">YouTube</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play-sm">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M1 1l12 7-12 7V1z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      <div class="vid-caption">
-        <div class="vid-caption-title">Animated Explainer</div>
-        <div class="vid-caption-desc">Motion graphics that make complex ideas digestible, used across social and advertising.</div>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-  </section>
-  
-
-<!-- CONTACT STRIP -->
-<section class="contact-section">
-  <h2>Like what you see?</h2>
-  <p>Please reach out.</p>
-  <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
-  <div class="contact-links">
-    <a href="https://www.linkedin.com/in/josephine-de-maria/" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
-  <span class="footer-right">Melbourne, Australia</span>
-</footer>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner" id="lightbox-inner">
-    <button class="lightbox-close" id="lightbox-close">✕ Close</button>
-    <video id="lightbox-video" controls playsinline></video>
+  <div>
+    <div class="vid vid-landscape  fade-up" data-src="assets/videos/JAG Trainees are amazing.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/JAG Trainees are amazing.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">LinkedIn</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+</div>
+    <div class="vid-caption"><div class="vid-caption-title">Showcasing partnerships</div><div class="vid-caption-desc">Showing how great it feels to have young people in care roles.</div></div>
   </div>
 </div>
 
+<div class="landscape-grid-3 fade-up" style="padding-top:1.5rem;padding-bottom:3rem;">
+  <div>
+    <div class="vid vid-landscape  fade-up" data-src="assets/videos/BrandWorkshopRound2.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/BrandWorkshopRound2.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">LinkedIn</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
+    <div class="vid-caption"><div class="vid-caption-title">Showcasing co-design workshops</div><div class="vid-caption-desc">Documenting the process of building a brand with the people it is made for.</div></div>
+  </div>
+  <div>
+    <div class="vid vid-landscape  fade-up" data-src="assets/videos/Welcometoycareers.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/videos/Welcometoycareers.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">YouTube</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
+    <div class="vid-caption"><div class="vid-caption-title">Welcome to Y Careers</div><div class="vid-caption-desc">A short internal video welcoming new trainees at their induction.</div></div>
+  </div>
+  <div>
+    <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/What is a GTO.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">YouTube</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
+    <div class="vid-caption"><div class="vid-caption-title">Animated Explainer</div><div class="vid-caption-desc">Motion graphics that make complex ideas digestible, used across social and advertising.</div></div>
+  </div>
+</div>
+
+<section class="contact-section">
+  <h2>Like what you see?</h2>
+  <p>Open to freelance, contract, and full-time opportunities.</p>
+  <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
+  <div class="contact-links">
+    <a href="tel:0400636229">0400 636 229</a>
+    <a href="https://www.linkedin.com/in/josephine-de-maria/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+<footer>
+  <span class="footer-copy">&copy; 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-right">Melbourne, Australia</span>
+</footer>
+
+  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
+  .lightbox.open { display:flex; }
+  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
+  .lightbox-inner.is-portrait { max-width:400px; }
+  .lightbox-inner video { width:100%; display:block; }
+  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
+  .lightbox-close:hover { color:var(--accent); }
+
 <script>
-  // Fade-up on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
+  const _obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        _obs.unobserve(e.target);
       }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Seek all thumb videos to first frame
+  document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
+</script>
+<script>
   document.querySelectorAll('video.thumb').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
     if (v.readyState >= 1) v.currentTime = 0.1;
   });
-
-  // Lightbox
-  const lightbox      = document.getElementById('lightbox');
-  const lightboxInner = document.getElementById('lightbox-inner');
-  const lightboxVideo = document.getElementById('lightbox-video');
-  const lightboxClose = document.getElementById('lightbox-close');
-
-  document.querySelectorAll('.vid').forEach(card => {
+</script>
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">Close</button>
+    <video id="lightbox-video" controls playsinline></video>
+  </div>
+</div>
+<script>
+  const _lb      = document.getElementById('lightbox');
+  const _lbInner = document.getElementById('lightbox-inner');
+  const _lbVid   = document.getElementById('lightbox-video');
+  const _lbClose = document.getElementById('lightbox-close');
+  document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      const src      = card.dataset.src;
-      const portrait = card.dataset.portrait === 'true';
-      lightboxVideo.src = src;
-      lightboxVideo.load();
-      lightboxVideo.play();
-      lightboxInner.classList.toggle('is-portrait', portrait);
-      lightbox.classList.add('open');
+      _lbVid.src = card.dataset.src;
+      _lbVid.load(); _lbVid.play();
+      _lbInner.classList.toggle('is-portrait', card.dataset.portrait === 'true');
+      _lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
   });
-
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    lightboxVideo.pause();
-    lightboxVideo.src = '';
+  _lbClose.addEventListener('click', _closeLb);
+  _lb.addEventListener('click', e => { if (e.target === _lb) _closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeLb(); });
+  function _closeLb() {
+    _lb.classList.remove('open');
+    _lbVid.pause(); _lbVid.src = '';
     document.body.style.overflow = '';
   }
 </script>
-
-</body>
-</html>
+<script>
+  // Burger menu
+  const burger  = document.getElementById('navBurger');
+  const drawer  = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body></html>

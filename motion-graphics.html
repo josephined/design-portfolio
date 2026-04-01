@@ -1,230 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Motion Graphics — Josephine De Maria</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="shared.css"/>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion Graphics -- Josephine De Maria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
 
-    /* ── PAGE HERO ── */
-    .page-hero {
-      padding: 10rem 3rem 5rem;
-      border-bottom: 1px solid var(--border);
-    }
+  .page-hero { padding:10rem 3rem 5rem; border-bottom:1px solid var(--border); }
+  .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:1.5rem; }
+  .page-hero h1 em { font-style:italic; color:var(--accent); }
+  .page-hero p { font-size:1.05rem; color:var(--muted); max-width:600px; line-height:1.8; }
 
-    .page-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4rem, 8vw, 8rem);
-      font-weight: 900;
-      line-height: 0.95;
-      color: var(--cream);
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-    }
 
-    .page-hero h1 em { font-style: italic; color: var(--accent); }
+  .vid { position:relative; overflow:hidden; background:#0d0d0d; cursor:pointer; display:block; }
+  .vid-landscape { aspect-ratio:16/9; }
+  .vid-portrait  { aspect-ratio:9/16; }
+  .vid video.thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+  .vid-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.4); transition:background 0.3s; z-index:1; }
+  .vid:hover .vid-overlay { background:rgba(0,0,0,0.12); }
+  .vid-badge { position:absolute; top:1.25rem; left:1.25rem; z-index:2; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.85); background:rgba(0,0,0,0.5); padding:0.35rem 0.75rem; backdrop-filter:blur(4px); }
+  .vid-play-lg { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:80px; height:80px; border-radius:50%; border:2px solid rgba(255,255,255,0.7); background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
+  .vid:hover .vid-play-lg { border-color:var(--accent); background:rgba(255,233,115,0.18); transform:translate(-50%,-50%) scale(1.1); }
+  .vid:hover .vid-play-lg svg path { fill:var(--accent); }
+  .vid-play-md { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:64px; height:64px; border-radius:50%; border:2px solid rgba(255,255,255,0.7); background:rgba(0,0,0,0.25); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
+  .vid:hover .vid-play-md { border-color:var(--accent); background:rgba(255,233,115,0.15); transform:translate(-50%,-50%) scale(1.12); }
+  .vid:hover .vid-play-md svg path { fill:var(--accent); }
+  .vid-play-sm { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:48px; height:48px; border-radius:50%; border:2px solid rgba(255,255,255,0.65); background:rgba(0,0,0,0.25); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
+  .vid:hover .vid-play-sm { border-color:var(--accent); background:rgba(255,233,115,0.15); transform:translate(-50%,-50%) scale(1.1); }
+  .vid:hover .vid-play-sm svg path { fill:var(--accent); }
+  .vid-caption { padding:0.75rem 0 0; }
+  .vid-caption-title { font-size:0.85rem; font-weight:500; color:var(--cream); }
+  .vid-caption-desc  { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
 
-    .page-hero p {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 600px;
-      line-height: 1.8;
-    }
 
-    /* ── VIDEO SECTION ── */
-    .video-section {
-      padding: 5rem 3rem;
-      border-bottom: 1px solid var(--border);
-    }
+  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
+  .lightbox.open { display:flex; }
+  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
+  .lightbox-inner.is-portrait { max-width:400px; }
+  .lightbox-inner video { width:100%; display:block; }
+  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
+  .lightbox-close:hover { color:var(--accent); }
 
-    .video-section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 3rem;
-    }
-
-    .video-section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.1;
-    }
-
-    .video-section-header h2 em { font-style: italic; color: var(--accent); }
-
-    /* ── VIDEO CARD ── */
-    .vid {
-      position: relative;
-      overflow: hidden;
-      background: #0d0d0d;
-      cursor: pointer;
-      display: block;
-    }
-
-    .vid-landscape { aspect-ratio: 16 / 9; }
-
-    .vid video.thumb {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      pointer-events: none;
-    }
-
-    .vid-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      transition: background 0.3s ease;
-      z-index: 1;
-    }
-
-    .vid:hover .vid-overlay { background: rgba(0,0,0,0.1); }
-
-    .vid-play {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.7);
-      background: rgba(0,0,0,0.25);
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.25s, background 0.25s, transform 0.25s;
-    }
-
-    .vid:hover .vid-play {
-      border-color: var(--accent);
-      background: rgba(255,233,115,0.15);
-      transform: translate(-50%, -50%) scale(1.12);
-    }
-
-    .vid-play svg { margin-left: 4px; }
-    .vid:hover .vid-play svg path { fill: var(--accent); }
-
-    .vid-play-lg { width: 80px; height: 80px; }
-
-    .vid-badge {
-      position: absolute;
-      top: 1rem; left: 1rem;
-      z-index: 2;
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-      background: rgba(0,0,0,0.5);
-      padding: 0.35rem 0.75rem;
-      backdrop-filter: blur(4px);
-    }
-
-    .vid-caption { padding: 1rem 0 0; }
-    .vid-caption-title { font-size: 0.9rem; font-weight: 500; color: var(--cream); margin-bottom: 0.2rem; }
-    .vid-caption-desc  { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
-
-    /* ── LAYOUT GRIDS ── */
-    .vid-featured { margin-bottom: 1.5rem; }
-
-    .landscape-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .landscape-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    /* ── PROCESS ── */
-    .process-section {
-      padding: 5rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .process-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-    }
-
-    .process-section h2 em { font-style: italic; color: var(--accent); }
-
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(0,0,0,0.94);
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .lightbox.open { display: flex; }
-
-    .lightbox-inner {
-      position: relative;
-      width: 100%;
-      max-width: 1000px;
-    }
-
-    .lightbox-inner video { width: 100%; display: block; }
-
-    .lightbox-close {
-      position: absolute;
-      top: -3rem; right: 0;
-      background: none; border: none;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: color 0.2s;
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .lightbox-close:hover { color: var(--accent); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      .page-hero { padding: 7rem 1.5rem 3rem; }
-      .video-section { padding: 3.5rem 1.5rem; }
-      .video-section-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-      .landscape-grid-2 { grid-template-columns: 1fr; }
-      .landscape-grid-3 { grid-template-columns: 1fr 1fr; }
-      .process-section { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
-    }
-
-    @media (max-width: 600px) {
-      .landscape-grid-3 { grid-template-columns: 1fr; }
-    }
-
-  </style>
+  .vid-featured { margin-bottom:1.5rem; }
+  .landscape-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+  .landscape-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .video-section { padding:5rem 3rem; border-bottom:1px solid var(--border); }
+  .video-section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:3rem; }
+  .video-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; color:var(--cream); line-height:1.1; }
+  .video-section-header h2 em { font-style:italic; color:var(--accent); }
+  .process-section { padding:5rem 3rem; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; border-bottom:1px solid var(--border); }
+  .process-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:700; color:var(--cream); line-height:1.1; margin-bottom:1.25rem; }
+  .process-section h2 em { font-style:italic; color:var(--accent); }
+  @media(max-width:768px) {
+    .page-hero { padding:7rem 1.5rem 3rem; }
+    .video-section { padding:3rem 1.5rem; }
+    .landscape-grid-2 { grid-template-columns:1fr; }
+    .landscape-grid-3 { grid-template-columns:1fr 1fr; }
+    .process-section { grid-template-columns:1fr; gap:2rem; padding:3rem 1.5rem; }
+  }
+</style>
 </head>
-<body>
-
-<!-- ── NAV ── -->
-<nav>
-  <a href="index.html" class="nav-logo">Josephine De Maria</a>
+<body><nav>
+  <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="brand-identity.html">Brand Identity</a></li>
@@ -234,255 +73,217 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
-<!-- ── HERO ── -->
+<ul class="nav-drawer" id="navDrawer">
+  <li><a href="index.html">Home</a></li>
+    <li><a href="brand-identity.html">Brand Identity</a></li>
+    <li><a href="video-content.html">Video</a></li>
+    <li><a href="motion-graphics.html" class="active">Motion</a></li>
+    <li><a href="y-careers.html">Y Careers</a></li>
+    <li><a href="selfwealth.html">Selfwealth</a></li>
+    <li><a href="illustration.html">Illustration</a></li>
+</ul>
 <div class="page-hero">
   <span class="eyebrow">Animation · Motion Design · After Effects</span>
   <h1>Motion <em>Graphics</em></h1>
-  <p>I use animation to bring brands to life and make content more engaging — from brand animations and social campaign motion to animated explainers that make complex concepts digestible.</p>
-  <div style="margin-top:1.75rem;">
-    <span class="tag">After Effects</span>
-    <span class="tag">Logo Animation</span>
-    <span class="tag">Social Campaigns</span>
-    <span class="tag">Brand Motion</span>
-    <span class="tag">Explainer Videos</span>
-  </div>
+  <p>I use animation to bring brands to life and make content more engaging -- from brand animations and social campaign motion to animated explainers that make complex concepts digestible.</p>
 </div>
 
-
-<!-- ── MOTION WORK SECTION ── -->
 <section class="video-section">
-
   <div class="video-section-header">
     <div>
       <span class="eyebrow">After Effects · Brand Motion</span>
       <h2>Selected <em>Work</em></h2>
     </div>
-    <div>
-      <span class="tag">Brand Motion</span>
-      <span class="tag">Social</span>
-      <span class="tag">Explainer</span>
-    </div>
   </div>
 
-  <!-- FEATURED: full width -->
   <div class="vid-featured">
-    <div class="vid vid-landscape fade-up"
-         data-src="assets/motion-graphics/SelfwealthAnimation.mp4"
-         data-portrait="false">
-      <video class="thumb" preload="metadata" muted playsinline>
-        <source src="assets/motion-graphics/SelfwealthAnimation.mp4" type="video/mp4">
-      </video>
-      <div class="vid-badge">Featured</div>
-      <div class="vid-overlay"></div>
-      <div class="vid-play vid-play-lg">
-        <svg width="20" height="22" viewBox="0 0 20 22" fill="none">
-          <path d="M1 1.5l18 9.5L1 20.5V1.5z" fill="white"/>
-        </svg>
-      </div>
-    </div>
-    <div class="vid-caption">
-      <div class="vid-caption-title">Y Careers — Brand Motion System</div>
-      <div class="vid-caption-desc">Animated brand assets including logo animations, social media motion graphics, and campaign animations — bringing the bold visual identity to life across digital platforms.</div>
+    <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/SelfwealthAnimation.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/motion-graphics/SelfwealthAnimation.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Featured</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-lg"><svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/></svg></div>
+</div>
+    <div class="vid-caption" style="padding-top:0.75rem;">
+      <div class="vid-caption-title">Selfwealth Brand Animation</div>
+      <div class="vid-caption-desc">Evergreen animated advertising bringing the Selfwealth brand identity to life across digital platforms.</div>
     </div>
   </div>
 
-  <!-- 2-COLUMN ROW -->
   <div class="landscape-grid-2">
-
     <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/motion-graphics/USPromoFINAL.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/motion-graphics/USPromoFINAL.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Social Campaign</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
-          </svg>
-        </div>
-      </div>
+      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/USPromoFINAL.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/motion-graphics/USPromoFINAL.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Social Campaign</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+</div>
       <div class="vid-caption">
         <div class="vid-caption-title">Social Campaign Animation</div>
         <div class="vid-caption-desc">Animated social tiles and story graphics for digital campaign rollouts.</div>
       </div>
     </div>
-
     <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/motion-graphics/WhoIsYCareersFINAL.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Explainer</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
-          </svg>
-        </div>
-      </div>
+      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Explainer</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+</div>
       <div class="vid-caption">
         <div class="vid-caption-title">Company Explainer</div>
         <div class="vid-caption-desc">An animated introduction is a digestible way to explain what your company does.</div>
       </div>
     </div>
-
   </div>
 
-  <!-- 3-COLUMN ROW -->
   <div class="landscape-grid-3">
-
     <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/motion-graphics/LogoAnimation.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/motion-graphics/LogoAnimation.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Logo</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
-          </svg>
-        </div>
-      </div>
+      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/LogoAnimation.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/motion-graphics/LogoAnimation.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Logo</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
       <div class="vid-caption">
         <div class="vid-caption-title">Logo Animation</div>
         <div class="vid-caption-desc">Kinetic logo reveals and looping brand animations for digital platforms.</div>
       </div>
     </div>
-
     <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/motion-graphics/What is a GTO.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Explainer</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
-          </svg>
-        </div>
-      </div>
+      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/What is a GTO.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Explainer</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
       <div class="vid-caption">
         <div class="vid-caption-title">Animated Explainer</div>
-        <div class="vid-caption-desc">Motion graphics that make complex ideas digestible — used across social and advertising.</div>
+        <div class="vid-caption-desc">Motion graphics that make complex ideas digestible -- used across social and advertising.</div>
       </div>
     </div>
-
     <div>
-      <div class="vid vid-landscape fade-up"
-           data-src="assets/motion-graphics/Work Different.mp4"
-           data-portrait="false">
-        <video class="thumb" preload="metadata" muted playsinline>
-          <source src="assets/motion-graphics/Work Different.mp4" type="video/mp4">
-        </video>
-        <div class="vid-badge">Brand</div>
-        <div class="vid-overlay"></div>
-        <div class="vid-play">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/>
-          </svg>
-        </div>
-      </div>
+      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/Work Different.mp4" data-portrait="false">
+  <video class="thumb" preload="metadata" muted playsinline>
+    <source src="assets/motion-graphics/Work Different.mp4" type="video/mp4">
+  </video>
+  <div class="vid-badge">Brand</div>
+  <div class="vid-overlay"></div>
+  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+</div>
       <div class="vid-caption">
         <div class="vid-caption-title">Animating Illustrations</div>
         <div class="vid-caption-desc">Bringing existing Selfwealth illustrations to life with purposeful motion.</div>
       </div>
     </div>
-
   </div>
-
 </section>
 
-<!-- ── HOW I WORK ── -->
 <section class="process-section">
   <div class="fade-up">
     <span class="eyebrow">Process</span>
     <h2>How I <em>work</em></h2>
-    <p class="body-copy">All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement — using timing and easing to give each animation its own personality.</p>
+    <p class="body-copy">All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement -- using timing and easing to give each animation its own personality.</p>
   </div>
-  
+  <div></div>
 </section>
 
-<!-- ── CONTACT ── -->
-<div class="contact-section">
-  <h2>Need a designer?</h2>
+<section class="contact-section">
+  <h2>Like what you see?</h2>
   <p>Open to freelance, contract, and full-time opportunities.</p>
   <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
   <div class="contact-links">
     <a href="tel:0400636229">0400 636 229</a>
-    <a href="https://www.linkedin.com/in/josephinedmaria" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/josephine-de-maria/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-</div>
-
-<!-- ── FOOTER ── -->
+</section>
 <footer>
-  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-copy">&copy; 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
 
-<!-- ── LIGHTBOX ── -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner" id="lightboxInner">
-    <button class="lightbox-close" id="lightboxClose">✕ Close</button>
-    <video id="lightboxVideo" controls playsinline></video>
-  </div>
-</div>
+  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
+  .lightbox.open { display:flex; }
+  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
+  .lightbox-inner.is-portrait { max-width:400px; }
+  .lightbox-inner video { width:100%; display:block; }
+  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
+  .lightbox-close:hover { color:var(--accent); }
 
 <script>
-  // ── Fade-up on scroll ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
+  const _obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        _obs.unobserve(e.target);
       }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // ── Seek thumbnails to first frame ──
+  document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
+</script>
+<script>
   document.querySelectorAll('video.thumb').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
     if (v.readyState >= 1) v.currentTime = 0.1;
   });
-
-  // ── Lightbox ──
-  const lightbox      = document.getElementById('lightbox');
-  const lightboxVideo = document.getElementById('lightboxVideo');
-  const lightboxClose = document.getElementById('lightboxClose');
-
+</script>
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">Close</button>
+    <video id="lightbox-video" controls playsinline></video>
+  </div>
+</div>
+<script>
+  const _lb      = document.getElementById('lightbox');
+  const _lbInner = document.getElementById('lightbox-inner');
+  const _lbVid   = document.getElementById('lightbox-video');
+  const _lbClose = document.getElementById('lightbox-close');
   document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      lightboxVideo.src = card.dataset.src;
-      lightboxVideo.load();
-      lightboxVideo.play();
-      lightbox.classList.add('open');
+      _lbVid.src = card.dataset.src;
+      _lbVid.load(); _lbVid.play();
+      _lbInner.classList.toggle('is-portrait', card.dataset.portrait === 'true');
+      _lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
   });
-
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    lightboxVideo.pause();
-    lightboxVideo.src = '';
+  _lbClose.addEventListener('click', _closeLb);
+  _lb.addEventListener('click', e => { if (e.target === _lb) _closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeLb(); });
+  function _closeLb() {
+    _lb.classList.remove('open');
+    _lbVid.pause(); _lbVid.src = '';
     document.body.style.overflow = '';
   }
 </script>
-</body>
-</html>
+<script>
+  // Burger menu
+  const burger  = document.getElementById('navBurger');
+  const drawer  = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body></html>

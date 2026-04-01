@@ -3,183 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Brand Identity — Josephine De Maria. Logos, visual systems, and strategic brand design.">
-<title>Brand Identity — Josephine De Maria</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Brand Identity -- Josephine De Maria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
-
 <style>
-  /* ── HERO ── */
-  .brand-hero {
-    min-height: 60vh;
-    padding: 10rem 3rem 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    border-bottom: 1px solid var(--border);
-  }
-  .brand-hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(4rem, 8vw, 8rem);
-    font-weight: 900;
-    line-height: 0.95;
-    color: var(--cream);
-    letter-spacing: -0.02em;
-  }
-  .brand-hero h1 em { font-style: italic; color: var(--accent); }
-
-  /* ── FEATURED CARD (index style) ── */
-  .work-featured {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: var(--green-mid);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s;
-    margin-bottom: 1.5rem;
-  }
-  .work-featured:hover { transform: translateY(-5px); }
-  .work-featured-img {
-    min-height: 480px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    padding: 2.5rem;
-  }
-  .work-featured-img img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.5s;
-  }
-  .work-featured:hover .work-featured-img img { transform: scale(1.04); }
-  .work-featured-content {
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .work-card-title {
-    font-family: var(--serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--cream);
-    line-height: 1.1;
-    margin: 0.75rem 0 1rem;
-  }
-  .work-card-desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 2rem;
-  }
-
-  /* ── WORK GRID (index style) ── */
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  .work-card {
-    background: var(--green-mid);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s;
-    display: block;
-  }
-  .work-card:hover { transform: translateY(-5px); }
-  .work-card-img {
-    height: 220px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .work-card-img img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.5s;
-  }
-  .work-card:hover .work-card-img img { transform: scale(1.04); }
-  .work-card-img-label {
-    font-family: var(--serif);
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: rgba(245,240,232,0.1);
-    letter-spacing: -0.05em;
-    position: relative;
-    z-index: 1;
-  }
-  .work-card-body { padding: 1.5rem; }
-  .work-card-body .work-card-title { font-size: 1.1rem; margin: 0.5rem 0 0.5rem; }
-  .work-card-body .work-card-desc { font-size: 0.82rem; margin-bottom: 0; }
-
-  /* ── CONTACT (index style) ── */
-  .contact-section {
-    background: var(--accent);
-    text-align: center;
-    padding: 7rem 3rem;
-  }
-  .contact-title {
-    font-family: var(--serif);
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 900;
-    color: var(--green);
-    margin-bottom: 1rem;
-    line-height: 1.05;
-  }
-  .contact-sub { font-size: 1rem; color: rgba(26,58,42,0.65); margin-bottom: 2.5rem; }
-  .contact-email-lg {
-    display: inline-block;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--green);
-    text-decoration: none;
-    border-bottom: 2px solid var(--green);
-    padding-bottom: 2px;
-    transition: opacity 0.2s;
-  }
-  .contact-email-lg:hover { opacity: 0.6; }
-  .contact-links-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  .contact-links-row a {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(26,58,42,0.55);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .contact-links-row a:hover { color: var(--green); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .brand-hero { padding: 8rem 1.5rem 3.5rem; }
-    .work-featured { grid-template-columns: 1fr; }
-    .work-featured-img { min-height: 260px; }
-    .work-featured-content { padding: 2rem; }
-    .work-grid { grid-template-columns: 1fr; }
-    .contact-section { padding: 5rem 1.5rem; }
+  .brand-hero { min-height:60vh; padding:10rem 3rem 5rem; display:flex; flex-direction:column; justify-content:flex-end; border-bottom:1px solid var(--border); }
+  .brand-hero h1 { font-family:var(--serif); font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; }
+  .brand-hero h1 em { font-style:italic; color:var(--accent); }
+  .work-featured { display:grid; grid-template-columns:1fr 1fr; background:var(--green-mid); border:1px solid var(--border); overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.3s; margin-bottom:1.5rem; }
+  .work-featured:hover { transform:translateY(-5px); }
+  .work-featured-img { min-height:480px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:2.5rem; }
+  .work-featured-img video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .work-featured-content { padding:3rem; display:flex; flex-direction:column; justify-content:center; }
+  .work-card-title { font-family:var(--serif); font-size:2rem; font-weight:700; color:var(--cream); line-height:1.1; margin:0.75rem 0 1rem; }
+  .work-card-desc { font-size:0.9rem; color:var(--muted); line-height:1.75; margin-bottom:2rem; }
+  .work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .work-card { background:var(--green-mid); border:1px solid var(--border); overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.3s; display:block; }
+  .work-card:hover { transform:translateY(-5px); }
+  .work-card-img { height:220px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+  .work-card-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+  .work-card:hover .work-card-img img { transform:scale(1.04); }
+  .work-card-body { padding:1.5rem; }
+  .work-card-body .work-card-title { font-size:1.1rem; margin:0.5rem 0; }
+  .work-card-body .work-card-desc { font-size:0.82rem; margin-bottom:0.75rem; }
+  @media(max-width:768px) {
+    .brand-hero { padding:8rem 1.5rem 3.5rem; }
+    .work-featured { grid-template-columns:1fr; }
+    .work-featured-img { min-height:260px; }
+    .work-featured-content { padding:2rem 1.5rem; }
+    .work-grid { grid-template-columns:1fr; }
   }
 </style>
 </head>
-<body>
-
-<!-- ── NAV ── -->
-<nav>
-  <a href="index.html" class="nav-logo">Josephine De Maria</a>
+<body><nav>
+  <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="brand-identity.html" class="active">Brand Identity</a></li>
@@ -189,42 +46,41 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
-<!-- ── HERO ── -->
+<ul class="nav-drawer" id="navDrawer">
+  <li><a href="index.html">Home</a></li>
+    <li><a href="brand-identity.html" class="active">Brand Identity</a></li>
+    <li><a href="video-content.html">Video</a></li>
+    <li><a href="motion-graphics.html">Motion</a></li>
+    <li><a href="y-careers.html">Y Careers</a></li>
+    <li><a href="selfwealth.html">Selfwealth</a></li>
+    <li><a href="illustration.html">Illustration</a></li>
+</ul>
 <div class="brand-hero">
   <span class="eyebrow">Selected Projects</span>
   <h1>Brand <em>Identity</em></h1>
-  <p class="intro" style="margin-top:1.5rem;">From captivating logos to strategic visual systems — I build brands that are unforgettable, flexible, and built to last.</p>
+  <p class="intro" style="margin-top:1.5rem;">From captivating logos to strategic visual systems -- I build brands that are unforgettable, flexible, and built to last.</p>
 </div>
 
-
-<!-- ── WORK ── -->
 <section class="section">
-
-  <!-- Featured: Y Careers -->
   <a href="y-careers.html" class="work-featured fade-up">
     <div class="work-featured-img" style="background:linear-gradient(135deg,#FFE973 0%,#EF373E 100%);">
-      <video autoplay muted loop playsinline
-          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <source src="assets/ycareers/Y Careers logo spin.mp4" type="video/mp4">
-        </video>
-      <div style="position:relative;z-index:1;">
-        <p style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:900;color:#1a3a2a;line-height:0.95;letter-spacing:-0.02em;">
-        </p>
-      </div>
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="assets/ycareers/Y Careers logo spin.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="work-featured-content">
-      <span class="tag">Brand Strategy</span><span class="tag">Design System</span><span class="tag">Campaigns</span>
+      <div><span class="tag">Brand Strategy</span><span class="tag">Design System</span><span class="tag">Campaigns</span></div>
       <h2 class="work-card-title">Y Careers</h2>
-      <p class="work-card-desc">Led the creation of a full brand strategy and adaptable visual identity targeting three key audience groups — young people, parents/guardians, and employers. Built from scratch through collaborative workshops, resulting in a brand that genuinely connects with its audience.</p>
-      <span class="card-link">View Case Study →</span>
+      <p class="work-card-desc">Led the creation of a full brand strategy and adaptable visual identity targeting three key audience groups -- young people, parents/guardians, and employers. Built from scratch through collaborative workshops, resulting in a brand that genuinely connects with its audience.</p>
+      <span class="card-link">View Work &#8594;</span>
     </div>
   </a>
 
-  <!-- 3-column grid -->
   <div class="work-grid">
-
     <a href="selfwealth.html" class="work-card fade-up">
       <div class="work-card-img" style="background:linear-gradient(135deg,#1a3a2a,#256A50);">
         <img src="assets/brand-identity/Selfwealth.png" alt="Selfwealth">
@@ -233,10 +89,9 @@
         <span class="tag">Fintech</span><span class="tag">OOH</span>
         <h3 class="work-card-title">Selfwealth</h3>
         <p class="work-card-desc">Brand design system, two refreshes, and a national OOH awareness campaign across all channels.</p>
-        <span class="card-link" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
       </div>
     </a>
-
     <a href="the-valiants.html" class="work-card fade-up">
       <div class="work-card-img" style="background:linear-gradient(135deg,#111,#3a3a3a);">
         <img src="assets/brand-identity/TheValiants.png" alt="The Valiants">
@@ -244,11 +99,10 @@
       <div class="work-card-body">
         <span class="tag">Music</span><span class="tag">Print</span>
         <h3 class="work-card-title">The Valiants</h3>
-        <p class="work-card-desc">Full visual identity for an indie punk rock band — album artwork, merch, and brand collateral.</p>
-        <span class="card-link" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
+        <p class="work-card-desc">Full visual identity for an indie punk rock band -- album artwork, merch, and brand collateral.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
       </div>
     </a>
-
     <a href="two-sense.html" class="work-card fade-up">
       <div class="work-card-img" style="background:linear-gradient(135deg,#AECCB6,#256A50);">
         <img src="assets/brand-identity/TwoSenseLogo.png" alt="Two Sense">
@@ -256,24 +110,21 @@
       <div class="work-card-body">
         <span class="tag">Fashion</span><span class="tag">Identity</span>
         <h3 class="work-card-title">Two Sense</h3>
-        <p class="work-card-desc">Contemporary vintage fashion label — Wes Anderson-inspired palette with a detailed coin illustration mark.</p>
-        <span class="card-link" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
+        <p class="work-card-desc">Contemporary vintage fashion label -- Wes Anderson-inspired palette with a detailed coin illustration mark.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
       </div>
     </a>
-
     <a href="balor.html" class="work-card fade-up">
       <div class="work-card-img" style="background:linear-gradient(135deg,#e8d5c4,#c9b5a0);">
         <img src="assets/brand-identity/Balor.png" alt="Balor Australia">
-        <span class="work-card-img-label" style="color:rgba(58,42,26,0.15);">BA</span>
       </div>
       <div class="work-card-body">
         <span class="tag">Skincare</span><span class="tag">Packaging</span>
         <h3 class="work-card-title">Balor Australia</h3>
-        <p class="work-card-desc">Logo, branding and packaging for a local handmade beauty company — evoking nature, purity, and luxury.</p>
-        <span class="card-link" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
+        <p class="work-card-desc">Logo, branding and packaging for a local handmade beauty company -- evoking nature, purity, and luxury.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
       </div>
     </a>
-
     <a href="#" class="work-card fade-up">
       <div class="work-card-img" style="background:linear-gradient(135deg,#F9CCC2,#e8b5aa);">
         <img src="assets/brand-identity/RSNH.png" alt="Reynard Street">
@@ -282,10 +133,9 @@
         <span class="tag">NFP</span><span class="tag">Print</span>
         <h3 class="work-card-title">Reynard Street Neighbourhood House</h3>
         <p class="work-card-desc">Posters and marketing collateral for a community neighbourhood house.</p>
-        <span class="card-link" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
       </div>
     </a>
-
     <a href="#" class="work-card fade-up">
       <div class="work-card-img" style="background:linear-gradient(135deg,#256A50,#1a4a38);">
         <img src="assets/brand-identity/Melbourne Ponds and Gardens.png" alt="Melbourne Ponds">
@@ -294,10 +144,9 @@
         <span class="tag">Logo</span><span class="tag">Identity</span>
         <h3 class="work-card-title">Melbourne Ponds &amp; Gardens</h3>
         <p class="work-card-desc">Logo and brand identity for a premium pond cleaning and landscaping business.</p>
-        <span class="card-link" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
       </div>
     </a>
-
     <a href="#" class="work-card fade-up">
       <div class="work-card-img" style="background:linear-gradient(135deg,#EF373E,#c0272e);">
         <img src="assets/brand-identity/Hands on Heart Australia.png" alt="Hands on Heart">
@@ -305,44 +154,52 @@
       <div class="work-card-body">
         <span class="tag">NFP</span><span class="tag">Logo</span>
         <h3 class="work-card-title">Hands on Heart Australia</h3>
-        <p class="work-card-desc">Logo design for a not-for-profit — communicating care and community connection.</p>
-        <span class="card-link" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.4rem;">View Work →</span>
+        <p class="work-card-desc">Logo design for a not-for-profit -- communicating care and community connection.</p>
+        <span class="card-link" style="display:inline-flex;align-items:center;gap:0.4rem;">View Work &#8594;</span>
       </div>
     </a>
-
   </div>
 </section>
 
-
-<!-- ── CONTACT ── -->
 <section class="contact-section">
-  <span class="eyebrow" style="color:rgba(26,58,42,0.5);">Let's work together</span>
-  <h2 class="contact-title">Need a designer?<br>I'd love to work with you.</h2>
-  <p class="contact-sub">Open to freelance, contract, and full-time opportunities.</p>
-  <a href="mailto:josephine.de.maria@gmail.com" class="contact-email-lg">josephine.de.maria@gmail.com</a>
-  <div class="contact-links-row">
+  <h2>Like what you see?</h2>
+  <p>Open to freelance, contract, and full-time opportunities.</p>
+  <a href="mailto:josephine.de.maria@gmail.com" class="contact-email">josephine.de.maria@gmail.com</a>
+  <div class="contact-links">
     <a href="tel:0400636229">0400 636 229</a>
-    <a href="https://www.linkedin.com/in/josephinedmaria" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://www.figma.com/@josephine" target="_blank" rel="noopener">Figma</a>
+    <a href="https://www.linkedin.com/in/josephine-de-maria/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </section>
-
-<!-- ── FOOTER ── -->
 <footer>
-  <span class="footer-copy">© 2026 Josephine De Maria. All rights reserved.</span>
+  <span class="footer-copy">&copy; 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
-
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
+  const _obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        _obs.unobserve(e.target);
       }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
 </script>
-</body>
-</html>
+<script>
+  // Burger menu
+  const burger  = document.getElementById('navBurger');
+  const drawer  = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body></html>
