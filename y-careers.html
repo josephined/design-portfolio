@@ -3,59 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Y Careers -- Josephine De Maria</title>
+<title>Y Careers — Josephine De Maria</title>
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Y Careers — Josephine De Maria">
+<meta property="og:description" content="Full brand strategy, visual identity, design system, social media, video, and motion for Y Careers.">
+<meta property="og:image" content="https://josephineddesigns.com/assets/preview.jpg">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-
   .img-hero { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:flex-end; }
   .img-hero img, .img-hero video.hero-vid { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .img-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(26,58,42,0.85) 0%,transparent 55%); pointer-events:none; }
+  .img-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(10,28,18,0.92) 0%,rgba(10,28,18,0.6) 35%,transparent 100%); pointer-events:none; }
   .img-hero-text { position:relative; z-index:2; padding:3rem; width:100%; }
   .img-hero-text h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,6rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:0.75rem; }
   .img-hero-text h1 em { font-style:italic; color:var(--accent); }
-  .img-hero-text p { font-size:1rem; color:rgba(245,240,232,0.7); max-width:540px; line-height:1.7; }
-
-
-  .meta-bar { display:flex; gap:0; border-bottom:1px solid var(--border); overflow-x:auto; }
-  .meta-bar-item { padding:1.5rem 2.5rem; border-right:1px solid var(--border); white-space:nowrap; flex-shrink:0; }
-  .meta-bar-item:last-child { border-right:none; }
-  .meta-bar-label { font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.3rem; }
-  .meta-bar-value { font-size:0.88rem; font-weight:500; color:var(--cream); }
-
-
+  .img-hero-text p { font-size:1rem; color:rgba(245,240,232,0.85); max-width:540px; line-height:1.7; }
   .img-full { width:100%; position:relative; overflow:hidden; background:var(--green-mid); display:block; }
   .img-full img { width:100%; height:100%; object-fit:cover; display:block; }
-  .img-duo  { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+  .img-duo { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
   .img-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
-  .img-feature-left  { display:grid; grid-template-columns:2fr 1fr; gap:3px; align-items:stretch; }
   .img-feature-right { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
   .img-stack { display:flex; flex-direction:column; gap:3px; }
-  .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; }
+  .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; flex:1; }
   .img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
   .img-cell:hover img { transform:scale(1.03); }
-  .img-cell-label { font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); opacity:0.5; position:relative; z-index:1; }
-  .h-sm  { height:320px; }
-  .h-md  { height:480px; }
-  .h-lg  { height:620px; }
-  .h-xl  { height:80vh; }
-  .h-sq  { aspect-ratio:1/1; height:auto; }
-  .h-port{ aspect-ratio:3/4; height:auto; }
-  .h-45  { aspect-ratio:4/5; height:auto; }
-  .h-169 { aspect-ratio:16/9; height:auto; }
-
-
+  .h-md { height:480px; } .h-lg { height:620px; } .h-xl { height:80vh; }
+  .h-45 { aspect-ratio:4/5; height:auto; }
   .caption-block { padding:3rem; border-bottom:1px solid var(--border); display:flex; align-items:baseline; justify-content:space-between; gap:4rem; }
   .caption-block h2 { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,2.5vw,2.2rem); font-weight:700; color:var(--cream); line-height:1.1; flex-shrink:0; max-width:340px; }
   .caption-block h2 em { font-style:italic; color:var(--accent); }
   .caption-block p { font-size:0.9rem; color:var(--muted); line-height:1.8; max-width:480px; }
   .section-marker { padding:1.5rem 3rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:1.5rem; }
   .section-marker-line { flex:1; height:1px; background:var(--border); }
-
-
   .vid { position:relative; overflow:hidden; background:#0d0d0d; cursor:pointer; display:block; }
-  .vid-landscape { aspect-ratio:16/9; }
-  .vid-portrait  { aspect-ratio:9/16; }
+  .vid-landscape { aspect-ratio:16/9; } .vid-portrait { aspect-ratio:9/16; }
   .vid video.thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
   .vid-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.4); transition:background 0.3s; z-index:1; }
   .vid:hover .vid-overlay { background:rgba(0,0,0,0.12); }
@@ -71,18 +53,10 @@
   .vid:hover .vid-play-sm svg path { fill:var(--accent); }
   .vid-caption { padding:0.75rem 0 0; }
   .vid-caption-title { font-size:0.85rem; font-weight:500; color:var(--cream); }
-  .vid-caption-desc  { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
-
-
-  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
-  .lightbox.open { display:flex; }
-  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
-  .lightbox-inner.is-portrait { max-width:400px; }
-  .lightbox-inner video { width:100%; display:block; }
-  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
-  .lightbox-close:hover { color:var(--accent); }
-
-
+  .vid-caption-desc { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
+  .workshop-video-wrap { border-bottom:1px solid var(--border); }
+  .workshop-video-caption { padding:1.5rem 3rem; border-top:1px solid var(--border); background:var(--green-mid); }
+  .workshop-video-caption p { font-size:0.88rem; color:var(--muted); line-height:1.7; max-width:640px; }
   .social-section { padding:4rem 3rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
   .social-section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2.5rem; }
   .social-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; color:var(--cream); line-height:1.1; }
@@ -90,30 +64,30 @@
   .see-all-link { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.2); padding-bottom:2px; white-space:nowrap; transition:color 0.2s,border-color 0.2s; }
   .see-all-link:hover { color:var(--cream); border-color:var(--cream); }
   .social-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
-
-  .workshop-video-wrap { border-bottom:1px solid var(--border); }
-  .workshop-video-caption { padding:1.5rem 3rem; border-top:1px solid var(--border); background:var(--green-mid); }
-  .workshop-video-caption p { font-size:0.88rem; color:var(--muted); line-height:1.7; max-width:640px; }
-  .landscape-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; padding:0 3rem; margin-bottom:1.5rem; }
-  .landscape-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; padding:0 3rem; }
+  .landscape-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .landscape-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
+  .lightbox.open { display:flex; }
+  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
+  .lightbox-inner.is-portrait { max-width:400px; }
+  .lightbox-inner video { width:100%; display:block; }
+  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
+  .lightbox-close:hover { color:var(--accent); }
   @media(max-width:768px) {
     .img-hero { height:75vh; aspect-ratio:auto; }
-    .img-duo,.img-trio,.img-feature-left,.img-feature-right { grid-template-columns:1fr; }
+    .img-duo,.img-trio,.img-feature-right { grid-template-columns:1fr; }
     .caption-block { flex-direction:column; gap:1rem; padding:2rem 1.5rem; }
-    .meta-bar { flex-wrap:wrap; }
-    .meta-bar-item { border-bottom:1px solid var(--border); }
-    .img-hero-text { padding:2rem 1.5rem; }
     .section-marker { padding:1.25rem 1.5rem; }
     .workshop-video-caption { padding:1.25rem 1.5rem; }
     .social-section { padding:3rem 1.5rem; }
     .social-grid { grid-template-columns:repeat(2,1fr); }
-    .landscape-grid-2,.landscape-grid-3 { grid-template-columns:1fr; padding:0 1.5rem; }
-    /* Merch image responsive */
-    .img-full.img-cell.h-lg { height:auto; aspect-ratio:16/9; }
+    .landscape-grid-2,.landscape-grid-3 { grid-template-columns:1fr; }
+    .h-md, .h-lg, .h-xl { height:auto; aspect-ratio:4/3; }
   }
 </style>
 </head>
-<body><nav>
+<body>
+<nav>
   <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -124,26 +98,25 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="index.html">Home</a></li>
-    <li><a href="brand-identity.html">Brand Identity</a></li>
-    <li><a href="video-content.html">Video</a></li>
-    <li><a href="motion-graphics.html">Motion</a></li>
-    <li><a href="y-careers.html" class="active">Y Careers</a></li>
-    <li><a href="selfwealth.html">Selfwealth</a></li>
-    <li><a href="illustration.html">Illustration</a></li>
+  <li><a href="brand-identity.html">Brand Identity</a></li>
+  <li><a href="video-content.html">Video</a></li>
+  <li><a href="motion-graphics.html">Motion</a></li>
+  <li><a href="y-careers.html" class="active">Y Careers</a></li>
+  <li><a href="selfwealth.html">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
 </ul>
+
 <div class="img-hero">
   <video autoplay muted loop playsinline class="hero-vid">
     <source src="assets/ycareers/WhoIsYCareersFINAL.mp4" type="video/mp4">
   </video>
   <div class="img-hero-text">
     <h1>Y <em>Careers</em></h1>
-    <p>Y Careers is a not-for-profit social enterprise dedicated to bridging the gap in the care industry's workforce. I built this brand from the ground up -- from concept and co-design workshops through to a full visual identity, design system, social strategy, video, and motion.</p>
+    <p>Y Careers is a not-for-profit social enterprise helping young people start careers in education and care. I built this brand from scratch. From the first workshop through to a full visual identity, design system, social strategy, video production, and motion graphics.</p>
   </div>
 </div>
 
@@ -153,7 +126,7 @@
 
 <div class="caption-block fade-up">
   <h2>Co-designed <em>with</em> young people</h2>
-  <p>Rather than assuming what young people wanted, I ran workshops directly with them to shape both the brand direction and social media strategy.</p>
+  <p>Rather than assuming what young people wanted, I ran co-design workshops with them to shape the brand direction and social media strategy. The brand needed to speak to three different audience groups: young people, parents and guardians, and employers. That kind of specificity only comes from listening.</p>
 </div>
 
 <div class="workshop-video-wrap fade-up">
@@ -161,12 +134,12 @@
     <video class="thumb" preload="metadata" muted playsinline>
       <source src="assets/ycareers/YoungAssociates_BrandWorkshopHor.mp4" type="video/mp4">
     </video>
-    <div class="vid-badge">Workshop -- Brand Co-design with Young People</div>
+    <div class="vid-badge">Workshop: Brand Co-design with Young People</div>
     <div class="vid-overlay"></div>
     <div class="vid-play-lg"><svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/></svg></div>
   </div>
   <div class="workshop-video-caption">
-    <p>Running co-design sessions with young people to ensure the Y Careers brand genuinely reflected their voice -- not what we assumed they would want.</p>
+    <p>Running co-design sessions with young people to make sure the Y Careers brand reflected their voice and not what we assumed they would want.</p>
   </div>
 </div>
 
@@ -187,8 +160,8 @@
 </div>
 
 <div class="caption-block fade-up">
-  <h2>Design <em>outside</em> the box</h2>
-  <p>I translated outdated guidelines into a fresh, youth-focused identity that resonates with Gen Z, and I have driven how the brand shows up across video, motion graphics, social media, and web.</p>
+  <h2>A brand that <em>actually connects</em></h2>
+  <p>I took the existing Y Australia brand guidelines and built a youth-focused visual identity that resonates with a Gen Z audience without losing the credibility the organisation needed. The design system lives in Figma and the whole team can use it. From social posts to campaign ads to digital flyers, it all comes from the same place.</p>
 </div>
 
 <div class="img-feature-right fade-up">
@@ -213,122 +186,95 @@
   </div>
   <div class="social-grid">
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Pacifique_Subs.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Pacifique_Subs.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Instagram</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Meet Pacifique</div>
-    <div class="vid-caption-desc">A video series showcasing real young people and how their traineeships are meaningful to them.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/Pacifique_Subs.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Pacifique_Subs.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Instagram</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Meet Pacifique</div>
+        <div class="vid-caption-desc">A video series showcasing real young people and how their traineeships have changed their lives.</div>
+      </div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/Voxpop_Kayla.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Voxpop_Kayla.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Voxpop Content</div>
-    <div class="vid-caption-desc">Street interviews are always engaging; it is just about finding your niche.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/Voxpop_Kayla.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Voxpop_Kayla.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Voxpop Content</div>
+        <div class="vid-caption-desc">Street interviews are always engaging. It is just about finding your niche.</div>
+      </div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/JAG ad.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/JAG ad.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Instagram</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Advertising on Socials</div>
-    <div class="vid-caption-desc">Using a common reel format to advertise with an engaging hook.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/JAG ad.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/JAG ad.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Instagram</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Advertising on Socials</div>
+        <div class="vid-caption-desc">Using a common reel format to advertise with an engaging hook that stops the scroll.</div>
+      </div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/videos/FunniestThing.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/FunniestThing.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Instagram</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Relatable moments</div>
-    <div class="vid-caption-desc">Everyone has had funny moments with children. Why not use them as a recurring signature?</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/videos/FunniestThing.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/FunniestThing.mp4" type="video/mp4"></video>
+        <div class="vid-badge">Instagram</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Relatable Moments</div>
+        <div class="vid-caption-desc">Everyone has had funny moments with children. Why not make it a recurring signature?</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="landscape-grid-2 fade-up" style="padding-top:3rem;">
+<div class="landscape-grid-2 fade-up" style="padding:3rem 3rem 1.5rem;">
   <div>
-    <div class="vid vid-landscape  fade-up" data-src="assets/videos/InductionDay_LinkedIn.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/InductionDay_LinkedIn.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">LinkedIn</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
-    <div class="vid-caption"><div class="vid-caption-title">Induction day video</div><div class="vid-caption-desc">A video made to showcase a business partnership with an in-person induction.</div></div>
+    <div class="vid vid-landscape fade-up" data-src="assets/videos/InductionDay_LinkedIn.mp4" data-portrait="false">
+      <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/InductionDay_LinkedIn.mp4" type="video/mp4"></video>
+      <div class="vid-badge">LinkedIn</div><div class="vid-overlay"></div>
+      <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+    </div>
+    <div class="vid-caption"><div class="vid-caption-title">Induction day video</div><div class="vid-caption-desc">A video showcasing a business partnership through an in-person induction event.</div></div>
   </div>
   <div>
-    <div class="vid vid-landscape  fade-up" data-src="assets/videos/JAG Trainees are amazing.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/JAG Trainees are amazing.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">LinkedIn</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
+    <div class="vid vid-landscape fade-up" data-src="assets/videos/JAG Trainees are amazing.mp4" data-portrait="false">
+      <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/JAG Trainees are amazing.mp4" type="video/mp4"></video>
+      <div class="vid-badge">LinkedIn</div><div class="vid-overlay"></div>
+      <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+    </div>
     <div class="vid-caption"><div class="vid-caption-title">Showcasing partnerships</div><div class="vid-caption-desc">Showing how great it feels to have young people in care roles.</div></div>
   </div>
 </div>
 
-<div class="landscape-grid-3 fade-up" style="padding-top:1.5rem;padding-bottom:3rem;">
+<div class="landscape-grid-3 fade-up" style="padding:0 3rem 3rem;">
   <div>
-    <div class="vid vid-landscape  fade-up" data-src="assets/videos/BrandWorkshopRound2.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/BrandWorkshopRound2.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">LinkedIn</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
+    <div class="vid vid-landscape fade-up" data-src="assets/videos/BrandWorkshopRound2.mp4" data-portrait="false">
+      <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/BrandWorkshopRound2.mp4" type="video/mp4"></video>
+      <div class="vid-badge">LinkedIn</div><div class="vid-overlay"></div>
+      <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+    </div>
     <div class="vid-caption"><div class="vid-caption-title">Showcasing co-design workshops</div><div class="vid-caption-desc">Documenting the process of building a brand with the people it is made for.</div></div>
   </div>
   <div>
-    <div class="vid vid-landscape  fade-up" data-src="assets/videos/Welcometoycareers.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/videos/Welcometoycareers.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">YouTube</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
+    <div class="vid vid-landscape fade-up" data-src="assets/videos/Welcometoycareers.mp4" data-portrait="false">
+      <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/Welcometoycareers.mp4" type="video/mp4"></video>
+      <div class="vid-badge">YouTube</div><div class="vid-overlay"></div>
+      <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+    </div>
     <div class="vid-caption"><div class="vid-caption-title">Welcome to Y Careers</div><div class="vid-caption-desc">A short internal video welcoming new trainees at their induction.</div></div>
   </div>
   <div>
-    <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/What is a GTO.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">YouTube</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-    <div class="vid-caption"><div class="vid-caption-title">Animated Explainer</div><div class="vid-caption-desc">Motion graphics that make complex ideas digestible, used across social and advertising.</div></div>
+    <div class="vid vid-landscape fade-up" data-src="assets/videos/YCareersStaff.mp4" data-portrait="false">
+      <video class="thumb" preload="metadata" muted playsinline><source src="assets/videos/YCareersStaff.mp4" type="video/mp4"></video>
+      <div class="vid-badge">LinkedIn</div><div class="vid-overlay"></div>
+      <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+    </div>
+    <div class="vid-caption"><div class="vid-caption-title">All staff video</div><div class="vid-caption-desc">Audiences want to see the people behind the brand. Trends are an easy way to show that.</div></div>
   </div>
 </div>
 
@@ -346,75 +292,41 @@
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
 
-  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
-  .lightbox.open { display:flex; }
-  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
-  .lightbox-inner.is-portrait { max-width:400px; }
-  .lightbox-inner video { width:100%; display:block; }
-  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
-  .lightbox-close:hover { color:var(--accent); }
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">&#10005; Close</button>
+    <video id="lightbox-video" controls playsinline></video>
+  </div>
+</div>
 
 <script>
   const _obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        _obs.unobserve(e.target);
-      }
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
-</script>
-<script>
   document.querySelectorAll('video.thumb').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
     if (v.readyState >= 1) v.currentTime = 0.1;
   });
-</script>
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner" id="lightbox-inner">
-    <button class="lightbox-close" id="lightbox-close">Close</button>
-    <video id="lightbox-video" controls playsinline></video>
-  </div>
-</div>
-<script>
-  const _lb      = document.getElementById('lightbox');
+  const _lb = document.getElementById('lightbox');
   const _lbInner = document.getElementById('lightbox-inner');
-  const _lbVid   = document.getElementById('lightbox-video');
+  const _lbVid = document.getElementById('lightbox-video');
   const _lbClose = document.getElementById('lightbox-close');
   document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      _lbVid.src = card.dataset.src;
-      _lbVid.load(); _lbVid.play();
+      _lbVid.src = card.dataset.src; _lbVid.load(); _lbVid.play();
       _lbInner.classList.toggle('is-portrait', card.dataset.portrait === 'true');
-      _lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      _lb.classList.add('open'); document.body.style.overflow = 'hidden';
     });
   });
   _lbClose.addEventListener('click', _closeLb);
   _lb.addEventListener('click', e => { if (e.target === _lb) _closeLb(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeLb(); });
-  function _closeLb() {
-    _lb.classList.remove('open');
-    _lbVid.pause(); _lbVid.src = '';
-    document.body.style.overflow = '';
-  }
+  function _closeLb() { _lb.classList.remove('open'); _lbVid.pause(); _lbVid.src = ''; document.body.style.overflow = ''; }
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
 </script>
-<script>
-  // Burger menu
-  const burger  = document.getElementById('navBurger');
-  const drawer  = document.getElementById('navDrawer');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    drawer.classList.toggle('open');
-    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      burger.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-</script>
-</body></html>
+</body>
+</html>

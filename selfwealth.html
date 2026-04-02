@@ -3,86 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selfwealth -- Josephine De Maria</title>
+<title>Selfwealth — Josephine De Maria</title>
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Selfwealth — Josephine De Maria">
+<meta property="og:description" content="Brand design system, two refreshes, a national OOH campaign, social media, and motion graphics for Selfwealth.">
+<meta property="og:image" content="https://josephineddesigns.com/assets/preview.jpg">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-
   .img-hero { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:flex-end; }
   .img-hero img, .img-hero video.hero-vid { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .img-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(26,58,42,0.85) 0%,transparent 55%); pointer-events:none; }
+  .img-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(10,28,18,0.92) 0%,rgba(10,28,18,0.6) 35%,transparent 100%); pointer-events:none; }
   .img-hero-text { position:relative; z-index:2; padding:3rem; width:100%; }
   .img-hero-text h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,6rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:0.75rem; }
   .img-hero-text h1 em { font-style:italic; color:var(--accent); }
-  .img-hero-text p { font-size:1rem; color:rgba(245,240,232,0.7); max-width:540px; line-height:1.7; }
-
-
+  .img-hero-text p { font-size:1rem; color:rgba(245,240,232,0.85); max-width:540px; line-height:1.7; }
   .meta-bar { display:flex; gap:0; border-bottom:1px solid var(--border); overflow-x:auto; }
   .meta-bar-item { padding:1.5rem 2.5rem; border-right:1px solid var(--border); white-space:nowrap; flex-shrink:0; }
   .meta-bar-item:last-child { border-right:none; }
   .meta-bar-label { font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.3rem; }
   .meta-bar-value { font-size:0.88rem; font-weight:500; color:var(--cream); }
-
-
   .img-full { width:100%; position:relative; overflow:hidden; background:var(--green-mid); display:block; }
   .img-full img { width:100%; height:100%; object-fit:cover; display:block; }
-  .img-duo  { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
-  .img-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
-  .img-feature-left  { display:grid; grid-template-columns:2fr 1fr; gap:3px; align-items:stretch; }
-  .img-feature-right { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
-  .img-stack { display:flex; flex-direction:column; gap:3px; }
-  .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; }
+  .img-duo { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+  .img-feature-right { display:grid; grid-template-columns:1fr 2fr; gap:3px; height:620px; }
+  .img-feature-right > .img-cell { height:100%; }
+  .img-stack { display:flex; flex-direction:column; gap:3px; height:100%; }
+  .img-cell { position:relative; overflow:hidden; background:var(--green-mid); display:flex; align-items:center; justify-content:center; flex:1; }
   .img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
   .img-cell:hover img { transform:scale(1.03); }
-  .img-cell-label { font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); opacity:0.5; position:relative; z-index:1; }
-  .h-sm  { height:320px; }
-  .h-md  { height:480px; }
-  .h-lg  { height:620px; }
-  .h-xl  { height:80vh; }
-  .h-sq  { aspect-ratio:1/1; height:auto; }
-  .h-port{ aspect-ratio:3/4; height:auto; }
-  .h-45  { aspect-ratio:4/5; height:auto; }
-  .h-169 { aspect-ratio:16/9; height:auto; }
-
-
+  .h-md { height:480px; } .h-lg { height:620px; } .h-xl { height:80vh; } .h-169 { aspect-ratio:16/9; height:auto; }
   .caption-block { padding:3rem; border-bottom:1px solid var(--border); display:flex; align-items:baseline; justify-content:space-between; gap:4rem; }
   .caption-block h2 { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,2.5vw,2.2rem); font-weight:700; color:var(--cream); line-height:1.1; flex-shrink:0; max-width:340px; }
   .caption-block h2 em { font-style:italic; color:var(--accent); }
   .caption-block p { font-size:0.9rem; color:var(--muted); line-height:1.8; max-width:480px; }
-  .section-marker { padding:1.5rem 3rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:1.5rem; }
-  .section-marker-line { flex:1; height:1px; background:var(--border); }
-
-
   .vid { position:relative; overflow:hidden; background:#0d0d0d; cursor:pointer; display:block; }
-  .vid-landscape { aspect-ratio:16/9; }
-  .vid-portrait  { aspect-ratio:9/16; }
+  .vid-landscape { aspect-ratio:16/9; } .vid-portrait { aspect-ratio:9/16; }
   .vid video.thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
   .vid-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.4); transition:background 0.3s; z-index:1; }
   .vid:hover .vid-overlay { background:rgba(0,0,0,0.12); }
   .vid-badge { position:absolute; top:1.25rem; left:1.25rem; z-index:2; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.85); background:rgba(0,0,0,0.5); padding:0.35rem 0.75rem; backdrop-filter:blur(4px); }
-  .vid-play-lg { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:80px; height:80px; border-radius:50%; border:2px solid rgba(255,255,255,0.7); background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
-  .vid:hover .vid-play-lg { border-color:var(--accent); background:rgba(255,233,115,0.18); transform:translate(-50%,-50%) scale(1.1); }
-  .vid:hover .vid-play-lg svg path { fill:var(--accent); }
-  .vid-play-md { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:64px; height:64px; border-radius:50%; border:2px solid rgba(255,255,255,0.7); background:rgba(0,0,0,0.25); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
-  .vid:hover .vid-play-md { border-color:var(--accent); background:rgba(255,233,115,0.15); transform:translate(-50%,-50%) scale(1.12); }
-  .vid:hover .vid-play-md svg path { fill:var(--accent); }
   .vid-play-sm { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; width:48px; height:48px; border-radius:50%; border:2px solid rgba(255,255,255,0.65); background:rgba(0,0,0,0.25); display:flex; align-items:center; justify-content:center; transition:border-color 0.25s,background 0.25s,transform 0.25s; }
   .vid:hover .vid-play-sm { border-color:var(--accent); background:rgba(255,233,115,0.15); transform:translate(-50%,-50%) scale(1.1); }
   .vid:hover .vid-play-sm svg path { fill:var(--accent); }
   .vid-caption { padding:0.75rem 0 0; }
   .vid-caption-title { font-size:0.85rem; font-weight:500; color:var(--cream); }
-  .vid-caption-desc  { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
-
-
-  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
-  .lightbox.open { display:flex; }
-  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
-  .lightbox-inner.is-portrait { max-width:400px; }
-  .lightbox-inner video { width:100%; display:block; }
-  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
-  .lightbox-close:hover { color:var(--accent); }
-
-
+  .vid-caption-desc { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
   .social-section { padding:4rem 3rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
   .social-section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2.5rem; }
   .social-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; color:var(--cream); line-height:1.1; }
@@ -90,34 +57,38 @@
   .see-all-link { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.2); padding-bottom:2px; white-space:nowrap; transition:color 0.2s,border-color 0.2s; }
   .see-all-link:hover { color:var(--cream); border-color:var(--cream); }
   .social-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
-
   .landscape-section { padding:4rem 3rem; border-bottom:1px solid var(--border); }
   .landscape-section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2.5rem; }
   .landscape-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; color:var(--cream); line-height:1.1; }
   .landscape-section-header h2 em { font-style:italic; color:var(--accent); }
   .landscape-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-  .img-feature-right { display:grid; grid-template-columns:1fr 2fr; gap:3px; height:620px; }
-  .img-feature-right > .img-cell { height:100%; }
-  .img-stack { height:100%; }
+  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
+  .lightbox.open { display:flex; }
+  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
+  .lightbox-inner.is-portrait { max-width:400px; }
+  .lightbox-inner video { width:100%; display:block; }
+  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
+  .lightbox-close:hover { color:var(--accent); }
   @media(max-width:768px) {
     .img-hero { height:75vh; aspect-ratio:auto; }
-    .img-duo,.img-trio,.img-feature-left,.img-feature-right { grid-template-columns:1fr; }
-    .img-feature-right { height:auto; }
+    .img-duo { grid-template-columns:1fr; }
+    .img-feature-right { grid-template-columns:1fr; height:auto; }
     .img-feature-right > .img-cell { height:400px; }
     .img-stack { height:auto; }
     .caption-block { flex-direction:column; gap:1rem; padding:2rem 1.5rem; }
     .meta-bar { flex-wrap:wrap; }
     .meta-bar-item { border-bottom:1px solid var(--border); }
     .img-hero-text { padding:2rem 1.5rem; }
-    .section-marker { padding:1.25rem 1.5rem; }
     .social-section { padding:3rem 1.5rem; }
     .social-grid { grid-template-columns:repeat(2,1fr); }
     .landscape-section { padding:3rem 1.5rem; }
     .landscape-grid { grid-template-columns:1fr; }
+    .h-md, .h-lg, .h-xl { height:auto; aspect-ratio:4/3; }
   }
 </style>
 </head>
-<body><nav>
+<body>
+<nav>
   <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -128,27 +99,34 @@
     <li><a href="selfwealth.html" class="active">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="index.html">Home</a></li>
-    <li><a href="brand-identity.html">Brand Identity</a></li>
-    <li><a href="video-content.html">Video</a></li>
-    <li><a href="motion-graphics.html">Motion</a></li>
-    <li><a href="y-careers.html">Y Careers</a></li>
-    <li><a href="selfwealth.html" class="active">Selfwealth</a></li>
-    <li><a href="illustration.html">Illustration</a></li>
+  <li><a href="brand-identity.html">Brand Identity</a></li>
+  <li><a href="video-content.html">Video</a></li>
+  <li><a href="motion-graphics.html">Motion</a></li>
+  <li><a href="y-careers.html">Y Careers</a></li>
+  <li><a href="selfwealth.html" class="active">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
 </ul>
+
 <div class="img-hero">
   <video autoplay muted loop playsinline class="hero-vid">
     <source src="assets/selfwealth/SelfwealthAnimation.mp4" type="video/mp4">
   </video>
   <div class="img-hero-text">
     <h1>Self<em>wealth</em></h1>
-    <p>Selfwealth is a share trading platform that aims to make investing accessible for everyone. As their designer, my mission was to make finance captivating across two full brand refreshes, a national OOH campaign, animation, social media, and UX.</p>
+    <p>Selfwealth is a share trading platform on a mission to make investing accessible for everyday Australians. I was their designer for two full brand refreshes, a national OOH campaign, social media, TikTok, motion graphics, and UX work.</p>
   </div>
+</div>
+
+<div class="meta-bar">
+  <div class="meta-bar-item"><div class="meta-bar-label">Company</div><div class="meta-bar-value">Selfwealth</div></div>
+  <div class="meta-bar-item"><div class="meta-bar-label">Year</div><div class="meta-bar-value">2020 to 2022</div></div>
+  <div class="meta-bar-item"><div class="meta-bar-label">Disciplines</div><div class="meta-bar-value">Brand · Campaign · OOH · Social · Motion</div></div>
+  <div class="meta-bar-item"><div class="meta-bar-label">Tools</div><div class="meta-bar-value">Figma · Adobe CC Suite</div></div>
+  <div class="meta-bar-item"><div class="meta-bar-label">Industry</div><div class="meta-bar-value">Fintech</div></div>
 </div>
 
 <div class="img-full img-cell h-169 fade-up">
@@ -157,7 +135,7 @@
 
 <div class="caption-block fade-up">
   <h2>Complex ideas <em>made</em> simple</h2>
-  <p>Partnering closely with marketing and product teams, I translated complex financial information into approachable, user-focused design -- helping reinforce Selfwealth's credibility and support customer growth within a highly regulated industry.</p>
+  <p>Working closely with marketing and product teams, I translated complex financial information into design that felt approachable and clear. The goal was always to make Selfwealth feel credible without being intimidating. Finance that actually makes sense to a real person.</p>
 </div>
 
 <div class="img-duo fade-up">
@@ -175,72 +153,60 @@
   </div>
   <div class="social-grid">
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/selfwealth/LockDownVibes.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/selfwealth/LockDownVibes.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Lockdown Vibes</div>
-    <div class="vid-caption-desc">A timely and relatable video tapping into the shared experience of lockdown -- connecting with everyday Australians thinking about their money.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/selfwealth/LockDownVibes.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/selfwealth/LockDownVibes.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Lockdown Vibes</div>
+        <div class="vid-caption-desc">Tapping into a shared experience to connect with everyday Australians thinking about their money.</div>
+      </div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/selfwealth/ShortingStocks.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/selfwealth/ShortingStocks.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Shorting Stocks</div>
-    <div class="vid-caption-desc">Breaking down a complex trading concept in a fun, digestible way -- making the share market feel less intimidating for beginners.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/selfwealth/ShortingStocks.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/selfwealth/ShortingStocks.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Shorting Stocks</div>
+        <div class="vid-caption-desc">Breaking down a complex trading concept in a way that makes the share market feel less intimidating.</div>
+      </div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/selfwealth/EmailTrend.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/selfwealth/EmailTrend.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Email Trend</div>
-    <div class="vid-caption-desc">Using a trending audio format to grab attention and position Selfwealth as culturally aware and in touch with its audience.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/selfwealth/EmailTrend.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/selfwealth/EmailTrend.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Email Trend</div>
+        <div class="vid-caption-desc">Using a trending audio format to show Selfwealth as a brand that's in touch with its audience.</div>
+      </div>
+    </div>
     <div>
-  <div class="vid vid-portrait  fade-up" data-src="assets/selfwealth/millionaireportfolios.mp4" data-portrait="true">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/selfwealth/millionaireportfolios.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">TikTok</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-  <div class="vid-caption">
-    <div class="vid-caption-title">Millionaire Portfolios</div>
-    <div class="vid-caption-desc">A curiosity-driven hook that draws viewers in by revealing what top investors actually hold -- aspirational and educational at once.</div>
-  </div>
-</div>
+      <div class="vid vid-portrait fade-up" data-src="assets/selfwealth/millionaireportfolios.mp4" data-portrait="true">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/selfwealth/millionaireportfolios.mp4" type="video/mp4"></video>
+        <div class="vid-badge">TikTok</div><div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption">
+        <div class="vid-caption-title">Millionaire Portfolios</div>
+        <div class="vid-caption-desc">A curiosity-driven hook that draws viewers in by showing what top investors actually hold.</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="caption-block fade-up">
-  <h2>Process <em>driven</em> design</h2>
-  <p>I established Selfwealth's brand design system from scratch and led two brand refreshes -- both resulting in stronger alignment with the target audience of everyday Australians wanting to invest.</p>
+  <h2>Two brand refreshes, <em>one team</em></h2>
+  <p>I built Selfwealth's brand design system from scratch and led two full refreshes. Both were about the same thing: making the brand feel more aligned with who Selfwealth was actually talking to. Everyday Australians who want to take control of their finances.</p>
 </div>
 
 <div class="img-feature-right fade-up">
   <div class="img-stack">
-    <div class="img-cell" style="flex:1;"><img src="assets/selfwealth/BigSwingingStocks.png" alt="Big Swinging Stocks"></div>
+    <div class="img-cell" style="flex:1;"><img src="assets/selfwealth/BigSwingingStocks.png" alt="Big Swinging Stocks campaign"></div>
     <div class="img-cell" style="flex:1;"><img src="assets/selfwealth/InternalAwardsProgram.png" alt="Internal Awards Program"></div>
   </div>
   <div class="img-cell"><img src="assets/selfwealth/MegaSideEmma.png" alt="Campaign"></div>
@@ -252,29 +218,23 @@
       <span class="eyebrow">Animation</span>
       <h2>Motion <em>Graphics</em></h2>
     </div>
-    <a href="motion-graphics.html" class="see-all-link">See all videos &#8594;</a>
+    <a href="motion-graphics.html" class="see-all-link">See all motion &#8594;</a>
   </div>
   <div class="landscape-grid">
     <div>
-      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/SelfwealthAnimation.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/SelfwealthAnimation.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge"></div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
-      <div class="vid-caption"><div class="vid-caption-title">Evergreen advertising</div></div>
+      <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/SelfwealthAnimation.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/motion-graphics/SelfwealthAnimation.mp4" type="video/mp4"></video>
+        <div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
+      <div class="vid-caption"><div class="vid-caption-title">Evergreen advertising animation</div></div>
     </div>
     <div>
-      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/USPromoFINAL.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/USPromoFINAL.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge"></div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/USPromoFINAL.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline><source src="assets/motion-graphics/USPromoFINAL.mp4" type="video/mp4"></video>
+        <div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
       <div class="vid-caption"><div class="vid-caption-title">Campaign promotion</div></div>
     </div>
   </div>
@@ -283,7 +243,6 @@
 <div class="img-cell h-lg fade-up">
   <img src="assets/selfwealth/SocialMediaPosts-2.png" alt="Social media posts">
 </div>
-
 <div class="img-full img-cell h-xl fade-up">
   <img src="assets/selfwealth/EDMs-1.png" alt="EDM campaigns">
 </div>
@@ -302,75 +261,41 @@
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
 
-  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
-  .lightbox.open { display:flex; }
-  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
-  .lightbox-inner.is-portrait { max-width:400px; }
-  .lightbox-inner video { width:100%; display:block; }
-  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
-  .lightbox-close:hover { color:var(--accent); }
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">&#10005; Close</button>
+    <video id="lightbox-video" controls playsinline></video>
+  </div>
+</div>
 
 <script>
   const _obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        _obs.unobserve(e.target);
-      }
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
-</script>
-<script>
   document.querySelectorAll('video.thumb').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
     if (v.readyState >= 1) v.currentTime = 0.1;
   });
-</script>
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner" id="lightbox-inner">
-    <button class="lightbox-close" id="lightbox-close">Close</button>
-    <video id="lightbox-video" controls playsinline></video>
-  </div>
-</div>
-<script>
-  const _lb      = document.getElementById('lightbox');
+  const _lb = document.getElementById('lightbox');
   const _lbInner = document.getElementById('lightbox-inner');
-  const _lbVid   = document.getElementById('lightbox-video');
+  const _lbVid = document.getElementById('lightbox-video');
   const _lbClose = document.getElementById('lightbox-close');
   document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      _lbVid.src = card.dataset.src;
-      _lbVid.load(); _lbVid.play();
+      _lbVid.src = card.dataset.src; _lbVid.load(); _lbVid.play();
       _lbInner.classList.toggle('is-portrait', card.dataset.portrait === 'true');
-      _lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      _lb.classList.add('open'); document.body.style.overflow = 'hidden';
     });
   });
   _lbClose.addEventListener('click', _closeLb);
   _lb.addEventListener('click', e => { if (e.target === _lb) _closeLb(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeLb(); });
-  function _closeLb() {
-    _lb.classList.remove('open');
-    _lbVid.pause(); _lbVid.src = '';
-    document.body.style.overflow = '';
-  }
+  function _closeLb() { _lb.classList.remove('open'); _lbVid.pause(); _lbVid.src = ''; document.body.style.overflow = ''; }
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
 </script>
-<script>
-  // Burger menu
-  const burger  = document.getElementById('navBurger');
-  const drawer  = document.getElementById('navDrawer');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    drawer.classList.toggle('open');
-    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      burger.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-</script>
-</body></html>
+</body>
+</html>

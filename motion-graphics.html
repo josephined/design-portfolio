@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motion Graphics -- Josephine De Maria</title>
+<title>Motion Graphics — Josephine De Maria</title>
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Motion Graphics — Josephine De Maria">
+<meta property="og:description" content="Brand animation, explainer video, and social campaign motion by Josephine De Maria.">
+<meta property="og:image" content="https://josephineddesigns.com/assets/preview.jpg">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-
   .page-hero { padding:10rem 3rem 5rem; border-bottom:1px solid var(--border); }
   .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(4rem,8vw,8rem); font-weight:900; line-height:0.95; color:var(--cream); letter-spacing:-0.02em; margin-bottom:1.5rem; }
   .page-hero h1 em { font-style:italic; color:var(--accent); }
   .page-hero p { font-size:1.05rem; color:var(--muted); max-width:600px; line-height:1.8; }
-
-
   .vid { position:relative; overflow:hidden; background:#0d0d0d; cursor:pointer; display:block; }
   .vid-landscape { aspect-ratio:16/9; }
-  .vid-portrait  { aspect-ratio:9/16; }
   .vid video.thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
   .vid-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.4); transition:background 0.3s; z-index:1; }
   .vid:hover .vid-overlay { background:rgba(0,0,0,0.12); }
@@ -32,9 +33,7 @@
   .vid:hover .vid-play-sm svg path { fill:var(--accent); }
   .vid-caption { padding:0.75rem 0 0; }
   .vid-caption-title { font-size:0.85rem; font-weight:500; color:var(--cream); }
-  .vid-caption-desc  { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
-
-
+  .vid-caption-desc { font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.2rem; }
   .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
   .lightbox.open { display:flex; }
   .lightbox-inner { position:relative; width:100%; max-width:1100px; }
@@ -42,7 +41,6 @@
   .lightbox-inner video { width:100%; display:block; }
   .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
   .lightbox-close:hover { color:var(--accent); }
-
   .vid-featured { margin-bottom:1.5rem; }
   .landscape-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
   .landscape-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
@@ -62,7 +60,8 @@
   }
 </style>
 </head>
-<body><nav>
+<body>
+<nav>
   <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -73,23 +72,22 @@
     <li><a href="selfwealth.html">Selfwealth</a></li>
     <li><a href="illustration.html">Illustration</a></li>
   </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="index.html">Home</a></li>
-    <li><a href="brand-identity.html">Brand Identity</a></li>
-    <li><a href="video-content.html">Video</a></li>
-    <li><a href="motion-graphics.html" class="active">Motion</a></li>
-    <li><a href="y-careers.html">Y Careers</a></li>
-    <li><a href="selfwealth.html">Selfwealth</a></li>
-    <li><a href="illustration.html">Illustration</a></li>
+  <li><a href="brand-identity.html">Brand Identity</a></li>
+  <li><a href="video-content.html">Video</a></li>
+  <li><a href="motion-graphics.html" class="active">Motion</a></li>
+  <li><a href="y-careers.html">Y Careers</a></li>
+  <li><a href="selfwealth.html">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
 </ul>
+
 <div class="page-hero">
   <span class="eyebrow">Animation · Motion Design · After Effects</span>
   <h1>Motion <em>Graphics</em></h1>
-  <p>I use animation to bring brands to life and make content more engaging -- from brand animations and social campaign motion to animated explainers that make complex concepts digestible.</p>
+  <p>Animation is how I bring a brand's visual identity to life. From logo reveals and social campaign motion to animated explainers that turn complex ideas into something people actually watch.</p>
 </div>
 
 <section class="video-section">
@@ -101,89 +99,89 @@
   </div>
 
   <div class="vid-featured">
-    <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/SelfwealthAnimation.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/SelfwealthAnimation.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Featured</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-lg"><svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/></svg></div>
-</div>
+    <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/SelfwealthAnimation.mp4" data-portrait="false">
+      <video class="thumb" preload="metadata" muted playsinline>
+        <source src="assets/motion-graphics/SelfwealthAnimation.mp4" type="video/mp4">
+      </video>
+      <div class="vid-badge">Featured</div>
+      <div class="vid-overlay"></div>
+      <div class="vid-play-lg"><svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M1 1.5l20 10.5L1 22.5V1.5z" fill="white"/></svg></div>
+    </div>
     <div class="vid-caption" style="padding-top:0.75rem;">
       <div class="vid-caption-title">Selfwealth Brand Animation</div>
-      <div class="vid-caption-desc">Evergreen animated advertising bringing the Selfwealth brand identity to life across digital platforms.</div>
+      <div class="vid-caption-desc">Evergreen animated advertising that brought the Selfwealth brand identity to life across digital platforms.</div>
     </div>
   </div>
 
   <div class="landscape-grid-2">
     <div>
-      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/USPromoFINAL.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/USPromoFINAL.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Social Campaign</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/USPromoFINAL.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/USPromoFINAL.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Social Campaign</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
       <div class="vid-caption">
         <div class="vid-caption-title">Social Campaign Animation</div>
-        <div class="vid-caption-desc">Animated social tiles and story graphics for digital campaign rollouts.</div>
+        <div class="vid-caption-desc">Animated social tiles and story graphics for a digital campaign rollout.</div>
       </div>
     </div>
     <div>
-      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Explainer</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/WhoIsYCareersFINAL.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Explainer</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play-md"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1.5l14 7.5L1 16.5V1.5z" fill="white"/></svg></div>
+      </div>
       <div class="vid-caption">
         <div class="vid-caption-title">Company Explainer</div>
-        <div class="vid-caption-desc">An animated introduction is a digestible way to explain what your company does.</div>
+        <div class="vid-caption-desc">An animated introduction is one of the clearest ways to explain what your organisation does.</div>
       </div>
     </div>
   </div>
 
   <div class="landscape-grid-3">
     <div>
-      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/LogoAnimation.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/LogoAnimation.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Logo</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/LogoAnimation.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/LogoAnimation.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Logo</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
       <div class="vid-caption">
         <div class="vid-caption-title">Logo Animation</div>
-        <div class="vid-caption-desc">Kinetic logo reveals and looping brand animations for digital platforms.</div>
+        <div class="vid-caption-desc">Kinetic logo reveals and looping brand animations for use across digital platforms.</div>
       </div>
     </div>
     <div>
-      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/What is a GTO.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Explainer</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/What is a GTO.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/What is a GTO.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Explainer</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
       <div class="vid-caption">
         <div class="vid-caption-title">Animated Explainer</div>
-        <div class="vid-caption-desc">Motion graphics that make complex ideas digestible -- used across social and advertising.</div>
+        <div class="vid-caption-desc">Motion graphics that make complex ideas accessible. Used across social and digital advertising.</div>
       </div>
     </div>
     <div>
-      <div class="vid vid-landscape  fade-up" data-src="assets/motion-graphics/Work Different.mp4" data-portrait="false">
-  <video class="thumb" preload="metadata" muted playsinline>
-    <source src="assets/motion-graphics/Work Different.mp4" type="video/mp4">
-  </video>
-  <div class="vid-badge">Brand</div>
-  <div class="vid-overlay"></div>
-  <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
-</div>
+      <div class="vid vid-landscape fade-up" data-src="assets/motion-graphics/Work Different.mp4" data-portrait="false">
+        <video class="thumb" preload="metadata" muted playsinline>
+          <source src="assets/motion-graphics/Work Different.mp4" type="video/mp4">
+        </video>
+        <div class="vid-badge">Brand</div>
+        <div class="vid-overlay"></div>
+        <div class="vid-play-sm"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="white"/></svg></div>
+      </div>
       <div class="vid-caption">
         <div class="vid-caption-title">Animating Illustrations</div>
         <div class="vid-caption-desc">Bringing existing Selfwealth illustrations to life with purposeful motion.</div>
@@ -196,7 +194,7 @@
   <div class="fade-up">
     <span class="eyebrow">Process</span>
     <h2>How I <em>work</em></h2>
-    <p class="body-copy">All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement -- using timing and easing to give each animation its own personality.</p>
+    <p class="body-copy">All motion work is produced in Adobe After Effects, with assets brought in from Illustrator and Photoshop. I start with the brand's visual language and find ways to translate static elements into movement. Timing and easing give each animation its own character. For social-first work, I design for the first two seconds. If it doesn't land on a muted feed, it doesn't work.</p>
   </div>
   <div></div>
 </section>
@@ -215,75 +213,41 @@
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
 
-  .lightbox { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; padding:2rem; }
-  .lightbox.open { display:flex; }
-  .lightbox-inner { position:relative; width:100%; max-width:1100px; }
-  .lightbox-inner.is-portrait { max-width:400px; }
-  .lightbox-inner video { width:100%; display:block; }
-  .lightbox-close { position:absolute; top:-3rem; right:0; background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
-  .lightbox-close:hover { color:var(--accent); }
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">&#10005; Close</button>
+    <video id="lightbox-video" controls playsinline></video>
+  </div>
+</div>
 
 <script>
   const _obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        _obs.unobserve(e.target);
-      }
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
-</script>
-<script>
   document.querySelectorAll('video.thumb').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
     if (v.readyState >= 1) v.currentTime = 0.1;
   });
-</script>
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner" id="lightbox-inner">
-    <button class="lightbox-close" id="lightbox-close">Close</button>
-    <video id="lightbox-video" controls playsinline></video>
-  </div>
-</div>
-<script>
-  const _lb      = document.getElementById('lightbox');
+  const _lb = document.getElementById('lightbox');
   const _lbInner = document.getElementById('lightbox-inner');
-  const _lbVid   = document.getElementById('lightbox-video');
+  const _lbVid = document.getElementById('lightbox-video');
   const _lbClose = document.getElementById('lightbox-close');
   document.querySelectorAll('.vid[data-src]').forEach(card => {
     card.addEventListener('click', () => {
-      _lbVid.src = card.dataset.src;
-      _lbVid.load(); _lbVid.play();
+      _lbVid.src = card.dataset.src; _lbVid.load(); _lbVid.play();
       _lbInner.classList.toggle('is-portrait', card.dataset.portrait === 'true');
-      _lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      _lb.classList.add('open'); document.body.style.overflow = 'hidden';
     });
   });
   _lbClose.addEventListener('click', _closeLb);
   _lb.addEventListener('click', e => { if (e.target === _lb) _closeLb(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeLb(); });
-  function _closeLb() {
-    _lb.classList.remove('open');
-    _lbVid.pause(); _lbVid.src = '';
-    document.body.style.overflow = '';
-  }
+  function _closeLb() { _lb.classList.remove('open'); _lbVid.pause(); _lbVid.src = ''; document.body.style.overflow = ''; }
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
 </script>
-<script>
-  // Burger menu
-  const burger  = document.getElementById('navBurger');
-  const drawer  = document.getElementById('navDrawer');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    drawer.classList.toggle('open');
-    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      burger.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-</script>
-</body></html>
+</body>
+</html>

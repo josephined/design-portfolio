@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Josephine De Maria -- Josephine De Maria</title>
+<title>Josephine De Maria — Graphic Designer</title>
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Josephine De Maria — Graphic Designer">
+<meta property="og:description" content="Melbourne-based Senior Graphic Designer working across brand, video, motion, and social media.">
+<meta property="og:image" content="https://josephineddesigns.com/assets/preview.jpg">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
-  <link rel="icon" href="/assets/favicon.png">
-  <meta property="og:image" content="https://josephineddesigns.com/assets/preview.jpg">
-<meta property="og:title" content="Josephine De Maria — Graphic Designer">
-<meta property="og:description" content="Portfolio showcasing brand, motion, and digital design.">
-<meta property="og:type" content="website">
 <style>
   .hero { display:grid; grid-template-columns:1fr 1fr; min-height:100vh; padding-top:76px; }
   .hero-left { display:flex; flex-direction:column; justify-content:center; padding:5rem 3rem; }
@@ -21,15 +21,12 @@
   .hero-right { position:relative; overflow:hidden; border-left:1px solid var(--border); }
   .hero-video-wrap { width:100%; height:100%; min-height:600px; position:relative; background:var(--green-mid); }
   .hero-video-wrap video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  /* Play button -- SVG only, no emoji */
   .hero-play-btn { width:64px; height:64px; border-radius:50%; border:2px solid rgba(245,240,232,0.35); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .hero-play-btn svg { display:block; }
-
   .work-section { padding:5rem 3rem; }
   .work-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:3rem; }
   .view-all { font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.2); padding-bottom:2px; transition:color 0.2s,border-color 0.2s; }
   .view-all:hover { color:var(--cream); border-color:var(--cream); }
-
   .work-featured { display:grid; grid-template-columns:1fr 1fr; background:var(--green-mid); border:1px solid var(--border); overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.3s; margin-bottom:1.5rem; }
   .work-featured:hover { transform:translateY(-5px); }
   .work-featured-img { min-height:480px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:2.5rem; }
@@ -38,7 +35,6 @@
   .work-featured-content { padding:3rem; display:flex; flex-direction:column; justify-content:center; }
   .work-card-title { font-family:var(--serif); font-size:2rem; font-weight:700; color:var(--cream); line-height:1.1; margin:0.75rem 0 1rem; }
   .work-card-desc { font-size:0.9rem; color:var(--muted); line-height:1.75; margin-bottom:2rem; }
-
   .work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
   .work-card { background:var(--green-mid); border:1px solid var(--border); overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.3s; display:block; }
   .work-card:hover { transform:translateY(-5px); }
@@ -49,7 +45,6 @@
   .work-card-body { padding:1.5rem; }
   .work-card-body .work-card-title { font-size:1.1rem; margin:0.5rem 0; }
   .work-card-body .work-card-desc { font-size:0.82rem; margin-bottom:0; }
-
   .expertise-section { background:var(--green-mid); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:5rem 3rem; }
   .expertise-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:3rem; }
   .expertise-item { padding:2.5rem; border-right:1px solid var(--border); transition:background 0.2s; }
@@ -57,11 +52,9 @@
   .expertise-item:hover { background:rgba(255,233,115,0.04); }
   .expertise-number { font-family:var(--serif); font-size:4rem; font-weight:900; color:rgba(255,233,115,0.12); line-height:1; margin-bottom:1rem; }
   .expertise-name { font-family:var(--serif); font-size:1.3rem; font-weight:700; color:var(--cream); margin-bottom:0.75rem; }
-
   .about-section { display:grid; grid-template-columns:1fr 1.2fr; gap:6rem; align-items:center; padding:6rem 3rem; }
   .about-title { font-family:var(--serif); font-size:clamp(2.5rem,4vw,4rem); font-weight:900; line-height:1.05; color:var(--cream); }
   .about-title em { font-style:italic; color:var(--accent); }
-
   .contact-title { font-family:var(--serif); font-size:clamp(2.5rem,5vw,5rem); font-weight:900; color:var(--green); margin-bottom:1rem; line-height:1.05; }
   .contact-sub { font-size:1rem; color:rgba(26,58,42,0.65); margin-bottom:2.5rem; }
   .contact-email-lg { display:inline-block; font-size:1.1rem; font-weight:500; color:var(--green); text-decoration:none; border-bottom:2px solid var(--green); padding-bottom:2px; transition:opacity 0.2s; }
@@ -69,10 +62,8 @@
   .contact-links-row { display:flex; align-items:center; justify-content:center; gap:2rem; margin-top:2rem; }
   .contact-links-row a { font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(26,58,42,0.55); text-decoration:none; transition:color 0.2s; }
   .contact-links-row a:hover { color:var(--green); }
-
   @media (max-width:768px) {
-    /* Mobile: video above text */
-    .hero { grid-template-columns:1fr; min-height:auto; flex-direction:column-reverse; display:flex; flex-direction:column; padding-top:64px; }
+    .hero { grid-template-columns:1fr; min-height:auto; display:flex; flex-direction:column; padding-top:64px; }
     .hero-right { order:-1; border-left:none; border-bottom:1px solid var(--border); }
     .hero-video-wrap { min-height:56vw; }
     .hero-left { padding:2.5rem 1.5rem; }
@@ -90,7 +81,8 @@
   }
 </style>
 </head>
-<body><nav>
+<body>
+<nav>
   <a href="index.html" class="nav-logo">JDM</a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
@@ -107,18 +99,19 @@
 </nav>
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="brand-identity.html">Brand Identity</a></li>
-    <li><a href="video-content.html">Video</a></li>
-    <li><a href="motion-graphics.html">Motion</a></li>
-    <li><a href="y-careers.html">Y Careers</a></li>
-    <li><a href="selfwealth.html">Selfwealth</a></li>
-    <li><a href="illustration.html">Illustration</a></li>
+  <li><a href="brand-identity.html">Brand Identity</a></li>
+  <li><a href="video-content.html">Video</a></li>
+  <li><a href="motion-graphics.html">Motion</a></li>
+  <li><a href="y-careers.html">Y Careers</a></li>
+  <li><a href="selfwealth.html">Selfwealth</a></li>
+  <li><a href="illustration.html">Illustration</a></li>
 </ul>
+
 <section class="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Melbourne-based Senior Graphic Designer</p>
     <h1 class="hero-title">Life's too short to have <em>no brand strategy.</em></h1>
-    <p class="hero-sub">I create strategic and user-friendly experiences across brand, digital, video, motion, and social media, from concept through to delivery.</p>
+    <p class="hero-sub">I create strategic, thoughtful work across brand, digital, video, motion, and social media. From the first concept to the final file.</p>
     <a href="#work" class="btn">View My Work &#8594;</a>
   </div>
   <div class="hero-right">
@@ -152,16 +145,16 @@
         <source src="assets/ycareers/Y Careers logo spin.mp4" type="video/mp4">
       </video>
     </div>
-<div class="work-featured-content">
-  <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.75rem;">
-    <span class="tag">Brand Identity</span>
-    <span class="tag">Strategy</span>
-    <span class="tag">Motion</span>
-  </div>
-  <h3 class="work-card-title">Y Careers Brand Ideation and Rollout</h3>
-  <p class="work-card-desc">I built the Y Careers brand from scratch: visual identity, design system, social content, and campaign materials. Strategy, workshops, design, video, and animation working together to genuinely connect with young people.</p>
-  <span class="card-link">View Case Study &#8594;</span>
-</div>
+    <div class="work-featured-content">
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.75rem;">
+        <span class="tag">Brand Identity</span>
+        <span class="tag">Strategy</span>
+        <span class="tag">Motion</span>
+      </div>
+      <h3 class="work-card-title">Y Careers Brand Ideation and Rollout</h3>
+      <p class="work-card-desc">I built the Y Careers brand from scratch. Visual identity, design system, social content, campaign materials, workshops with young people, video, and animation. Everything working together to genuinely connect with the audience.</p>
+      <span class="card-link">View Case Study &#8594;</span>
+    </div>
   </a>
 
   <div class="work-grid">
@@ -172,7 +165,7 @@
       <div class="work-card-body">
         <span class="tag">Brand</span><span class="tag">Campaign</span><span class="tag">OOH</span>
         <h3 class="work-card-title">Selfwealth</h3>
-        <p class="work-card-desc">Brand design system, two refreshes, and a national OOH awareness campaign. Making finance feel human.</p>
+        <p class="work-card-desc">Brand design system, two refreshes, and a national OOH campaign rolled out across Melbourne.</p>
       </div>
     </a>
     <a href="video-content.html" class="work-card fade-up">
@@ -182,7 +175,7 @@
       <div class="work-card-body">
         <span class="tag">Video</span><span class="tag">Social</span><span class="tag">Production</span>
         <h3 class="work-card-title">Video Content</h3>
-        <p class="work-card-desc">From TikTok at Selfwealth to social campaigns at Y Careers, strategic storytelling with hands-on production is my forte.</p>
+        <p class="work-card-desc">TikToks, Reels, LinkedIn videos and YouTube tutorials. I write, direct, edit, and sometimes appear on screen.</p>
       </div>
     </a>
     <a href="motion-graphics.html" class="work-card fade-up">
@@ -192,7 +185,7 @@
       <div class="work-card-body">
         <span class="tag">Motion</span><span class="tag">Animation</span><span class="tag">After Effects</span>
         <h3 class="work-card-title">Motion Graphics</h3>
-        <p class="work-card-desc">Animations that bring brands to life: logo reveals, campaign motion graphics, and animated explainers.</p>
+        <p class="work-card-desc">Logo reveals, animated explainers, and campaign motion. Animation that makes brands feel alive.</p>
       </div>
     </a>
     <a href="two-sense.html" class="work-card fade-up">
@@ -202,7 +195,7 @@
       <div class="work-card-body">
         <span class="tag">Fashion</span><span class="tag">Identity</span>
         <h3 class="work-card-title">Two Sense</h3>
-        <p class="work-card-desc">Contemporary vintage fashion label, a Wes Anderson-inspired palette with a detailed coin illustration mark.</p>
+        <p class="work-card-desc">Contemporary vintage fashion label with a Wes Anderson-inspired palette and a detailed coin illustration mark.</p>
       </div>
     </a>
     <a href="the-valiants.html" class="work-card fade-up">
@@ -212,7 +205,7 @@
       <div class="work-card-body">
         <span class="tag">Music</span><span class="tag">Print</span>
         <h3 class="work-card-title">The Valiants</h3>
-        <p class="work-card-desc">Full visual identity for an indie punk rock band, album artwork, merch, and brand collateral.</p>
+        <p class="work-card-desc">Full visual identity for an indie punk rock band. Album artwork, merch, and brand collateral.</p>
       </div>
     </a>
     <a href="illustration.html" class="work-card fade-up">
@@ -222,7 +215,7 @@
       <div class="work-card-body">
         <span class="tag">Illustration</span><span class="tag">Digital</span>
         <h3 class="work-card-title">Illustration</h3>
-        <p class="work-card-desc">Digital illustration spanning character design, brand illustration, editorial artwork, and icon systems.</p>
+        <p class="work-card-desc">Character design, brand illustration, editorial artwork, and custom icon systems.</p>
       </div>
     </a>
   </div>
@@ -235,17 +228,17 @@
     <div class="expertise-item fade-up">
       <div class="expertise-number">01</div>
       <h3 class="expertise-name">Motion Graphics</h3>
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;">I create animations that bring brands to life across digital platforms. Specialising in social campaigns and animated explainers that make complex concepts simple.</p>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;">I use After Effects to translate brand identities into motion. From social campaign animations to explainer videos, I make complex things feel simple and engaging.</p>
     </div>
     <div class="expertise-item fade-up">
       <div class="expertise-number">02</div>
       <h3 class="expertise-name">Brand Identity</h3>
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;"> I build brands that are unforgettable, flexible, and built to scale, with design systems the whole team can use.</p>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;">I build brands from the ground up. Logos, colour systems, typography, design systems in Figma. The kind of foundations a team can actually use.</p>
     </div>
     <div class="expertise-item fade-up">
       <div class="expertise-number">03</div>
       <h3 class="expertise-name">Video Content</h3>
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;">I strategically write, direct, and sometimes appear in social media videos, I love combining storytelling with hands-on production across B2C and B2B.</p>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;">I write, direct, and edit social video content for TikTok, Instagram, LinkedIn, and YouTube. I've run interstate shoots and managed everything from storyboarding to post-production.</p>
     </div>
   </div>
 </section>
@@ -257,17 +250,18 @@
   <div class="fade-up">
     <img src="assets/Josephine.png" alt="Josephine De Maria" style="width:100%;max-width:420px;display:block;margin-bottom:2rem;object-fit:cover;">
     <span class="eyebrow">About Me</span>
-    <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:1.25rem;">I'm a Melbourne-based Senior Graphic Designer with over four years of full-time experience creating end-to-end creative content across brand, digital, print, video, motion, and social media.</p>
-    <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;">Experienced working as a one-person creative team in fast-paced environments, leading projects from concept through to delivery. Collaborative, adaptable, fast, and passionate about creating meaningful, community-focused content.</p>
+    <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:1.25rem;">I'm a Melbourne-based Senior Graphic Designer with over four years of experience across brand, digital, video, motion, and social media. I've built my career working as a one-person creative team in fast-paced environments, leading projects from the first idea through to final delivery.</p>
+    <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;">I care about work that connects with real people. Whether I'm designing a brand system, shooting a TikTok, or building out an animation, I want it to actually do something.</p>
     <a href="#contact" class="btn">Get in Touch &#8594;</a>
   </div>
 </section>
 
 <section class="contact-section" id="contact" style="background:var(--accent);text-align:center;padding:7rem 3rem;">
   <h2 class="contact-title">Need a designer?<br>I'd love to work with you.</h2>
-  <p class="contact-sub"></p>
+  <p class="contact-sub">Open to freelance, contract, and full-time opportunities.</p>
   <a href="mailto:josephine.de.maria@gmail.com" class="contact-email-lg">josephine.de.maria@gmail.com</a>
   <div class="contact-links-row">
+    <a href="tel:0400636229">0400 636 229</a>
     <a href="https://www.linkedin.com/in/josephinedmaria" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </section>
@@ -276,32 +270,18 @@
   <span class="footer-copy">&copy; 2026 Josephine De Maria. All rights reserved.</span>
   <span class="footer-right">Melbourne, Australia</span>
 </footer>
+
 <script>
   const _obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        _obs.unobserve(e.target);
-      }
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); _obs.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
 </script>
-<script>
-  // Burger menu
-  const burger  = document.getElementById('navBurger');
-  const drawer  = document.getElementById('navDrawer');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    drawer.classList.toggle('open');
-    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      burger.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-</script>
-</body></html>
+</body>
+</html>
