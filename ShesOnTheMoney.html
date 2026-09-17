@@ -328,7 +328,7 @@
 
   // ── Thumbnail first-frame
   document.querySelectorAll('video.thumb').forEach(v => {
-    v.addEventListener('loadedmetadata', () => { v.currentTime = 3; });
+    v.addEventListener('loadedmetadata', () => { v.currentTime = 2; });
     if (v.readyState >= 1) v.currentTime = 3;
   });
 
